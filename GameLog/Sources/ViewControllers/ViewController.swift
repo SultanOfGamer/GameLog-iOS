@@ -7,4 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController { }
+class ViewController: UIViewController {
+
+    // MARK: Initializers
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .systemBackground
+    }
+
+    required init?(coder: NSCoder) {
+        return nil
+    }
+}
