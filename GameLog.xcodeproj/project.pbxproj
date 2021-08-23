@@ -14,6 +14,16 @@
 		025FB65326D3D96A004FAD8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 025FB65226D3D96A004FAD8F /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		025FB65D26D3D9D1004FAD8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0226A4FF26D3C7B400622AF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0226A50626D3C7B400622AF5;
+			remoteInfo = GameLog;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0226A50726D3C7B400622AF5 /* GameLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0226A50A26D3C7B400622AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -22,10 +32,19 @@
 		0226A51626D3C7B500622AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0226A51826D3C7B500622AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		025FB65226D3D96A004FAD8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		025FB65826D3D9D1004FAD8F /* GameLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		025FB65C26D3D9D1004FAD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0226A50426D3C7B400622AF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025FB65526D3D9D1004FAD8F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +59,7 @@
 			children = (
 				025FB65226D3D96A004FAD8F /* .swiftlint.yml */,
 				0226A50926D3C7B400622AF5 /* GameLog */,
+				025FB65926D3D9D1004FAD8F /* GameLogTests */,
 				0226A50826D3C7B400622AF5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				0226A50726D3C7B400622AF5 /* GameLog.app */,
+				025FB65826D3D9D1004FAD8F /* GameLogTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +125,22 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		025FB65926D3D9D1004FAD8F /* GameLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				025FB66226D3D9E2004FAD8F /* Supporting Files */,
+			);
+			path = GameLogTests;
+			sourceTree = "<group>";
+		};
+		025FB66226D3D9E2004FAD8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				025FB65C26D3D9D1004FAD8F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +162,24 @@
 			productReference = 0226A50726D3C7B400622AF5 /* GameLog.app */;
 			productType = "com.apple.product-type.application";
 		};
+		025FB65726D3D9D1004FAD8F /* GameLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 025FB65F26D3D9D1004FAD8F /* Build configuration list for PBXNativeTarget "GameLogTests" */;
+			buildPhases = (
+				025FB65426D3D9D1004FAD8F /* Sources */,
+				025FB65526D3D9D1004FAD8F /* Frameworks */,
+				025FB65626D3D9D1004FAD8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				025FB65E26D3D9D1004FAD8F /* PBXTargetDependency */,
+			);
+			name = GameLogTests;
+			productName = GameLogTests;
+			productReference = 025FB65826D3D9D1004FAD8F /* GameLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -136,6 +191,10 @@
 				TargetAttributes = {
 					0226A50626D3C7B400622AF5 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					025FB65726D3D9D1004FAD8F = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 0226A50626D3C7B400622AF5;
 					};
 				};
 			};
@@ -153,6 +212,7 @@
 			projectRoot = "";
 			targets = (
 				0226A50626D3C7B400622AF5 /* GameLog */,
+				025FB65726D3D9D1004FAD8F /* GameLogTests */,
 			);
 		};
 /* End PBXProject section */
@@ -165,6 +225,13 @@
 				025FB65326D3D96A004FAD8F /* .swiftlint.yml in Resources */,
 				0226A51726D3C7B500622AF5 /* LaunchScreen.storyboard in Resources */,
 				0226A51426D3C7B500622AF5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025FB65626D3D9D1004FAD8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +267,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		025FB65426D3D9D1004FAD8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		025FB65E26D3D9D1004FAD8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0226A50626D3C7B400622AF5 /* GameLog */;
+			targetProxy = 025FB65D26D3D9D1004FAD8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0226A51526D3C7B500622AF5 /* LaunchScreen.storyboard */ = {
@@ -374,6 +456,48 @@
 			};
 			name = Release;
 		};
+		025FB66026D3D9D1004FAD8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9B5F6SGDZ8;
+				INFOPLIST_FILE = "GameLogTests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckbok.GameLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameLog.app/GameLog";
+			};
+			name = Debug;
+		};
+		025FB66126D3D9D1004FAD8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9B5F6SGDZ8;
+				INFOPLIST_FILE = "GameLogTests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckbok.GameLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameLog.app/GameLog";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -391,6 +515,15 @@
 			buildConfigurations = (
 				0226A51C26D3C7B500622AF5 /* Debug */,
 				0226A51D26D3C7B500622AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		025FB65F26D3D9D1004FAD8F /* Build configuration list for PBXNativeTarget "GameLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025FB66026D3D9D1004FAD8F /* Debug */,
+				025FB66126D3D9D1004FAD8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
