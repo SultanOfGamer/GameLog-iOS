@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: GLMainViewController {
 
-    static let tabBarInfo: GLTabBarController.TabBarInfo = ("검색", "magnifyingglass")
+    override var tabBarInfo: GLTabBarController.TabBarInfo {
+        return ("검색", "magnifyingglass")
+    }
 
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

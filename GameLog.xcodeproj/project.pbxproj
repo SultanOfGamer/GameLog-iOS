@@ -16,6 +16,8 @@
 		0241D83C26E5C768000A9E20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241D83B26E5C768000A9E20 /* SearchViewController.swift */; };
 		0241D83E26E5C94B000A9E20 /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241D83D26E5C94B000A9E20 /* GLTabBarController.swift */; };
 		025FB65326D3D96A004FAD8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 025FB65226D3D96A004FAD8F /* .swiftlint.yml */; };
+		02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */; };
+		02EC9C5B26F253CE00536893 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5A26F253CE00536893 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		025FB65226D3D96A004FAD8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		025FB65826D3D9D1004FAD8F /* GameLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		025FB65C26D3D9D1004FAD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
+		02EC9C5A26F253CE00536893 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0226A52026D3CB5D00622AF5 /* Entry */,
+				02EC9C5926F253B100536893 /* Global */,
 				0226A52126D3CC3000622AF5 /* ViewControllers */,
 			);
 			path = Sources;
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				0241D83D26E5C94B000A9E20 /* GLTabBarController.swift */,
+				02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */,
 				0226A50E26D3C7B400622AF5 /* HomeViewController.swift */,
 				0241D83726E5C723000A9E20 /* LibraryViewController.swift */,
 				0241D83926E5C74D000A9E20 /* WishlistViewController.swift */,
@@ -151,6 +157,14 @@
 				025FB65C26D3D9D1004FAD8F /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02EC9C5926F253B100536893 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				02EC9C5A26F253CE00536893 /* Constant.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +291,10 @@
 				0241D83C26E5C768000A9E20 /* SearchViewController.swift in Sources */,
 				0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */,
 				0241D83E26E5C94B000A9E20 /* GLTabBarController.swift in Sources */,
+				02EC9C5B26F253CE00536893 /* Constant.swift in Sources */,
 				0241D83A26E5C74D000A9E20 /* WishlistViewController.swift in Sources */,
 				0241D83826E5C723000A9E20 /* LibraryViewController.swift in Sources */,
+				02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */,
 				0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

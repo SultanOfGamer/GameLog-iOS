@@ -8,26 +8,35 @@
 import UIKit
 
 final class GLTabBarController: UITabBarController {
+
     typealias TabBarInfo = (title: String, imageName: String)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tabBar.tintColor = .systemIndigo
+    // MARK: - Initializer
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        tabBar.tintColor = Constant.Style.mainColor
         setViewControllers([
-            navigationController(with: HomeViewController(), to: HomeViewController.tabBarInfo),
-            navigationController(with: LibraryViewController(), to: LibraryViewController.tabBarInfo),
-            navigationController(with: WishlistViewController(), to: WishlistViewController.tabBarInfo),
-            navigationController(with: SearchViewController(), to: SearchViewController.tabBarInfo)
+            navigationController(with: HomeViewController()),
+            navigationController(with: LibraryViewController()),
+            navigationController(with: WishlistViewController()),
+            navigationController(with: SearchViewController())
         ], animated: false)
     }
 
-    private func navigationController(with viewController: UIViewController,
-                                      to tabBarInfo: TabBarInfo) -> UINavigationController {
-        viewController.title = tabBarInfo.title
-        viewController.tabBarItem.image = UIImage(systemName: tabBarInfo.imageName)
-        viewController.navigationItem.largeTitleDisplayMode = .always
-        viewController.view.backgroundColor = .systemBackground
+    required init?(coder: NSCoder) {
+        return nil
+    }
 
+    // MARK: - View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    // MARK: - Configure
+
+    private func navigationController(with viewController: GLMainViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.prefersLargeTitles = true
 

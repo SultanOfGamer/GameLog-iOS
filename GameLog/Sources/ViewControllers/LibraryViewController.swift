@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class LibraryViewController: UIViewController {
+final class LibraryViewController: GLMainViewController {
 
-    static let tabBarInfo: GLTabBarController.TabBarInfo = ("라이브러리", "square.grid.3x2.fill")
+    override var tabBarInfo: GLTabBarController.TabBarInfo {
+        return ("라이브러리", "square.grid.3x2.fill")
+    }
 
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

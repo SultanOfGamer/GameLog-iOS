@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: GLMainViewController {
 
-    static let tabBarInfo: GLTabBarController.TabBarInfo = ("홈", "house.fill")
+    override var tabBarInfo: GLTabBarController.TabBarInfo {
+        return ("홈", "house.fill")
+    }
 
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

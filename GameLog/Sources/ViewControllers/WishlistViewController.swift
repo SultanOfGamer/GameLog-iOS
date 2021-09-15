@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class WishlistViewController: UIViewController {
+final class WishlistViewController: GLMainViewController {
 
-    static let tabBarInfo: GLTabBarController.TabBarInfo = ("위시리스트", "heart.text.square.fill")
+    override var tabBarInfo: GLTabBarController.TabBarInfo {
+        return ("위시리스트", "heart.text.square.fill")
+    }
 
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
