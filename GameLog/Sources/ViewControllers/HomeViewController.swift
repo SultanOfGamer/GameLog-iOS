@@ -50,6 +50,10 @@ final class HomeViewController: GLMainViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureDataSource()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let sections = [Section.dummy, Section.dummy, Section.dummy, Section.dummy, Section.dummy]
         homeViewModel.applySnapshot(sections: sections)
     }
