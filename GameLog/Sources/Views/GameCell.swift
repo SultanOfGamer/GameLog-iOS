@@ -11,6 +11,14 @@ class GameCell: UICollectionViewCell {
 
     static let reuseIdentifier: String = String(describing: GameCell.self)
 
+    var game: Game? {
+        didSet {
+            if let game = game {
+                coverImageView.image = UIImage(named: game.cover)
+            }
+        }
+    }
+
     let coverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 4

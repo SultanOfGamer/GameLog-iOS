@@ -34,6 +34,7 @@ final class HomeViewController: GLMainViewController {
     private lazy var homeCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
         collectionView.register(GameCell.self, forCellWithReuseIdentifier: GameCell.reuseIdentifier)
         collectionView.register(SectionHeaderView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -52,8 +53,8 @@ final class HomeViewController: GLMainViewController {
         configureDataSource()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let sections = [Section.dummy, Section.dummy, Section.dummy, Section.dummy, Section.dummy]
         homeViewModel.applySnapshot(sections: sections)
     }
@@ -109,7 +110,7 @@ final class HomeViewController: GLMainViewController {
             GameLog.GameDataSource(collectionView: homeCollectionView) { collectionView, indexPath, game in
                 let gameCell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.reuseIdentifier,
                                                               for: indexPath) as? GameCell
-                gameCell?.coverImageView.image = UIImage(named: game.cover)
+                gameCell?.game = game
 
                 return gameCell
             }
@@ -132,5 +133,11 @@ final class HomeViewController: GLMainViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let gameCell = collectionView.cellForItem(at: indexPath) as? GameCell,
+              let game = gameCell.game else { return }
+        let gameViewController = GameViewController(game: game)
+
+        navigationController?.pushViewController(gameViewController, animated: true)
+    }
 }

@@ -51,6 +51,11 @@ class GLMainViewController: UIViewController {
         configureUserButton()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userButton.isHidden = true
+    }
+
     // MARK: - Configure
 
     private func configureAttributes() {
@@ -76,6 +81,7 @@ class GLMainViewController: UIViewController {
                 userButton.heightAnchor.constraint(equalTo: userButton.widthAnchor)
             ])
         }
+        userButton.isHidden = false
     }
 
     // MARK: - Action
