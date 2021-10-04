@@ -11,10 +11,10 @@ struct HomeViewModel {
 
     var changed: (() -> Void)?
 
-    var dataSource: GameLog.GameDataSource?
+    var dataSource: Global.GameDataSource?
 
     func applySnapshot(sections: [Section], animatingDifferences: Bool = true) {
-        var snapshot = GameLog.GameSnapshot()
+        var snapshot = Global.GameSnapshot()
         snapshot.appendSections(sections)
         sections.forEach { section in
             snapshot.appendItems(section.games, toSection: section)

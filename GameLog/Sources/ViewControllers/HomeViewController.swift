@@ -107,7 +107,7 @@ final class HomeViewController: GLMainViewController {
 
     private func configureDataSource() {
         homeViewModel.dataSource =
-            GameLog.GameDataSource(collectionView: homeCollectionView) { collectionView, indexPath, game in
+            Global.GameDataSource(collectionView: homeCollectionView) { collectionView, indexPath, game in
                 let gameCell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.reuseIdentifier,
                                                               for: indexPath) as? GameCell
                 gameCell?.game = game

@@ -15,7 +15,7 @@ final class GLTabBarController: UITabBarController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        tabBar.tintColor = GameLog.Style.mainColor
+        tabBar.tintColor = Global.Style.mainColor
         setViewControllers([
             navigationController(with: HomeViewController()),
             navigationController(with: LibraryViewController()),

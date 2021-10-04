@@ -28,7 +28,7 @@ class GLMainViewController: UIViewController {
         button.layer.masksToBounds = true
         button.setImage(UIImage(systemName: Style.UserButton.placeholderName), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: Style.UserButton.size), forImageIn: .normal)
-        button.tintColor = GameLog.Style.mainColor
+        button.tintColor = Global.Style.mainColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

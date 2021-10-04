@@ -43,8 +43,8 @@ final class GameViewController: UIViewController {
         let cosmosView = CosmosView()
         cosmosView.settings.emptyBorderColor = Style.StarRatingView.emptyColor
         cosmosView.settings.emptyColor = Style.StarRatingView.emptyColor
-        cosmosView.settings.filledBorderColor = GameLog.Style.mainColor
-        cosmosView.settings.filledColor = GameLog.Style.mainColor
+        cosmosView.settings.filledBorderColor = Global.Style.mainColor
+        cosmosView.settings.filledColor = Global.Style.mainColor
         cosmosView.settings.fillMode = .half
         cosmosView.settings.minTouchRating = 0
         cosmosView.settings.starSize = Style.StarRatingView.size
