@@ -48,7 +48,13 @@ class GLMainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .always
         configureUserButton()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        userButton.isHidden = false
+        super.viewDidAppear(animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +67,6 @@ class GLMainViewController: UIViewController {
     private func configureAttributes() {
         title = tabBarInfo.title
         tabBarItem.image = UIImage(systemName: tabBarInfo.imageName)
-        navigationItem.largeTitleDisplayMode = .always
         view.backgroundColor = .systemBackground
     }
 
@@ -81,7 +86,6 @@ class GLMainViewController: UIViewController {
                 userButton.heightAnchor.constraint(equalTo: userButton.widthAnchor)
             ])
         }
-        userButton.isHidden = false
     }
 
     // MARK: - Action

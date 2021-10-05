@@ -12,26 +12,41 @@ final class GameViewController: UIViewController {
 
     private enum Style {
         enum StarRatingView {
-            static let size: Double = 40
-            static let margin: Double = 5
             static let emptyColor: UIColor = .systemGray3
+            static let margin: Double = 5
+            static let size: Double = 40
+            static let verticalInset: CGFloat = 16
         }
+
         enum GameStackView {
             static let spacing: CGFloat = 10
+            static let horizontalInset: CGFloat = 16
+        }
+
+        enum SummaryLabel {
+            static let title: String = "소개"
+        }
+
+        enum ReviewLabel {
+            static let title: String = "리뷰"
+            static let placeholder: String = "눌러서 작성하기"
         }
     }
 
     private var game: Game
 
+    private let gameDetailView: GameDetailView
+
     private let gameScrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
     private let gameStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.alignment = .center
+        stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = Style.GameStackView.spacing
@@ -41,6 +56,7 @@ final class GameViewController: UIViewController {
 
     private let starRatingView: CosmosView = {
         let cosmosView = CosmosView()
+        cosmosView.rating = 0
         cosmosView.settings.emptyBorderColor = Style.StarRatingView.emptyColor
         cosmosView.settings.emptyColor = Style.StarRatingView.emptyColor
         cosmosView.settings.filledBorderColor = Global.Style.mainColor
@@ -50,14 +66,41 @@ final class GameViewController: UIViewController {
         cosmosView.settings.starSize = Style.StarRatingView.size
         cosmosView.settings.starMargin = Style.StarRatingView.margin
         cosmosView.settings.updateOnTouch = true
-        cosmosView.rating = 0
+        cosmosView.translatesAutoresizingMaskIntoConstraints = false
         return cosmosView
+    }()
+
+    private let summaryTitleLabel: UILabel = {
+        let label = UILabel(textStyle: .title1)
+        label.text = Style.SummaryLabel.title
+        return label
+    }()
+
+    private lazy var summaryBodyLabel: UILabel = {
+        let label = UILabel(textStyle: .body)
+        label.numberOfLines = 0
+        label.text = game.summary
+        return label
+    }()
+
+    private let reviewTitleLabel: UILabel = {
+        let label = UILabel(textStyle: .title1)
+        label.text = Style.ReviewLabel.title
+        return label
+    }()
+
+    private let reviewBodyLabel: UILabel = {
+        let label = UILabel(textStyle: .body)
+        label.numberOfLines = 0
+        label.text = Style.ReviewLabel.placeholder
+        return label
     }()
 
     // MARK: - Initializer
 
     init(game: Game) {
         self.game = game
+        gameDetailView = GameDetailView(game: game)
         super.init(nibName: nil, bundle: nil)
         configureAttributes()
     }
@@ -70,30 +113,50 @@ final class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .never
+        configureGameDetailView()
+        configureStarRatingView()
         configureGameScrollView()
         configureGameStackView()
-        configureStarRatingView()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationItem.largeTitleDisplayMode = .always
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     // MARK: - Configure
 
     private func configureAttributes() {
-        title = game.name
         view.backgroundColor = .systemBackground
+    }
+
+    private func configureGameDetailView() {
+        gameDetailView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(gameDetailView)
+        NSLayoutConstraint.activate([
+            gameDetailView.topAnchor.constraint(equalTo: view.topAnchor),
+            gameDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            gameDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+
+    private func configureStarRatingView() {
+        view.addSubview(starRatingView)
+        NSLayoutConstraint.activate([
+            starRatingView.topAnchor.constraint(equalTo: gameDetailView.realBottomAnchor,
+                                                constant: Style.StarRatingView.verticalInset),
+            starRatingView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
 
     private func configureGameScrollView() {
         view.addSubview(gameScrollView)
         NSLayoutConstraint.activate([
-            gameScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            gameScrollView.topAnchor.constraint(equalTo: starRatingView.bottomAnchor,
+                                                constant: Style.StarRatingView.verticalInset),
             gameScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            gameScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gameScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             gameScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
@@ -107,14 +170,16 @@ final class GameViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             gameStackView.topAnchor.constraint(equalTo: gameScrollView.topAnchor),
-            gameStackView.leadingAnchor.constraint(equalTo: gameScrollView.leadingAnchor),
+            gameStackView.leadingAnchor.constraint(equalTo: gameScrollView.leadingAnchor,
+                                                   constant: Style.GameStackView.horizontalInset),
             gameStackView.bottomAnchor.constraint(equalTo: gameScrollView.bottomAnchor),
-            gameStackView.trailingAnchor.constraint(equalTo: gameScrollView.trailingAnchor),
-            gameStackView.widthAnchor.constraint(equalTo: gameScrollView.widthAnchor)
+            gameStackView.trailingAnchor.constraint(equalTo: gameScrollView.trailingAnchor,
+                                                    constant: -Style.GameStackView.horizontalInset)
         ])
-    }
 
-    private func configureStarRatingView() {
-        gameStackView.addArrangedSubview(starRatingView)
+        gameStackView.addArrangedSubview(summaryTitleLabel)
+        gameStackView.addArrangedSubview(summaryBodyLabel)
+        gameStackView.addArrangedSubview(reviewTitleLabel)
+        gameStackView.addArrangedSubview(reviewBodyLabel)
     }
 }
