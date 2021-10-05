@@ -13,17 +13,17 @@ final class GameDetailView: UIView {
         static let screenshotImageViewSizeRatio: CGFloat = 0.5625
 
         enum CoverImageView {
-            static let topConstant: CGFloat = -50
-            static let leadingConstant: CGFloat = 16
+            static let topInset: CGFloat = -50
+            static let leadingInset: CGFloat = 16
             static let widthRatio: CGFloat = 0.25
             static let heightRatio: CGFloat = 1.4
         }
 
         enum LabelStackView {
             static let spacing: CGFloat = 2
-            static let leadingConstant: CGFloat = 10
-            static let trailingConstant: CGFloat = -16
-            static let bottomConstant: CGFloat = -5
+            static let leadingInset: CGFloat = 10
+            static let trailingInset: CGFloat = -16
+            static let bottomInset: CGFloat = -5
         }
     }
 
@@ -80,9 +80,9 @@ final class GameDetailView: UIView {
         addSubview(coverImageView)
         NSLayoutConstraint.activate([
             coverImageView.topAnchor.constraint(equalTo: screenshotImageView.bottomAnchor,
-                                                constant: Style.CoverImageView.topConstant),
+                                                constant: Style.CoverImageView.topInset),
             coverImageView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                    constant: Style.CoverImageView.leadingConstant),
+                                                    constant: Style.CoverImageView.leadingInset),
             coverImageView.widthAnchor.constraint(equalTo: widthAnchor,
                                                   multiplier: Style.CoverImageView.widthRatio),
             coverImageView.heightAnchor.constraint(lessThanOrEqualTo: coverImageView.widthAnchor,
@@ -100,11 +100,11 @@ final class GameDetailView: UIView {
         addSubview(labelStackView)
         NSLayoutConstraint.activate([
             labelStackView.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor,
-                                                    constant: Style.LabelStackView.leadingConstant),
+                                                    constant: Style.LabelStackView.leadingInset),
             labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                     constant: Style.LabelStackView.trailingConstant),
+                                                     constant: Style.LabelStackView.trailingInset),
             labelStackView.bottomAnchor.constraint(equalTo: coverImageView.bottomAnchor,
-                                                   constant: Style.LabelStackView.bottomConstant)
+                                                   constant: Style.LabelStackView.bottomInset)
         ])
 
         labelStackView.addArrangedSubview(titleLabel)
