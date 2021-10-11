@@ -11,10 +11,21 @@ class GameCell: UICollectionViewCell {
 
     static let reuseIdentifier: String = String(describing: GameCell.self)
 
-    var game: Game? {
+    var dataTask: URLSessionDataTask?
+
+    var game: Section.Game? {
         didSet {
-            if let game = game {
-                coverImageView.image = UIImage(named: game.cover)
+            if let game = game,
+               let coverURL = URL(string: game.cover.url) {
+                dataTask = URLSession.shared.dataTask(with: coverURL) { [weak self] (data, _, _) in
+                    guard let data = data,
+                          let image = UIImage(data: data) else { return }
+
+                    DispatchQueue.main.async {
+                        self?.coverImageView.image = image
+                    }
+                }
+                dataTask?.resume()
             }
         }
     }
@@ -36,6 +47,15 @@ class GameCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         return nil
+    }
+
+    // MARK: - View Lifecycle
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        coverImageView.image = nil
+        dataTask?.cancel()
+        dataTask = nil
     }
 
     // MARK: - Configure

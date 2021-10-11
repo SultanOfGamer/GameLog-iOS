@@ -1,0 +1,249 @@
+{
+    "userGame": null,
+    "gameDetail": {
+      "id": 19560,
+      "name": "God of War",
+      "slug": "god-of-war--1",
+      "aggregated_rating": 4.85,
+      "aggregated_rating_count": 21,
+      "alternative_names": [
+        {
+          "id": 6680,
+          "name": "God of War 4",
+          "_id": "6151c80a638d93f755de16e4"
+        },
+        {
+          "id": 6681,
+          "name": "God of War: New Omega",
+          "_id": "6151c80a638d93f755de16e5"
+        },
+        {
+          "id": 30761,
+          "name": "Deus da Guerra",
+          "_id": "6151c80a638d93f755de16e6"
+        },
+        {
+          "id": 30762,
+          "name": "Gott des Krieges",
+          "_id": "6151c80a638d93f755de16e7"
+        },
+        {
+          "id": 30763,
+          "name": "ゴッド・オブ・ウォー",
+          "_id": "6151c80a638d93f755de16e8"
+        },
+        {
+          "id": 37967,
+          "name": "God of War IV",
+          "_id": "6151c80a638d93f755de16e9"
+        },
+        {
+          "id": 37968,
+          "name": "GoW 4",
+          "_id": "6151c80a638d93f755de16ea"
+        },
+        {
+          "id": 41977,
+          "name": "GOW",
+          "_id": "6151c80a638d93f755de16eb"
+        },
+        {
+          "id": 41978,
+          "name": "GOW 1",
+          "_id": "6151c80a638d93f755de16ec"
+        },
+        {
+          "id": 50220,
+          "name": "갓 오브 워",
+          "_id": "6151c80a638d93f755de16ed"
+        }
+      ],
+      "involved_companies": [
+        {
+          "id": 36378,
+          "company": [
+            {
+              "id": 10100,
+              "name": "Sony Interactive Entertainment",
+              "_id": "6151c80a638d93f755de16ef"
+            }
+          ],
+          "_id": "6151c80a638d93f755de16ee"
+        },
+        {
+          "id": 38707,
+          "company": [
+            {
+              "id": 4357,
+              "name": "SIE Santa Monica Studio",
+              "_id": "6151c80a638d93f755de16f1"
+            }
+          ],
+          "_id": "6151c80a638d93f755de16f0"
+        }
+      ],
+      "first_release_date": 1524182400,
+      "created_at": 1465866957,
+      "updated_at": 1632734134,
+      "release_dates": [
+        136684
+      ],
+      "category": "main_game",
+      "game_modes": [
+        {
+          "id": 1,
+          "name": "Single player",
+          "_id": "6151c80a638d93f755de16f2"
+        }
+      ],
+      "genres": [
+        {
+          "id": 25,
+          "name": "Hack and slash/Beat 'em up",
+          "_id": "6151c80a638d93f755de16f3"
+        },
+        {
+          "id": 31,
+          "name": "Adventure",
+          "_id": "6151c80a638d93f755de16f4"
+        }
+      ],
+      "platforms": [
+        {
+          "id": 48,
+          "category": 1,
+          "name": "PlayStation 4",
+          "_id": "6151c80a638d93f755de16f5",
+          "category_name": "console"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action",
+          "_id": "6151c80a638d93f755de16f6"
+        },
+        {
+          "id": 17,
+          "name": "Fantasy",
+          "_id": "6151c80a638d93f755de16f7"
+        },
+        {
+          "id": 22,
+          "name": "Historical",
+          "_id": "6151c80a638d93f755de16f8"
+        }
+      ],
+      "storyline": "Many years have passed since Kratos, Spartan warrior and former Greek God of War, took his vengeance against the Greek Gods, and he now lives with his young son Atreus in ancient Norway in the realm of Midgard. The game begins after the death of the Jötunn warrior Faye, Kratos' second wife and Atreus' mother, whose last request was for her ashes to be spread at the highest speak of the nine realms. Kratos and Atreus prepare a funeral pyre for her, mourn her death and soon go on a hunt as per Kratos' desire. However much to Kratos' disappointment, Atreus proves his incompetence and lack of focus, making Kratos reconsider taking Atreus in his journey. Kratos is soon attacked by a mysterious stranger with godlike powers, and who cannot feel anything physically. After seemingly killing him, Kratos reluctantly takes Atreus with him and begins their journey.",
+      "summary": "\"It is a new beginning for Kratos. Living as a man, outside the shadow of the gods, he seeks solitude in the unfamiliar lands of Norse mythology. With new purpose and his son at his side, Kratos must fight for survival as powerful forces threaten to disrupt the new life he has created...\"",
+      "cover": [
+        {
+          "id": 85062,
+          "game": 19560,
+          "height": 800,
+          "width": 600,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1tmu.jpg",
+          "_id": "6151c80a638d93f755de16f9"
+        }
+      ],
+      "screenshots": [
+        {
+          "id": 25153,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/qseegzssgetrybgbplrv.jpg",
+          "_id": "6151c80a638d93f755de16fa"
+        },
+        {
+          "id": 25154,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/rm35ytrytuka9qkylqyk.jpg",
+          "_id": "6151c80a638d93f755de16fb"
+        },
+        {
+          "id": 25155,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/ywrkjcrbeemmb51flsfj.jpg",
+          "_id": "6151c80a638d93f755de16fc"
+        },
+        {
+          "id": 44388,
+          "game": 19560,
+          "height": 2160,
+          "width": 3840,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/jvdoaxza3cawklvof1sl.jpg",
+          "_id": "6151c80a638d93f755de16fd"
+        },
+        {
+          "id": 44389,
+          "game": 19560,
+          "height": 2160,
+          "width": 3840,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/gpt3d0gpue5mat4kkso6.jpg",
+          "_id": "6151c80a638d93f755de16fe"
+        },
+        {
+          "id": 208194,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/mzg7f3xx57sf8rt7tja8.jpg",
+          "_id": "6151c80a638d93f755de16ff"
+        },
+        {
+          "id": 208195,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/nee23o7rtpaqbu8g7byx.jpg",
+          "_id": "6151c80a638d93f755de1700"
+        },
+        {
+          "id": 208196,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/o4mg2wvhlcikaogvvzqe.jpg",
+          "_id": "6151c80a638d93f755de1701"
+        },
+        {
+          "id": 208197,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/w5eazrrf4wdxjl4idfya.jpg",
+          "_id": "6151c80a638d93f755de1702"
+        },
+        {
+          "id": 208198,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/s2zdtxopibrfjbxvpj5h.jpg",
+          "_id": "6151c80a638d93f755de1703"
+        },
+        {
+          "id": 208199,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/wunlbofh23trw0u67gms.jpg",
+          "_id": "6151c80a638d93f755de1704"
+        },
+        {
+          "id": 208200,
+          "game": 19560,
+          "height": 1080,
+          "width": 1920,
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/r7hpzsqic1bjwyzn1bnq.jpg",
+          "_id": "6151c80a638d93f755de1705"
+        }
+      ],
+      "__v": 0
+    }
+}

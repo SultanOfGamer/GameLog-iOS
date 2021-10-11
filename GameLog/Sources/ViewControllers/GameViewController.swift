@@ -35,6 +35,8 @@ final class GameViewController: UIViewController {
 
     private var game: Game
 
+    // MARK: - View
+
     private let gameDetailView: GameDetailView
 
     private let gameScrollView: UIScrollView = {
@@ -49,6 +51,11 @@ final class GameViewController: UIViewController {
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.distribution = .fill
+        stackView.layoutMargins = UIEdgeInsets(top: 0,
+                                               left: Style.GameStackView.horizontalInset,
+                                               bottom: 20,
+                                               right: Style.GameStackView.horizontalInset)
+        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.spacing = Style.GameStackView.spacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -146,7 +153,8 @@ final class GameViewController: UIViewController {
         NSLayoutConstraint.activate([
             starRatingView.topAnchor.constraint(equalTo: gameDetailView.realBottomAnchor,
                                                 constant: Style.StarRatingView.verticalInset),
-            starRatingView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            starRatingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            starRatingView.heightAnchor.constraint(equalToConstant: Style.StarRatingView.size)
         ])
     }
 
@@ -170,11 +178,10 @@ final class GameViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             gameStackView.topAnchor.constraint(equalTo: gameScrollView.topAnchor),
-            gameStackView.leadingAnchor.constraint(equalTo: gameScrollView.leadingAnchor,
-                                                   constant: Style.GameStackView.horizontalInset),
+            gameStackView.leadingAnchor.constraint(equalTo: gameScrollView.leadingAnchor),
             gameStackView.bottomAnchor.constraint(equalTo: gameScrollView.bottomAnchor),
-            gameStackView.trailingAnchor.constraint(equalTo: gameScrollView.trailingAnchor,
-                                                    constant: -Style.GameStackView.horizontalInset)
+            gameStackView.trailingAnchor.constraint(equalTo: gameScrollView.trailingAnchor),
+            gameStackView.widthAnchor.constraint(lessThanOrEqualTo: gameScrollView.widthAnchor)
         ])
 
         gameStackView.addArrangedSubview(summaryTitleLabel)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122101270BE62500EE5066 /* UILabel+extensions.swift */; };
 		02122104270BEB4D00EE5066 /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122103270BEB4D00EE5066 /* UIView+shadow.swift */; };
+		02122107270C1B0300EE5066 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122106270C1B0300EE5066 /* NetworkRepository.swift */; };
 		0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50A26D3C7B400622AF5 /* AppDelegate.swift */; };
 		0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50E26D3C7B400622AF5 /* HomeViewController.swift */; };
 		0226A51426D3C7B500622AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0226A51326D3C7B500622AF5 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		02122101270BE62500EE5066 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		02122103270BEB4D00EE5066 /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
+		02122106270C1B0300EE5066 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		0226A50726D3C7B400622AF5 /* GameLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0226A50A26D3C7B400622AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0226A50E26D3C7B400622AF5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		02122105270C03F400EE5066 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				02122106270C1B0300EE5066 /* NetworkRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		0226A4FE26D3C7B400622AF5 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 				02122100270BE5F500EE5066 /* Extensions */,
 				02EC9C5926F253B100536893 /* Global */,
 				02EC9C5C26F259E900536893 /* Models */,
+				02122105270C03F400EE5066 /* Repository */,
 				0226A52126D3CC3000622AF5 /* ViewControllers */,
 				02EC9C6826F43F0F00536893 /* ViewModels */,
 				02EC9C5F26F344CE00536893 /* Views */,
@@ -355,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02122107270C1B0300EE5066 /* NetworkRepository.swift in Sources */,
 				0290E3B82706A19400085C72 /* GameViewController.swift in Sources */,
 				02EC9C6326F3484200536893 /* SectionHeaderView.swift in Sources */,
 				0241D83C26E5C768000A9E20 /* SearchViewController.swift in Sources */,

@@ -55,8 +55,7 @@ final class HomeViewController: GLMainViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let sections = [Section.dummy, Section.dummy, Section.dummy, Section.dummy, Section.dummy]
-        homeViewModel.applySnapshot(sections: sections)
+        homeViewModel.applySnapshot(sections: Section.dummies!)
     }
 
     // MARK: - Configure
@@ -122,7 +121,7 @@ final class HomeViewController: GLMainViewController {
                 ofKind: kind,
                 withReuseIdentifier: SectionHeaderView.reuseIdentifier,
                 for: indexPath) as? SectionHeaderView
-            supplementaryView?.titleLabel.text = section?.title
+            supplementaryView?.titleLabel.text = section?.type
 
             return supplementaryView
         }
@@ -135,7 +134,8 @@ extension HomeViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let gameCell = collectionView.cellForItem(at: indexPath) as? GameCell,
-              let game = gameCell.game else { return }
+              let gameID = gameCell.game?.id,
+              let game = Game.dummy else { return }
         let gameViewController = GameViewController(game: game)
 
         navigationController?.pushViewController(gameViewController, animated: true)
