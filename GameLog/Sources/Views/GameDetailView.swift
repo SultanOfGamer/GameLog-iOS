@@ -29,27 +29,24 @@ final class GameDetailView: UIView {
 
     let realBottomAnchor: NSLayoutYAxisAnchor
 
-    private let game: Game
-
     // MARK: - View
 
-    private let screenshotImageView = UIImageView()
-    private let coverImageView = UIImageView()
-    private let titleLabel = UILabel(textStyle: .title3)
-    private let releaseDateLabel = UILabel(textStyle: .caption1)
-    private let aggregatedRatingLabel = UILabel(textStyle: .caption1)
-    private let labelStackView = UIStackView()
+    let screenshotImageView = UIImageView()
+    let coverImageView = UIImageView()
+    let titleLabel = UILabel(textStyle: .title3)
+    let releaseDateLabel = UILabel(textStyle: .caption1)
+    let aggregatedLabel = UILabel(textStyle: .caption1)
+    let labelStackView = UIStackView()
 
     // MARK: - Initializer
 
-    init(game: Game) {
+    init() {
         realBottomAnchor = coverImageView.bottomAnchor
-        self.game = game
         super.init(frame: .zero)
         configureScreenshotImageView()
         configureCoverImageView()
         configureLabelStackView()
-        setLabelTexts()
+
     }
 
     required init?(coder: NSCoder) {
@@ -60,7 +57,6 @@ final class GameDetailView: UIView {
 
     private func configureScreenshotImageView() {
         screenshotImageView.contentMode = .scaleAspectFit
-        screenshotImageView.image = UIImage(named: game.screenshot)
         screenshotImageView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(screenshotImageView)
@@ -71,15 +67,6 @@ final class GameDetailView: UIView {
             screenshotImageView.heightAnchor.constraint(lessThanOrEqualTo: widthAnchor,
                                                         multiplier: Style.screenshotImageViewSizeRatio)
         ])
-
-        URLSession.shared.dataTask(with: URL(string: game.screenshot)!) { [weak self] (data, _, _) in
-            guard let data = data,
-                  let image = UIImage(data: data) else { return }
-
-            DispatchQueue.main.async {
-                self?.screenshotImageView.image = image
-            }
-        }.resume()
     }
 
     private func configureCoverImageView() {
@@ -99,15 +86,6 @@ final class GameDetailView: UIView {
             coverImageView.heightAnchor.constraint(lessThanOrEqualTo: coverImageView.widthAnchor,
                                                    multiplier: Style.CoverImageView.heightRatio)
         ])
-
-        URLSession.shared.dataTask(with: URL(string: game.cover)!) { [weak self] (data, _, _) in
-            guard let data = data,
-                  let image = UIImage(data: data) else { return }
-
-            DispatchQueue.main.async {
-                self?.coverImageView.image = image
-            }
-        }.resume()
     }
 
     private func configureLabelStackView() {
@@ -129,12 +107,6 @@ final class GameDetailView: UIView {
 
         labelStackView.addArrangedSubview(titleLabel)
         labelStackView.addArrangedSubview(releaseDateLabel)
-        labelStackView.addArrangedSubview(aggregatedRatingLabel)
-    }
-
-    private func setLabelTexts() {
-        titleLabel.text = game.name
-        releaseDateLabel.text = game.releaseDate.description
-        aggregatedRatingLabel.text = "★ \(game.aggregated.rating) (\(game.aggregated.count))"
+        labelStackView.addArrangedSubview(aggregatedLabel)
     }
 }

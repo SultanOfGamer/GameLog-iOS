@@ -7,11 +7,28 @@
 
 import UIKit
 
-struct HomeViewModel {
-
-    var changed: (() -> Void)?
+final class HomeViewModel {
 
     var dataSource: Global.GameDataSource?
+
+    private let homeServcie = HomeService()
+
+    private var sections: [Section] = [] {
+        didSet {
+            applySnapshot(sections: sections)
+        }
+    }
+
+    func loadSections() {
+        homeServcie.load { [weak self] result in
+            switch result {
+            case let .success(sections):
+                self?.sections = sections
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
 
     func applySnapshot(sections: [Section], animatingDifferences: Bool = true) {
         var snapshot = Global.GameSnapshot()

@@ -51,11 +51,11 @@ final class HomeViewController: GLMainViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureDataSource()
+        homeViewModel.loadSections()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        homeViewModel.applySnapshot(sections: Section.dummies!)
     }
 
     // MARK: - Configure
@@ -134,9 +134,8 @@ extension HomeViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let gameCell = collectionView.cellForItem(at: indexPath) as? GameCell,
-              let gameID = gameCell.game?.id,
-              let game = Game.dummy else { return }
-        let gameViewController = GameViewController(game: game)
+              let gameID = gameCell.game?.id else { return }
+        let gameViewController = GameViewController(gameID: gameID)
 
         navigationController?.pushViewController(gameViewController, animated: true)
     }

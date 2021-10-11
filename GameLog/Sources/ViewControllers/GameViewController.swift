@@ -33,11 +33,11 @@ final class GameViewController: UIViewController {
         }
     }
 
-    private var game: Game
+    private let gameViewModel = GameViewModel()
 
     // MARK: - View
 
-    private let gameDetailView: GameDetailView
+    private let gameDetailView = GameDetailView()
 
     private let gameScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -83,10 +83,9 @@ final class GameViewController: UIViewController {
         return label
     }()
 
-    private lazy var summaryBodyLabel: UILabel = {
+    private let summaryBodyLabel: UILabel = {
         let label = UILabel(textStyle: .body)
         label.numberOfLines = 0
-        label.text = game.summary
         return label
     }()
 
@@ -105,11 +104,13 @@ final class GameViewController: UIViewController {
 
     // MARK: - Initializer
 
-    init(game: Game) {
-        self.game = game
-        gameDetailView = GameDetailView(game: game)
+    init(gameID: Int) {
         super.init(nibName: nil, bundle: nil)
         configureAttributes()
+        gameViewModel.bind { [weak self] game in
+            self?.bindingClosure(game)
+        }
+        gameViewModel.fetchGame(by: gameID)
     }
 
     required init?(coder: NSCoder) {
@@ -188,5 +189,26 @@ final class GameViewController: UIViewController {
         gameStackView.addArrangedSubview(summaryBodyLabel)
         gameStackView.addArrangedSubview(reviewTitleLabel)
         gameStackView.addArrangedSubview(reviewBodyLabel)
+    }
+
+    private func bindingClosure(_ game: Game) {
+        NetworkRepository.fetchImage(from: game.screenshot, completion: { [weak self] image in
+            DispatchQueue.main.async {
+                self?.gameDetailView.screenshotImageView.image = image
+            }
+        })
+
+        NetworkRepository.fetchImage(from: game.cover, completion: { [weak self] image in
+            DispatchQueue.main.async {
+                self?.gameDetailView.coverImageView.image = image
+            }
+        })
+
+        DispatchQueue.main.async { [weak self] in
+            self?.summaryBodyLabel.text = game.summary
+            self?.gameDetailView.titleLabel.text = game.name
+            self?.gameDetailView.releaseDateLabel.text = game.releaseDate.string
+            self?.gameDetailView.aggregatedLabel.text = "★ \(game.aggregated.rating) (\(game.aggregated.count))"
+        }
     }
 }

@@ -19,6 +19,10 @@
 		0241D83C26E5C768000A9E20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241D83B26E5C768000A9E20 /* SearchViewController.swift */; };
 		0241D83E26E5C94B000A9E20 /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241D83D26E5C94B000A9E20 /* GLTabBarController.swift */; };
 		025FB65326D3D96A004FAD8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 025FB65226D3D96A004FAD8F /* .swiftlint.yml */; };
+		02682394271444A10028C1E1 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02682393271444A10028C1E1 /* GameService.swift */; };
+		02682396271445940028C1E1 /* Date+formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02682395271445940028C1E1 /* Date+formatter.swift */; };
+		0268239927144CE90028C1E1 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268239827144CE90028C1E1 /* GameViewModel.swift */; };
+		0268239B271457BF0028C1E1 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268239A271457BF0028C1E1 /* HomeService.swift */; };
 		028856DD270A241F00A52029 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028856DC270A241F00A52029 /* GameDetailView.swift */; };
 		0290E3B82706A19400085C72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290E3B72706A19400085C72 /* GameViewController.swift */; };
 		0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 0290E3BA2706E76B00085C72 /* Cosmos */; };
@@ -58,6 +62,10 @@
 		025FB65226D3D96A004FAD8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		025FB65826D3D9D1004FAD8F /* GameLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		025FB65C26D3D9D1004FAD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02682393271444A10028C1E1 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		02682395271445940028C1E1 /* Date+formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formatter.swift"; sourceTree = "<group>"; };
+		0268239827144CE90028C1E1 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		0268239A271457BF0028C1E1 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		028856DC270A241F00A52029 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 		0290E3B72706A19400085C72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
@@ -93,6 +101,7 @@
 			children = (
 				02122101270BE62500EE5066 /* UILabel+extensions.swift */,
 				02122103270BEB4D00EE5066 /* UIView+shadow.swift */,
+				02682395271445940028C1E1 /* Date+formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -142,6 +151,7 @@
 				02EC9C5926F253B100536893 /* Global */,
 				02EC9C5C26F259E900536893 /* Models */,
 				02122105270C03F400EE5066 /* Repository */,
+				026823922714446D0028C1E1 /* Service */,
 				0226A52126D3CC3000622AF5 /* ViewControllers */,
 				02EC9C6826F43F0F00536893 /* ViewModels */,
 				02EC9C5F26F344CE00536893 /* Views */,
@@ -204,6 +214,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		026823922714446D0028C1E1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				02682393271444A10028C1E1 /* GameService.swift */,
+				0268239A271457BF0028C1E1 /* HomeService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		02EC9C5926F253B100536893 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +253,7 @@
 		02EC9C6826F43F0F00536893 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0268239827144CE90028C1E1 /* GameViewModel.swift */,
 				02EC9C6626F43F0A00536893 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
@@ -372,7 +392,11 @@
 				0241D83C26E5C768000A9E20 /* SearchViewController.swift in Sources */,
 				02EC9C5E26F25A0300536893 /* Game.swift in Sources */,
 				0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */,
+				0268239927144CE90028C1E1 /* GameViewModel.swift in Sources */,
+				02682394271444A10028C1E1 /* GameService.swift in Sources */,
+				0268239B271457BF0028C1E1 /* HomeService.swift in Sources */,
 				0241D83E26E5C94B000A9E20 /* GLTabBarController.swift in Sources */,
+				02682396271445940028C1E1 /* Date+formatter.swift in Sources */,
 				02EC9C5B26F253CE00536893 /* Global.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,

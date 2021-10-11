@@ -5,13 +5,13 @@
 //  Created by duckbok on 2021/10/05.
 //
 
-import Foundation
+import UIKit
 
 struct NetworkRepository {
 
     typealias TaskResult = Result<(response: HTTPURLResponse, data: Data?), NetworkRepository.Error>
 
-    private let baseURL: String = "ec2-18-219-79-225.us-east-2.compute.amazonaws.com:3000/"
+    private let baseURL: String = "http://ec2-18-219-79-225.us-east-2.compute.amazonaws.com:3000"
     private let session: URLSession
     private let okStatusCodes: ClosedRange<Int> = (200...299)
 
@@ -33,10 +33,12 @@ struct NetworkRepository {
 
     // MARK: - HTTP Methods
 
-    func get<ResponseType: Decodable>(path: String,
-                                      query: String? = nil,
+    func get<ResponseType: Decodable>(path: String? = nil,
+                                      query: (key: String, value: String)? = nil,
                                       completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
-        guard let url = URL(string: baseURL + path + (query ?? "")) else { return }
+        let pathString: String = (path == nil) ? "" : "/\(path!)"
+        let queryString: String = (query == nil) ? "" : "?\(query!.key)=\(query!.value)"
+        guard let url = URL(string: baseURL + pathString + queryString) else { return }
 
         session.dataTask(with: url) { data, response, error in
             checkSessionResult(data, response, error) { taskResult in
@@ -56,6 +58,19 @@ struct NetworkRepository {
                 }
             }
         }.resume()
+    }
+
+    @discardableResult
+    static func fetchImage(from urlString: String, completion: @escaping (UIImage) -> Void) -> URLSessionDataTask? {
+        guard let url = URL(string: urlString) else { return nil }
+
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data,
+                  let image = UIImage(data: data) else { return }
+            completion(image)
+        }
+        dataTask.resume()
+        return dataTask
     }
 
     private func checkSessionResult(_ data: Data?, _ response: URLResponse?, _ error: Swift.Error?,
