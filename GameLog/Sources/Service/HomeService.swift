@@ -11,7 +11,11 @@ struct HomeService {
 
     typealias ServiceResult = Result<[Section], NetworkRepository.Error>
 
-    private let networkRepository = NetworkRepository()
+    private let networkRepository: NetworkRepository
+
+    init(networkRepository: NetworkRepository = .shared) {
+        self.networkRepository = networkRepository
+    }
 
     func load(completion: @escaping (ServiceResult) -> Void) {
         networkRepository.get { (result: ServiceResult) in

@@ -10,6 +10,9 @@ import UIKit
 struct NetworkRepository {
 
     typealias TaskResult = Result<(response: HTTPURLResponse, data: Data?), NetworkRepository.Error>
+    typealias PostResult = Result<(message: String?, cookies: [HTTPCookie]?), NetworkRepository.Error>
+
+    static let shared = NetworkRepository()
 
     private let baseURL: String = "http://ec2-18-219-79-225.us-east-2.compute.amazonaws.com:3000"
     private let session: URLSession
@@ -39,8 +42,14 @@ struct NetworkRepository {
         let pathString: String = (path == nil) ? "" : "/\(path!)"
         let queryString: String = (query == nil) ? "" : "?\(query!.key)=\(query!.value)"
         guard let url = URL(string: baseURL + pathString + queryString) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
 
-        session.dataTask(with: url) { data, response, error in
+        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
+            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
+        }
+
+        session.dataTask(with: request) { data, response, error in
             checkSessionResult(data, response, error) { taskResult in
                 switch taskResult {
                 case let .success((_, data)):
@@ -60,17 +69,46 @@ struct NetworkRepository {
         }.resume()
     }
 
-    @discardableResult
-    static func fetchImage(from urlString: String, completion: @escaping (UIImage) -> Void) -> URLSessionDataTask? {
-        guard let url = URL(string: urlString) else { return nil }
+    func post(path: String, bodies: [String: String], completion: @escaping (PostResult) -> Void) {
+        let pathString: String = "/\(path)"
+        guard let url = URL(string: baseURL + pathString),
+              let bodyData = bodyString(by: bodies).data(using: .utf8) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = bodyData
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(bodyData.count.description, forHTTPHeaderField: "Content-Length")
 
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data,
-                  let image = UIImage(data: data) else { return }
-            completion(image)
+        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
+            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
         }
-        dataTask.resume()
-        return dataTask
+
+        session.dataTask(with: request) { data, response, error in
+            checkSessionResult(data, response, error) { taskResult in
+                switch taskResult {
+                case let .success((response, data)):
+                    guard let responsedData = data else {
+                        completion(.failure(.dataNotFound))
+                        return
+                    }
+                    guard let jsonObject = try? JSONSerialization.jsonObject(with: responsedData, options: []),
+                          let decodedData = jsonObject as? [String: String],
+                          let message = decodedData["message"] else {
+                              completion(.failure(.dataNotDecodable))
+                              return
+                    }
+
+                    if let fields = response.allHeaderFields as? [String: String] {
+                        let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response.url!)
+                        completion(.success((message, cookies)))
+                    } else {
+                        completion(.success((message, nil)))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
     }
 
     private func checkSessionResult(_ data: Data?, _ response: URLResponse?, _ error: Swift.Error?,
@@ -89,6 +127,15 @@ struct NetworkRepository {
 
         completion(.success((response, data)))
     }
+
+    private func bodyString(by bodies: [String: String]) -> String {
+        var bodyString = String()
+        for body in bodies {
+            bodyString += "\(body.key)=\(body.value)&"
+        }
+        bodyString.removeLast()
+        return bodyString
+    }
 }
 
 // MARK: - Error
@@ -100,5 +147,23 @@ extension NetworkRepository {
         case dataNotDecodable
         case requestFailed(Swift.Error)
         case responseNotOK(Int)
+    }
+}
+
+// MARK: - Type Method
+
+extension NetworkRepository {
+
+    @discardableResult
+    static func fetchImage(from urlString: String, completion: @escaping (UIImage) -> Void) -> URLSessionDataTask? {
+        guard let url = URL(string: urlString) else { return nil }
+
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data,
+                  let image = UIImage(data: data) else { return }
+            completion(image)
+        }
+        dataTask.resume()
+        return dataTask
     }
 }

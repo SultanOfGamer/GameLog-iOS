@@ -14,7 +14,11 @@ struct GameService {
     private let path: String = "select"
     private let queryKey: String = "gameId"
 
-    private let networkRepository = NetworkRepository()
+    private let networkRepository: NetworkRepository
+
+    init(networkRepository: NetworkRepository = .shared) {
+        self.networkRepository = networkRepository
+    }
 
     func search(by id: Int, completion: @escaping (ServiceResult) -> Void) {
         networkRepository.get(path: path,
