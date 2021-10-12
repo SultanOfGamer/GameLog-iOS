@@ -55,7 +55,7 @@ final class GameDetailView: UIView {
     // MARK: - Configure
 
     private func configureScreenshotImageView() {
-        screenshotImageView.contentMode = .scaleAspectFit
+        screenshotImageView.contentMode = .scaleAspectFill
         screenshotImageView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(screenshotImageView)
