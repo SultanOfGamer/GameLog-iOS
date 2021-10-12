@@ -150,9 +150,9 @@ struct Genre: Decodable {
 struct Platform: Decodable {
 
     let id: Int
-    let category: Int
+    let category: Int?
     let name: String
-    let categoryName: String
+    let categoryName: String?
 
     private enum CodingKeys: String, CodingKey {
         case id, category, name
