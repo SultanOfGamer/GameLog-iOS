@@ -46,7 +46,6 @@ final class GameDetailView: UIView {
         configureScreenshotImageView()
         configureCoverImageView()
         configureLabelStackView()
-
     }
 
     required init?(coder: NSCoder) {
@@ -108,5 +107,11 @@ final class GameDetailView: UIView {
         labelStackView.addArrangedSubview(titleLabel)
         labelStackView.addArrangedSubview(releaseDateLabel)
         labelStackView.addArrangedSubview(aggregatedLabel)
+    }
+
+    func setBasicData(name: String?, cover: UIImage?) {
+        coverImageView.image = cover ?? Global.coverPlaceholder
+        screenshotImageView.image = Global.screenshotPlaceholder
+        titleLabel.text = name
     }
 }

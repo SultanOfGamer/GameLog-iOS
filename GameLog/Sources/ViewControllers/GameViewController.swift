@@ -104,13 +104,14 @@ final class GameViewController: UIViewController {
 
     // MARK: - Initializer
 
-    init(gameID: Int) {
+    init(gameID: Int, name: String? = nil, cover: UIImage? = nil) {
         super.init(nibName: nil, bundle: nil)
         configureAttributes()
         gameViewModel.bind { [weak self] game in
             self?.bindingClosure(game)
         }
         gameViewModel.fetchGame(by: gameID)
+        gameDetailView.setBasicData(name: name, cover: cover)
     }
 
     required init?(coder: NSCoder) {

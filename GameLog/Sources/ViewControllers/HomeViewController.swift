@@ -31,6 +31,10 @@ final class HomeViewController: GLMainViewController {
         return ("홈", "house.fill")
     }
 
+    private var homeViewModel = HomeViewModel()
+
+    // MARK: - View
+
     private lazy var homeCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.backgroundColor = .systemBackground
@@ -42,8 +46,6 @@ final class HomeViewController: GLMainViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
-    private var homeViewModel = HomeViewModel()
 
     // MARK: - View Lifecycle
 
@@ -97,7 +99,7 @@ final class HomeViewController: GLMainViewController {
     private func configureCollectionView() {
         view.addSubview(homeCollectionView)
         NSLayoutConstraint.activate([
-            homeCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             homeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             homeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -113,6 +115,7 @@ final class HomeViewController: GLMainViewController {
 
                 return gameCell
             }
+
         homeViewModel.dataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
 
@@ -134,8 +137,9 @@ extension HomeViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let gameCell = collectionView.cellForItem(at: indexPath) as? GameCell,
-              let gameID = gameCell.game?.id else { return }
-        let gameViewController = GameViewController(gameID: gameID)
+              let game = gameCell.game,
+              let coverImage = gameCell.coverImageView.image else { return }
+        let gameViewController = GameViewController(gameID: game.id, name: game.name, cover: coverImage)
 
         navigationController?.pushViewController(gameViewController, animated: true)
     }

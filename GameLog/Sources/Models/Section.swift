@@ -55,6 +55,7 @@ extension Section {
 
     struct Game: Hashable, Decodable {
 
+        let uuid = UUID()
         let id: Int
         let name: String
         let cover: Cover
@@ -71,11 +72,11 @@ extension Section {
         }
 
         func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
+            hasher.combine(uuid)
         }
 
         static func == (lhs: Section.Game, rhs: Section.Game) -> Bool {
-            return (lhs.id == rhs.id)
+            return (lhs.uuid == rhs.uuid)
         }
     }
 }

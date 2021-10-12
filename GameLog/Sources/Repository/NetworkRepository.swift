@@ -18,17 +18,8 @@ struct NetworkRepository {
     private let session: URLSession
     private let okStatusCodes: ClosedRange<Int> = (200...299)
 
-    private let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-    }()
-
-    private let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        return encoder
-    }()
+    private let decoder = JSONDecoder()
+    private let encoder = JSONEncoder()
 
     init(session: URLSession = .shared) {
         self.session = session

@@ -85,7 +85,7 @@ extension Game: Decodable {
         genres = try gameDetail.decode([Genre].self, forKey: .genres).map { $0.name }
         platforms = try gameDetail.decode([Platform].self, forKey: .platforms).map { $0.name }
         themes = try gameDetail.decode([Theme].self, forKey: .themes).map { $0.name }
-        storyline = try gameDetail.decode(String.self, forKey: .storyline)
+        storyline = try? gameDetail.decode(String?.self, forKey: .storyline)
         summary = try gameDetail.decode(String.self, forKey: .summary)
         cover = try gameDetail.decode([Cover].self, forKey: .cover)[0].url
         screenshot = try gameDetail.decode([Screenshot].self, forKey: .screenshots).randomElement()!.url
