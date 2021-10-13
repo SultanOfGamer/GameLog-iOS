@@ -28,10 +28,11 @@ struct NetworkRepository {
     // MARK: - HTTP Methods
 
     func get<ResponseType: Decodable>(path: String? = nil,
-                                      query: (key: String, value: String)? = nil,
+                                      query: [String: String]? = nil,
                                       completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
         let pathString: String = (path == nil) ? "" : "/\(path!)"
-        let queryString: String = (query == nil) ? "" : "?\(query!.key)=\(query!.value)"
+        let queryString: String = (query == nil) ? "" : "?\(parameterString(by: query!))"
+
         guard let url = URL(string: baseURL + pathString + queryString) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -63,7 +64,7 @@ struct NetworkRepository {
     func post(path: String, bodies: [String: String], completion: @escaping (PostResult) -> Void) {
         let pathString: String = "/\(path)"
         guard let url = URL(string: baseURL + pathString),
-              let bodyData = bodyString(by: bodies).data(using: .utf8) else { return }
+              let bodyData = parameterString(by: bodies).data(using: .utf8) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = bodyData
@@ -119,7 +120,7 @@ struct NetworkRepository {
         completion(.success((response, data)))
     }
 
-    private func bodyString(by bodies: [String: String]) -> String {
+    private func parameterString(by bodies: [String: String]) -> String {
         var bodyString = String()
         for body in bodies {
             bodyString += "\(body.key)=\(body.value)&"

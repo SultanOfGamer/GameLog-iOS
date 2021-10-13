@@ -22,7 +22,7 @@ struct GameService {
 
     func search(by id: Int, completion: @escaping (ServiceResult) -> Void) {
         networkRepository.get(path: path,
-                              query: (queryKey, id.description),
+                              query: [queryKey: id.description],
                               completion: { (result: ServiceResult) in
             switch result {
             case let .success(game):
