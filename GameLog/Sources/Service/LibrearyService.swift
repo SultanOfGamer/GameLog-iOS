@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/13.
 //
 
-import Foundation
-
 struct LibraryService {
 
     typealias ServiceResult = Result<Library, NetworkRepository.Error>
@@ -19,10 +17,7 @@ struct LibraryService {
         self.networkRepository = networkRepository
     }
 
-    func load(page: Int,
-              sortMethod: SortMethod = .createdTime,
-              sortOrder: SortOrder = .descending,
-              completion: @escaping (ServiceResult) -> Void) {
+    func load(page: Int, sortMethod: SortMethod, sortOrder: SortOrder, completion: @escaping (ServiceResult) -> Void) {
         networkRepository.get(path: getPath, query: ["page": page.description,
                                                      "sort": sortMethod.rawValue,
                                                      "sorttype": sortOrder.rawValue]) { (result: ServiceResult) in

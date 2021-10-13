@@ -11,7 +11,7 @@ final class HomeViewModel {
 
     var dataSource: Global.GameDataSource?
 
-    private let homeServcie = HomeService()
+    private let homeService = HomeService()
 
     private var sections: [Section] = [] {
         didSet {
@@ -20,7 +20,7 @@ final class HomeViewModel {
     }
 
     func loadSections() {
-        homeServcie.load { [weak self] result in
+        homeService.load { [weak self] result in
             switch result {
             case let .success(sections):
                 self?.sections = sections

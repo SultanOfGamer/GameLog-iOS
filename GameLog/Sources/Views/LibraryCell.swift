@@ -1,19 +1,19 @@
 //
-//  GameCell.swift
+//  LibraryCell.swift
 //  GameLog
 //
-//  Created by duckbok on 2021/09/16.
+//  Created by duckbok on 2021/10/13.
 //
 
 import UIKit
 
-final class GameCell: UICollectionViewCell {
+class LibraryCell: UICollectionViewCell {
 
-    static let reuseIdentifier: String = String(describing: GameCell.self)
+    static let reuseIdentifier: String = String(describing: LibraryCell.self)
 
     var dataTask: URLSessionDataTask?
 
-    var game: Section.Game? {
+    var game: Library.Game? {
         didSet {
             if let game = game {
                 dataTask = NetworkRepository.fetchImage(from: game.cover.url) { [weak self] image in

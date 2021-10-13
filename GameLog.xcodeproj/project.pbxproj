@@ -28,6 +28,8 @@
 		026823A1271622A20028C1E1 /* LibrearyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823A0271622A20028C1E1 /* LibrearyService.swift */; };
 		026823A3271623700028C1E1 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823A2271623700028C1E1 /* Library.swift */; };
 		026823A5271625DE0028C1E1 /* UserGameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823A4271625DE0028C1E1 /* UserGameStatus.swift */; };
+		026823A92716884C0028C1E1 /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823A82716884C0028C1E1 /* LibraryCell.swift */; };
+		026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823AA271691D70028C1E1 /* LibraryViewModel.swift */; };
 		028856DD270A241F00A52029 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028856DC270A241F00A52029 /* GameDetailView.swift */; };
 		0290E3B82706A19400085C72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290E3B72706A19400085C72 /* GameViewController.swift */; };
 		0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 0290E3BA2706E76B00085C72 /* Cosmos */; };
@@ -76,6 +78,8 @@
 		026823A0271622A20028C1E1 /* LibrearyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrearyService.swift; sourceTree = "<group>"; };
 		026823A2271623700028C1E1 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		026823A4271625DE0028C1E1 /* UserGameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGameStatus.swift; sourceTree = "<group>"; };
+		026823A82716884C0028C1E1 /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
+		026823AA271691D70028C1E1 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		028856DC270A241F00A52029 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 		0290E3B72706A19400085C72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
@@ -258,9 +262,10 @@
 		02EC9C5F26F344CE00536893 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02EC9C6026F3450D00536893 /* GameCell.swift */,
-				02EC9C6226F3484200536893 /* SectionHeaderView.swift */,
 				028856DC270A241F00A52029 /* GameDetailView.swift */,
+				02EC9C6026F3450D00536893 /* GameCell.swift */,
+				026823A82716884C0028C1E1 /* LibraryCell.swift */,
+				02EC9C6226F3484200536893 /* SectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			children = (
 				0268239827144CE90028C1E1 /* GameViewModel.swift */,
 				02EC9C6626F43F0A00536893 /* HomeViewModel.swift */,
+				026823AA271691D70028C1E1 /* LibraryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02122107270C1B0300EE5066 /* NetworkRepository.swift in Sources */,
+				026823A92716884C0028C1E1 /* LibraryCell.swift in Sources */,
 				026823A3271623700028C1E1 /* Library.swift in Sources */,
 				0290E3B82706A19400085C72 /* GameViewController.swift in Sources */,
 				02EC9C6326F3484200536893 /* SectionHeaderView.swift in Sources */,
@@ -426,6 +433,7 @@
 				02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */,
 				02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */,
 				0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */,
+				026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */,
 				028856DD270A241F00A52029 /* GameDetailView.swift in Sources */,
 				02122104270BEB4D00EE5066 /* UIView+shadow.swift in Sources */,
 			);

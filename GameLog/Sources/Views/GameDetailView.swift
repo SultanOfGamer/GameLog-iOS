@@ -33,7 +33,13 @@ final class GameDetailView: UIView {
 
     let screenshotImageView = UIImageView()
     let coverImageView = UIImageView()
-    let titleLabel = UILabel(textStyle: .title3)
+
+    let titleLabel: UILabel = {
+        let label = UILabel(textStyle: .title3)
+        label.numberOfLines = 2
+        return label
+    }()
+
     let releaseDateLabel = UILabel(textStyle: .caption1)
     let aggregatedLabel = UILabel(textStyle: .caption1)
     let labelStackView = UIStackView()

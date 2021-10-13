@@ -7,12 +7,21 @@
 
 import Foundation
 
-struct Library {
+struct Library: Hashable {
 
+    let id = UUID()
     let data: [Library.Game]
 
     init(data: [Library.Game]) {
         self.data = data
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: Library, rhs: Library) -> Bool {
+        return (lhs.id == rhs.id)
     }
 }
 
@@ -32,7 +41,7 @@ extension Library: Decodable {
 
 extension Library {
 
-    struct Game: Decodable {
+    struct Game: Decodable, Hashable {
         let gameID: Int
         let name: String
         let cover: Cover
@@ -55,6 +64,14 @@ extension Library {
             case gameID = "gameId"
             case name = "gameName"
             case cover, userGameStatus, id
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+
+        static func == (lhs: Library.Game, rhs: Library.Game) -> Bool {
+            return (lhs.id == rhs.id)
         }
     }
 }
