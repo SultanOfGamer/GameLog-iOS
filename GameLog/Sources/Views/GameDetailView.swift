@@ -61,6 +61,7 @@ final class GameDetailView: UIView {
     // MARK: - Configure
 
     private func configureScreenshotImageView() {
+        screenshotImageView.clipsToBounds = true
         screenshotImageView.contentMode = .scaleAspectFill
         screenshotImageView.translatesAutoresizingMaskIntoConstraints = false
 

@@ -11,18 +11,14 @@ final class LibraryViewController: GLMainViewController {
 
     private enum Style {
         enum ColletionView {
-            enum Header {
-                static let height: CGFloat = 44
-            }
-
             enum Item {
-                static let height: CGFloat = 100
-                static let count: Int = 4
+                static let height: CGFloat = 200
+                static let count: Int = 3
             }
 
             enum Section {
                 static let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-                static let interGroupSpacing: CGFloat = 10
+                static let interGroupSpacing: CGFloat = 16
             }
         }
     }
@@ -57,23 +53,18 @@ final class LibraryViewController: GLMainViewController {
 
     private func collectionViewLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout(sectionProvider: { (_, _) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
-                heightDimension: NSCollectionLayoutDimension.fractionalHeight(1)
-            )
-            let groupSize = NSCollectionLayoutSize(
-                widthDimension: NSCollectionLayoutDimension.fractionalWidth(0.9),
-                heightDimension: NSCollectionLayoutDimension.absolute(Style.ColletionView.Item.height)
-            )
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                  heightDimension: .fractionalHeight(1))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .fractionalHeight(0.2))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitem: item,
                                                            count: Style.ColletionView.Item.count)
-            group.interItemSpacing = .fixed(8)
+            group.interItemSpacing = .fixed(16)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = Style.ColletionView.Section.contentInsets
             section.interGroupSpacing = Style.ColletionView.Section.interGroupSpacing
-            section.orthogonalScrollingBehavior = .continuous
 
             return section
         })
@@ -103,4 +94,14 @@ final class LibraryViewController: GLMainViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension LibraryViewController: UICollectionViewDelegate { }
+extension LibraryViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let libraryCell = collectionView.cellForItem(at: indexPath) as? LibraryCell,
+              let game = libraryCell.game,
+              let coverImage = libraryCell.coverImageView.image else { return }
+        let gameViewController = GameViewController(gameID: game.gameID, name: game.name, cover: coverImage)
+
+        navigationController?.pushViewController(gameViewController, animated: true)
+    }
+}
