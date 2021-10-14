@@ -45,7 +45,7 @@ extension Library {
         let gameID: Int
         let name: String
         let cover: Cover
-        let userGameStatus: UserGameStatus?
+        let userGameStatus: UserGame.Status?
         let id: Int
 
         init(from decoder: Decoder) throws {
@@ -55,7 +55,7 @@ extension Library {
             cover = try container.decode(Cover.self, forKey: .cover)
 
             let status = try container.decode(String.self, forKey: .userGameStatus)
-            self.userGameStatus = UserGameStatus(rawValue: status)
+            self.userGameStatus = UserGame.Status(rawValue: status)
 
             id = try container.decode(Int.self, forKey: .id)
         }

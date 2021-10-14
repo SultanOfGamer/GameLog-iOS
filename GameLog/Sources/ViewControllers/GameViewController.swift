@@ -225,6 +225,11 @@ final class GameViewController: UIViewController {
             self.gameDetailView.titleLabel.text = game.name
             self.gameDetailView.releaseDateLabel.text = game.releaseDate.string
             self.gameDetailView.aggregatedLabel.text = "★\(game.aggregated.rating) (\(game.aggregated.count))"
+
+            if let userGame = game.userGame {
+                self.starRatingView.rating = userGame.rating ?? 0
+                self.reviewBodyLabel.text = userGame.memo
+            }
         }
     }
 }

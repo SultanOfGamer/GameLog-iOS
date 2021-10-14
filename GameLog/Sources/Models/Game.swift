@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Game: Hashable {
+struct Game {
 
     let id: Int
     let name: String
@@ -22,6 +22,7 @@ struct Game: Hashable {
     let summary: String
     let cover: String
     let screenshot: String
+    let userGame: UserGame?
 
     init(id: Int,
          name: String,
@@ -35,7 +36,8 @@ struct Game: Hashable {
          storyline: String? = nil,
          summary: String,
          cover: String,
-         screenshot: String) {
+         screenshot: String,
+         userGame: UserGame? = nil) {
         self.id = id
         self.name = name
         self.aggregated = aggregated
@@ -49,19 +51,12 @@ struct Game: Hashable {
         self.summary = summary
         self.cover = cover
         self.screenshot = screenshot
+        self.userGame = userGame
     }
 
     static var dummy: Game? {
         let dummyAsset = NSDataAsset(name: "DummyGame")!
         return try? JSONDecoder().decode(Game.self, from: dummyAsset.data)
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    static func == (lhs: Game, rhs: Game) -> Bool {
-        return (lhs.id == rhs.id)
     }
 }
 
@@ -71,6 +66,8 @@ extension Game: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        userGame = try container.decode(UserGame?.self, forKey: .userGame)
+
         let gameDetail = try container.nestedContainer(keyedBy: GameDetailKeys.self, forKey: .gameDetail)
         id = try gameDetail.decode(Int.self, forKey: .id)
         name = try gameDetail.decode(String.self, forKey: .name)
@@ -92,7 +89,7 @@ extension Game: Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case gameDetail
+        case userGame, gameDetail
     }
 
     private enum GameDetailKeys: String, CodingKey {
@@ -103,6 +100,51 @@ extension Game: Decodable {
         case releaseDate = "first_release_date"
         case gameModes = "game_modes"
         case genres, platforms, themes, storyline, summary, cover, screenshots
+    }
+}
+
+// MARK: - UserGame
+
+struct UserGame: Decodable {
+
+    let id: Int
+    let rating: Double?
+    let memo: String?
+    let status: Status
+    let modifiedDate: Date
+
+    init(id: Int, rating: Double? = nil, memo: String? = nil, status: Status, modifiedDate: Date) {
+        self.id = id
+        self.rating = rating
+        self.memo = memo
+        self.status = status
+        self.modifiedDate = modifiedDate
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        rating = try container.decode(Double?.self, forKey: .rating)
+        memo = try container.decode(String?.self, forKey: .memo)
+
+        let statusName = try container.decode(String.self, forKey: .status)
+        status = Status(rawValue: statusName)!
+        modifiedDate = Date(timeIntervalSince1970: try container.decode(TimeInterval.self, forKey: .modifiedDate))
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "userid"
+        case rating = "userGameRating"
+        case memo = "userGameMemo"
+        case status = "userGameStatus"
+        case modifiedDate = "createdTime"
+    }
+
+    enum Status: String, Decodable {
+        case wish
+        case todo
+        case doing
+        case done
     }
 }
 
