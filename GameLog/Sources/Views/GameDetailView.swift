@@ -41,7 +41,13 @@ final class GameDetailView: UIView {
     }()
 
     let releaseDateLabel = UILabel(textStyle: .caption1)
-    let aggregatedLabel = UILabel(textStyle: .caption1)
+
+    let aggregatedLabel: UILabel = {
+        let label = UILabel(textStyle: .caption1)
+        label.textColor = Global.Style.mainColor
+        return label
+    }()
+
     let labelStackView = UIStackView()
 
     // MARK: - Initializer

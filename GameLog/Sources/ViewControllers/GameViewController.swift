@@ -209,7 +209,7 @@ final class GameViewController: UIViewController {
             self?.summaryBodyLabel.text = game.summary
             self?.gameDetailView.titleLabel.text = game.name
             self?.gameDetailView.releaseDateLabel.text = game.releaseDate.string
-            self?.gameDetailView.aggregatedLabel.text = "★ \(game.aggregated.rating) (\(game.aggregated.count))"
+            self?.gameDetailView.aggregatedLabel.text = "★\(game.aggregated.rating) (\(game.aggregated.count))"
         }
     }
 }

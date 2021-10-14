@@ -5,12 +5,13 @@
 //  Created by duckbok on 2021/10/13.
 //
 
-import Foundation
+import UIKit
 
 struct Library: Hashable {
 
     let id = UUID()
     let data: [Library.Game]
+    var sorting: (method: SortingMethod, order: SortingOrder)?
 
     init(data: [Library.Game]) {
         self.data = data
@@ -72,6 +73,44 @@ extension Library {
 
         static func == (lhs: Library.Game, rhs: Library.Game) -> Bool {
             return (lhs.id == rhs.id)
+        }
+    }
+}
+
+// MARK: - Library.Sorting
+
+extension Library {
+
+    enum SortingMethod: String {
+        case aggregatedRating = "aggregated_rating"
+        case firstReleaseDate = "first_release_date"
+        case gameName, createdTime
+
+        var name: String {
+            switch self {
+            case .aggregatedRating:
+                return "기관 별점 순"
+            case .firstReleaseDate:
+                return "출시일 순"
+            case .gameName:
+                return "게임이름 순"
+            case .createdTime:
+                return "담은 순"
+            }
+        }
+    }
+
+    enum SortingOrder: String {
+        case ascending = "asc"
+        case descending = "desc"
+
+        var sign: UIImage {
+            switch self {
+            case .ascending:
+                return UIImage(systemName: "arrowtriangle.up.circle.fill")!
+            case .descending:
+                return UIImage(systemName: "arrowtriangle.down.circle.fill")!
+            }
         }
     }
 }

@@ -22,12 +22,15 @@ final class LibraryViewModel {
     }
 
     func loadLibrary(page: Int,
-                     sortMethod: LibraryService.SortMethod = .createdTime,
-                     sortOrder: LibraryService.SortOrder = .descending) {
-        libraryService.load(page: page, sortMethod: sortMethod, sortOrder: sortOrder) { [weak self] result in
+                     sortingMethod: Library.SortingMethod = .createdTime,
+                     sortingOrder: Library.SortingOrder = .descending) {
+        libraryService.load(page: page,
+                            sortingMethod: sortingMethod,
+                            sortingOrder: sortingOrder) { [weak self] result in
             switch result {
             case let .success(library):
                 self?.library = library
+                self?.library?.sorting = (sortingMethod, sortingOrder)
             case let .failure(error):
                 print(error)
             }

@@ -11,8 +11,11 @@ final class LibraryViewController: GLMainViewController {
 
     private enum Style {
         enum ColletionView {
+            enum Header {
+                static let height: CGFloat = 44
+            }
+
             enum Item {
-                static let height: CGFloat = 200
                 static let count: Int = 3
             }
 
@@ -36,6 +39,9 @@ final class LibraryViewController: GLMainViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.register(LibraryCell.self, forCellWithReuseIdentifier: LibraryCell.reuseIdentifier)
+        collectionView.register(LibraryHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: LibraryHeaderView.reuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -47,6 +53,10 @@ final class LibraryViewController: GLMainViewController {
         configureCollectionView()
         configureDataSource()
         libraryViewModel.loadLibrary(page: 1)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Configure
@@ -61,10 +71,22 @@ final class LibraryViewController: GLMainViewController {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitem: item,
                                                            count: Style.ColletionView.Item.count)
-            group.interItemSpacing = .fixed(16)
+            group.interItemSpacing = .fixed(Style.ColletionView.Section.interGroupSpacing)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = Style.ColletionView.Section.contentInsets
             section.interGroupSpacing = Style.ColletionView.Section.interGroupSpacing
+
+            let headerSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(Style.ColletionView.Header.height)
+            )
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+            sectionHeader.pinToVisibleBounds = true
+            section.boundarySupplementaryItems = [sectionHeader]
 
             return section
         })
@@ -89,6 +111,20 @@ final class LibraryViewController: GLMainViewController {
 
                 return libraryCell
             }
+
+        libraryViewModel.dataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+
+            let library = self?.libraryViewModel.dataSource?.snapshot().sectionIdentifiers[indexPath.section]
+            let libraryHeaderView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: LibraryHeaderView.reuseIdentifier,
+                for: indexPath) as? LibraryHeaderView
+            libraryHeaderView?.sortingMethodButton.setTitle(library?.sorting?.method.name, for: .normal)
+            libraryHeaderView?.sortingOrderButton.setImage(library?.sorting?.order.sign, for: .normal)
+
+            return libraryHeaderView
+        }
     }
 }
 
