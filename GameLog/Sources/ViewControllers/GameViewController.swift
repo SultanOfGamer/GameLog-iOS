@@ -130,7 +130,15 @@ final class GameViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.tintColor = .white
         navigationItem.largeTitleDisplayMode = .never
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.tintColor = .label
     }
 
     // MARK: - Configure
