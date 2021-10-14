@@ -11,7 +11,6 @@ struct Library: Hashable {
 
     let id = UUID()
     let data: [Library.Game]
-    var sorting: (method: SortingMethod, order: SortingOrder)?
 
     init(data: [Library.Game]) {
         self.data = data
@@ -81,7 +80,7 @@ extension Library {
 
 extension Library {
 
-    enum SortingMethod: String {
+    enum SortingMethod: String, CaseIterable {
         case aggregatedRating = "aggregated_rating"
         case firstReleaseDate = "first_release_date"
         case gameName, createdTime
@@ -98,11 +97,34 @@ extension Library {
                 return "담은 순"
             }
         }
+
+        static func alertController(complection: @escaping (SortingMethod) -> Void) -> UIAlertController {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+            allCases.forEach { sortingMethod in
+                let action = UIAlertAction(title: sortingMethod.name, style: .default) { _ in
+                    complection(sortingMethod)
+                }
+                alertController.addAction(action)
+            }
+            alertController.addAction(UIAlertAction(title: "취소", style: .cancel))
+
+            return alertController
+        }
     }
 
-    enum SortingOrder: String {
+    enum SortingOrder: String, CaseIterable {
         case ascending = "asc"
         case descending = "desc"
+
+        var toggle: SortingOrder {
+            switch self {
+            case .ascending:
+                return .descending
+            case .descending:
+                return .ascending
+            }
+        }
 
         var sign: UIImage {
             switch self {

@@ -112,19 +112,37 @@ final class LibraryViewController: GLMainViewController {
                 return libraryCell
             }
 
-        libraryViewModel.dataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+        libraryViewModel.dataSource?.supplementaryViewProvider = { [self] collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
 
-            let library = self?.libraryViewModel.dataSource?.snapshot().sectionIdentifiers[indexPath.section]
             let libraryHeaderView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: LibraryHeaderView.reuseIdentifier,
                 for: indexPath) as? LibraryHeaderView
-            libraryHeaderView?.sortingMethodButton.setTitle(library?.sorting?.method.name, for: .normal)
-            libraryHeaderView?.sortingOrderButton.setImage(library?.sorting?.order.sign, for: .normal)
+            libraryHeaderView?.sortingMethodButton.setTitle(libraryViewModel.sorting.method.name, for: .normal)
+            libraryHeaderView?.sortingMethodButton.addTarget(self,
+                                                             action: #selector(selectSortingMethod),
+                                                             for: .touchUpInside)
+            libraryHeaderView?.sortingOrderButton.setImage(libraryViewModel.sorting.order.sign, for: .normal)
+            libraryHeaderView?.sortingOrderButton.addTarget(self,
+                                                            action: #selector(selectSortingOrder),
+                                                            for: .touchUpInside)
 
             return libraryHeaderView
         }
+    }
+
+    // MARK: - Action
+
+    @objc func selectSortingMethod() {
+        let alertController = Library.SortingMethod.alertController { [weak self] sortingMethod in
+            self?.libraryViewModel.loadLibrary(page: 1, sortingMethod: sortingMethod)
+        }
+        present(alertController, animated: true)
+    }
+
+    @objc private func selectSortingOrder() {
+        libraryViewModel.loadLibrary(page: 1, isSortingReverse: true)
     }
 }
 

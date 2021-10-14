@@ -10,6 +10,7 @@ import UIKit
 final class LibraryViewModel {
 
     var dataSource: Global.LibraryDataSource?
+    private(set) var sorting: (method: Library.SortingMethod, order: Library.SortingOrder) = (.createdTime, .descending)
 
     private let libraryService = LibraryService()
 
@@ -22,15 +23,17 @@ final class LibraryViewModel {
     }
 
     func loadLibrary(page: Int,
-                     sortingMethod: Library.SortingMethod = .createdTime,
-                     sortingOrder: Library.SortingOrder = .descending) {
+                     sortingMethod: Library.SortingMethod? = nil,
+                     isSortingReverse: Bool = false) {
+        sorting.method = sortingMethod ?? sorting.method
+        sorting.order = isSortingReverse ? sorting.order.toggle : sorting.order
+
         libraryService.load(page: page,
-                            sortingMethod: sortingMethod,
-                            sortingOrder: sortingOrder) { [weak self] result in
+                            sortingMethod: sorting.method,
+                            sortingOrder: sorting.order) { [weak self] result in
             switch result {
             case let .success(library):
                 self?.library = library
-                self?.library?.sorting = (sortingMethod, sortingOrder)
             case let .failure(error):
                 print(error)
             }
