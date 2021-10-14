@@ -13,7 +13,7 @@ final class GameDetailView: UIView {
         static let screenshotImageViewSizeRatio: CGFloat = 0.5625
 
         enum CoverImageView {
-            static let topInset: CGFloat = -50
+            static let topInset: CGFloat = -44
             static let leadingInset: CGFloat = 16
             static let widthRatio: CGFloat = 0.25
             static let heightRatio: CGFloat = 1.4
@@ -35,7 +35,8 @@ final class GameDetailView: UIView {
     let coverImageView = UIImageView()
 
     let titleLabel: UILabel = {
-        let label = UILabel(textStyle: .title3)
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 2
         return label
     }()
@@ -126,5 +127,7 @@ final class GameDetailView: UIView {
         coverImageView.image = cover ?? Global.coverPlaceholder
         screenshotImageView.image = Global.screenshotPlaceholder
         titleLabel.text = name
+        releaseDateLabel.text = " "
+        aggregatedLabel.text = " "
     }
 }
