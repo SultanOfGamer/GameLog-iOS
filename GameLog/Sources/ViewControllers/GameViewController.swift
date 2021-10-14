@@ -38,6 +38,7 @@ final class GameViewController: UIViewController {
     // MARK: - View
 
     private let gameDetailView = GameDetailView()
+    private let loadingIndicator = UIActivityIndicatorView(style: .large, color: Global.Style.mainColor)
 
     private let gameScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -126,6 +127,9 @@ final class GameViewController: UIViewController {
         configureStarRatingView()
         configureGameScrollView()
         configureGameStackView()
+
+        view.addSubview(loadingIndicator)
+        loadingIndicator.startLoading(to: gameScrollView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -214,10 +218,13 @@ final class GameViewController: UIViewController {
         })
 
         DispatchQueue.main.async { [weak self] in
-            self?.summaryBodyLabel.text = game.summary
-            self?.gameDetailView.titleLabel.text = game.name
-            self?.gameDetailView.releaseDateLabel.text = game.releaseDate.string
-            self?.gameDetailView.aggregatedLabel.text = "★\(game.aggregated.rating) (\(game.aggregated.count))"
+            guard let self = self else { return }
+
+            self.loadingIndicator.stopLoading(to: self.gameScrollView)
+            self.summaryBodyLabel.text = game.summary
+            self.gameDetailView.titleLabel.text = game.name
+            self.gameDetailView.releaseDateLabel.text = game.releaseDate.string
+            self.gameDetailView.aggregatedLabel.text = "★\(game.aggregated.rating) (\(game.aggregated.count))"
         }
     }
 }

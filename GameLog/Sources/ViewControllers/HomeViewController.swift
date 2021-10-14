@@ -35,6 +35,8 @@ final class HomeViewController: GLMainViewController {
 
     // MARK: - View
 
+    private let loadingIndicator = UIActivityIndicatorView(style: .large, color: Global.Style.mainColor)
+
     private lazy var homeCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.backgroundColor = .systemBackground
@@ -53,6 +55,9 @@ final class HomeViewController: GLMainViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureDataSource()
+
+        view.addSubview(loadingIndicator)
+        loadingIndicator.startLoading(to: homeCollectionView)
         homeViewModel.loadSections()
     }
 
@@ -118,6 +123,7 @@ final class HomeViewController: GLMainViewController {
 
         homeViewModel.dataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+            self?.loadingIndicator.stopLoading(to: collectionView)
 
             let section = self?.homeViewModel.dataSource?.snapshot().sectionIdentifiers[indexPath.section]
             let supplementaryView = collectionView.dequeueReusableSupplementaryView(

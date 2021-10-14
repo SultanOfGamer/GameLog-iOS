@@ -15,7 +15,8 @@ final class GameViewModel {
 
     private var game: Game? {
         didSet {
-            fetched?(game!)
+            guard let game = game else { return }
+            fetched?(game)
         }
     }
 

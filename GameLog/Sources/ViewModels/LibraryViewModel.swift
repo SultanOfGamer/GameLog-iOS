@@ -16,9 +16,8 @@ final class LibraryViewModel {
 
     private var library: Library? {
         didSet {
-            if let library = library {
-                applySnapshot(library: library)
-            }
+            guard let library = library else { return }
+            applySnapshot(library: library)
         }
     }
 

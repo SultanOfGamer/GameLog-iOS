@@ -34,6 +34,8 @@ final class LibraryViewController: GLMainViewController {
 
     // MARK: - View
 
+    private let loadingIndicator = UIActivityIndicatorView(style: .large, color: Global.Style.mainColor)
+
     private lazy var libraryCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.backgroundColor = .systemBackground
@@ -52,11 +54,10 @@ final class LibraryViewController: GLMainViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureDataSource()
-        libraryViewModel.loadLibrary(page: 1)
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        view.addSubview(loadingIndicator)
+        loadingIndicator.startLoading(to: libraryCollectionView)
+        libraryViewModel.loadLibrary(page: 1)
     }
 
     // MARK: - Configure
@@ -114,6 +115,7 @@ final class LibraryViewController: GLMainViewController {
 
         libraryViewModel.dataSource?.supplementaryViewProvider = { [self] collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+            self.loadingIndicator.stopLoading(to: collectionView)
 
             let libraryHeaderView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
