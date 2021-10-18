@@ -21,7 +21,7 @@ final class GameViewModel {
     }
 
     func fetchGame(by id: Int) {
-        gameService.search(by: id) { [weak self] result in
+        gameService.load(by: id) { [weak self] result in
             switch result {
             case let .success(game):
                 self?.game = game

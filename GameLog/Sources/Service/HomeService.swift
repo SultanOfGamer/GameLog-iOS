@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/11.
 //
 
-import Foundation
-
 struct HomeService {
 
     typealias ServiceResult = Result<[Section], NetworkRepository.Error>

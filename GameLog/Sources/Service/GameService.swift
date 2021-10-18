@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/11.
 //
 
-import Foundation
-
 struct GameService {
 
     typealias ServiceResult = Result<Game, NetworkRepository.Error>
@@ -20,7 +18,7 @@ struct GameService {
         self.networkRepository = networkRepository
     }
 
-    func search(by id: Int, completion: @escaping (ServiceResult) -> Void) {
+    func load(by id: Int, completion: @escaping (ServiceResult) -> Void) {
         networkRepository.get(path: path,
                               query: [queryKey: id.description],
                               completion: { (result: ServiceResult) in

@@ -5,7 +5,6 @@
 //  Created by duckbok on 2021/09/17.
 //
 
-import Foundation
 import UIKit
 
 struct Section: Hashable {
