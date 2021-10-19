@@ -82,7 +82,7 @@ extension Game: Decodable {
         genres = try gameDetail.decode([Genre].self, forKey: .genres).map { $0.name }
         platforms = try gameDetail.decode([Platform].self, forKey: .platforms).map { $0.name }
         themes = try gameDetail.decode([Theme].self, forKey: .themes).map { $0.name }
-        storyline = try? gameDetail.decode(String?.self, forKey: .storyline)
+        storyline = try? gameDetail.decode(String.self, forKey: .storyline)
         summary = try gameDetail.decode(String.self, forKey: .summary)
         cover = try gameDetail.decode([Cover].self, forKey: .cover)[0].url
         screenshot = try gameDetail.decode([Screenshot].self, forKey: .screenshots).randomElement()!.url
@@ -108,36 +108,50 @@ extension Game: Decodable {
 struct UserGame: Decodable {
 
     let id: Int
+    let userID: Int
     let rating: Double?
     let memo: String?
     let status: Status
-    let modifiedDate: Date
+    let modifiedTime: Int
+    let wishedTime: Int?
 
-    init(id: Int, rating: Double? = nil, memo: String? = nil, status: Status, modifiedDate: Date) {
+    init(id: Int,
+         userID: Int,
+         rating: Double? = nil,
+         memo: String? = nil,
+         status: Status,
+         modifiedTime: Int,
+         wishedTime: Int? = nil) {
         self.id = id
+        self.userID = userID
         self.rating = rating
         self.memo = memo
         self.status = status
-        self.modifiedDate = modifiedDate
+        self.modifiedTime = modifiedTime
+        self.wishedTime = wishedTime
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        rating = try container.decode(Double?.self, forKey: .rating)
-        memo = try container.decode(String?.self, forKey: .memo)
+        userID = try container.decode(Int.self, forKey: .userID)
+        rating = try? container.decode(Double.self, forKey: .rating)
+        memo = try? container.decode(String.self, forKey: .memo)
 
         let statusName = try container.decode(String.self, forKey: .status)
         status = Status(rawValue: statusName)!
-        modifiedDate = Date(timeIntervalSince1970: try container.decode(TimeInterval.self, forKey: .modifiedDate))
+        modifiedTime = try container.decode(Int.self, forKey: .modifiedTime)
+        wishedTime = try? container.decode(Int.self, forKey: .wishedTime)
+        id = try container.decode(Int.self, forKey: .id)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id = "userid"
+        case userID = "userid"
         case rating = "userGameRating"
         case memo = "userGameMemo"
         case status = "userGameStatus"
-        case modifiedDate = "createdTime"
+        case modifiedTime = "createdTime"
+        case wishedTime = "wishTime"
+        case id
     }
 
     enum Status: String, Decodable {
