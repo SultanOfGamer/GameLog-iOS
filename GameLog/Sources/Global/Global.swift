@@ -15,6 +15,9 @@ enum Global {
     typealias LibraryDataSource = UICollectionViewDiffableDataSource<Library, Library.Game>
     typealias LibrarySnapshot = NSDiffableDataSourceSnapshot<Library, Library.Game>
 
+    typealias SearchDataSource = UICollectionViewDiffableDataSource<Search, Search.Game>
+    typealias SearchSnapshot = NSDiffableDataSourceSnapshot<Search, Search.Game>
+
     static let coverPlaceholder: UIImage = UIImage(named: "CoverPlaceholder")!
     static let screenshotPlaceholder: UIImage = UIImage(named: "ScreenshotPlaceholder")!
 

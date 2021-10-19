@@ -34,6 +34,10 @@
 		0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 0290E3BA2706E76B00085C72 /* Cosmos */; };
 		02BC8A1527184A4C00453CEA /* LibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */; };
 		02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */; };
+		02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A18271D0C3D00453CEA /* SearchService.swift */; };
+		02BC8A1B271D0FFC00453CEA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1A271D0FFC00453CEA /* Search.swift */; };
+		02BC8A1F271DD09B00453CEA /* URL+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1E271DD09B00453CEA /* URL+extension.swift */; };
+		02BC8A21271DD20900453CEA /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A20271DD20900453CEA /* String+extension.swift */; };
 		02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */; };
 		02EC9C5B26F253CE00536893 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5A26F253CE00536893 /* Global.swift */; };
 		02EC9C5E26F25A0300536893 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5D26F25A0300536893 /* Game.swift */; };
@@ -84,6 +88,10 @@
 		0290E3B72706A19400085C72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHeaderView.swift; sourceTree = "<group>"; };
 		02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+loading.swift"; sourceTree = "<group>"; };
+		02BC8A18271D0C3D00453CEA /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		02BC8A1A271D0FFC00453CEA /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		02BC8A1E271DD09B00453CEA /* URL+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+extension.swift"; sourceTree = "<group>"; };
+		02BC8A20271DD20900453CEA /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
 		02EC9C5A26F253CE00536893 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		02EC9C5D26F25A0300536893 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -119,6 +127,8 @@
 				02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */,
 				02122101270BE62500EE5066 /* UILabel+extensions.swift */,
 				02122103270BEB4D00EE5066 /* UIView+shadow.swift */,
+				02BC8A1E271DD09B00453CEA /* URL+extension.swift */,
+				02BC8A20271DD20900453CEA /* String+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +247,7 @@
 				02682393271444A10028C1E1 /* GameService.swift */,
 				0268239A271457BF0028C1E1 /* HomeService.swift */,
 				026823A0271622A20028C1E1 /* LibrearyService.swift */,
+				02BC8A18271D0C3D00453CEA /* SearchService.swift */,
 				0268239C271596730028C1E1 /* UserService.swift */,
 			);
 			path = Service;
@@ -256,6 +267,7 @@
 				02EC9C5D26F25A0300536893 /* Game.swift */,
 				026823A2271623700028C1E1 /* Library.swift */,
 				0268239E2715A9D30028C1E1 /* ResponseMessage.swift */,
+				02BC8A1A271D0FFC00453CEA /* Search.swift */,
 				02EC9C6426F3AE5000536893 /* Section.swift */,
 			);
 			path = Models;
@@ -430,16 +442,20 @@
 				02EC9C5B26F253CE00536893 /* Global.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,
+				02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */,
 				0241D83A26E5C74D000A9E20 /* WishlistViewController.swift in Sources */,
 				0241D83826E5C723000A9E20 /* LibraryViewController.swift in Sources */,
 				02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */,
 				02EC9C6526F3AE5000536893 /* Section.swift in Sources */,
+				02BC8A21271DD20900453CEA /* String+extension.swift in Sources */,
 				02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */,
 				02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */,
 				0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */,
 				026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */,
+				02BC8A1B271D0FFC00453CEA /* Search.swift in Sources */,
 				028856DD270A241F00A52029 /* GameDetailView.swift in Sources */,
 				02122104270BEB4D00EE5066 /* UIView+shadow.swift in Sources */,
+				02BC8A1F271DD09B00453CEA /* URL+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
