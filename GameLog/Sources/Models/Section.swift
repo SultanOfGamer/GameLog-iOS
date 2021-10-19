@@ -38,7 +38,14 @@ extension Section: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        type = try container.decode(String.self, forKey: .type)
+        let typeName = try container.decode(String.self, forKey: .type)
+
+        if let gameType = GameType(rawValue: typeName) {
+            type = gameType.name
+        } else {
+            type = typeName
+        }
+
         games = try container.decode([Section.Game].self, forKey: .games)
     }
 
