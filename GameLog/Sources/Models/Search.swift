@@ -31,11 +31,16 @@ extension Search: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        games = try container.decode([Search.Game].self, forKey: .games)
+        var decodedGames: [Search.Game]
+        decodedGames = try container.decode([Search.Game].self, forKey: .gameName)
+        if decodedGames.isEmpty {
+            decodedGames = try container.decode([Search.Game].self, forKey: .alterName)
+        }
+        games = decodedGames
     }
 
     private enum CodingKeys: String, CodingKey {
-        case games = "alterName"
+        case gameName, alterName
     }
 }
 
