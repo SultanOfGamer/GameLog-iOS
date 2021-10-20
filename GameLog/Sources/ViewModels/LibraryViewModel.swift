@@ -39,6 +39,25 @@ final class LibraryViewModel {
         }
     }
 
+    func loadWishlist(page: Int,
+                      sortingMethod: Library.SortingMethod? = nil,
+                      isSortingReverse: Bool = false) {
+        sorting.method = sortingMethod ?? sorting.method
+        sorting.order = isSortingReverse ? sorting.order.toggle : sorting.order
+
+        libraryService.load(page: page,
+                            sortingMethod: sorting.method,
+                            sortingOrder: sorting.order,
+                            isWishlist: true) { [weak self] result in
+            switch result {
+            case let .success(library):
+                self?.library = library
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
     func applySnapshot(library: Library, animatingDifferences: Bool = true) {
         var snapshot = Global.LibrarySnapshot()
         snapshot.appendSections([library])
