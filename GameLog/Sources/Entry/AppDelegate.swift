@@ -25,10 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func testLogin() {
         UserService.shared.login(email: "test@gmail.com", password: "123456") { result in
             switch result {
-            case let .success(message):
-                if let message = message {
-                    print(message)
-                }
+            case let .success(responsed):
+                print(responsed.message)
             case let .failure(error):
                 print(error)
             }

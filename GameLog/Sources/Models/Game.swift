@@ -103,65 +103,6 @@ extension Game: Decodable {
     }
 }
 
-// MARK: - UserGame
-
-struct UserGame: Decodable {
-
-    let id: Int
-    let userID: Int
-    let rating: Double?
-    let memo: String?
-    let status: Status
-    let modifiedTime: Int
-    let wishedTime: Int?
-
-    init(id: Int,
-         userID: Int,
-         rating: Double? = nil,
-         memo: String? = nil,
-         status: Status,
-         modifiedTime: Int,
-         wishedTime: Int? = nil) {
-        self.id = id
-        self.userID = userID
-        self.rating = rating
-        self.memo = memo
-        self.status = status
-        self.modifiedTime = modifiedTime
-        self.wishedTime = wishedTime
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        userID = try container.decode(Int.self, forKey: .userID)
-        rating = try? container.decode(Double.self, forKey: .rating)
-        memo = try? container.decode(String.self, forKey: .memo)
-
-        let statusName = try container.decode(String.self, forKey: .status)
-        status = Status(rawValue: statusName)!
-        modifiedTime = try container.decode(Int.self, forKey: .modifiedTime)
-        wishedTime = try? container.decode(Int.self, forKey: .wishedTime)
-        id = try container.decode(Int.self, forKey: .id)
-    }
-
-    private enum CodingKeys: String, CodingKey {
-        case userID = "userid"
-        case rating = "userGameRating"
-        case memo = "userGameMemo"
-        case status = "userGameStatus"
-        case modifiedTime = "createdTime"
-        case wishedTime = "wishTime"
-        case id
-    }
-
-    enum Status: String, Decodable {
-        case wish
-        case todo
-        case doing
-        case done
-    }
-}
-
 // MARK: - GameDetail
 
 struct InvolvedCompany: Decodable {

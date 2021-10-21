@@ -23,7 +23,6 @@ final class LibraryHeaderView: UICollectionReusableView {
 
     let sortingOrderButton: UIButton = {
         let button = UIButton()
-//        button.setImage(Library.SortingOrder.descending.sign, for: .normal)
         button.tintColor = Global.Style.mainColor
         return button
     }()

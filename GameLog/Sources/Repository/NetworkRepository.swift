@@ -10,7 +10,6 @@ import UIKit
 struct NetworkRepository {
 
     typealias TaskResult = Result<(response: HTTPURLResponse, data: Data?), NetworkRepository.Error>
-    typealias PostResult = Result<(message: String?, cookies: [HTTPCookie]?), NetworkRepository.Error>
 
     static let shared = NetworkRepository()
 
@@ -58,7 +57,9 @@ struct NetworkRepository {
         }.resume()
     }
 
-    func post(path: String, bodies: [String: String], completion: @escaping (PostResult) -> Void) {
+    func post<ResponseType: Decodable>(path: String,
+                                       bodies: [String: String],
+                                       completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
         guard let url = URL(base: baseURL, path: path),
               let bodyData = String(bodies).data(using: .utf8) else { return }
         var request = URLRequest(url: url)
@@ -79,19 +80,18 @@ struct NetworkRepository {
                         completion(.failure(.dataNotFound))
                         return
                     }
-                    guard let jsonObject = try? JSONSerialization.jsonObject(with: responsedData, options: []),
-                          let decodedData = jsonObject as? [String: String],
-                          let message = decodedData["message"] else {
-                              completion(.failure(.dataNotDecodable))
-                              return
+
+                    guard let decodedData = try? decoder.decode(ResponseType.self, from: responsedData) else {
+                        completion(.failure(.dataNotDecodable))
+                        return
                     }
 
                     if let fields = response.allHeaderFields as? [String: String] {
                         let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response.url!)
-                        completion(.success((message, cookies)))
-                    } else {
-                        completion(.success((message, nil)))
+                        cookies.forEach { UserDefaults.standard.set( $0.value, forKey: $0.name) }
                     }
+
+                    completion(.success(decodedData))
                 case .failure(let error):
                     completion(.failure(error))
                 }

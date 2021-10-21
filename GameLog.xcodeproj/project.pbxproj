@@ -41,6 +41,8 @@
 		02BC8A23271F130F00453CEA /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A22271F130F00453CEA /* GameType.swift */; };
 		02BC8A25271F436A00453CEA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A24271F436A00453CEA /* SearchViewModel.swift */; };
 		02BC8A27271FAB5900453CEA /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A26271FAB5900453CEA /* SearchCell.swift */; };
+		02BC8A2927211BD000453CEA /* UserGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2827211BD000453CEA /* UserGame.swift */; };
+		02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */; };
 		02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */; };
 		02EC9C5B26F253CE00536893 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5A26F253CE00536893 /* Global.swift */; };
 		02EC9C5E26F25A0300536893 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5D26F25A0300536893 /* Game.swift */; };
@@ -98,6 +100,8 @@
 		02BC8A22271F130F00453CEA /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		02BC8A24271F436A00453CEA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		02BC8A26271FAB5900453CEA /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		02BC8A2827211BD000453CEA /* UserGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGame.swift; sourceTree = "<group>"; };
+		02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedLibrary.swift; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
 		02EC9C5A26F253CE00536893 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		02EC9C5D26F25A0300536893 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -259,6 +263,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		02BC8A2A27211C8300453CEA /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0268239E2715A9D30028C1E1 /* ResponseMessage.swift */,
+				02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		02EC9C5926F253B100536893 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,11 +284,12 @@
 		02EC9C5C26F259E900536893 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				02BC8A2A27211C8300453CEA /* DTO */,
 				02EC9C5D26F25A0300536893 /* Game.swift */,
 				026823A2271623700028C1E1 /* Library.swift */,
-				0268239E2715A9D30028C1E1 /* ResponseMessage.swift */,
 				02BC8A1A271D0FFC00453CEA /* Search.swift */,
 				02EC9C6426F3AE5000536893 /* Section.swift */,
+				02BC8A2827211BD000453CEA /* UserGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -443,6 +457,7 @@
 				02EC9C5E26F25A0300536893 /* Game.swift in Sources */,
 				0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */,
 				0268239927144CE90028C1E1 /* GameViewModel.swift in Sources */,
+				02BC8A2927211BD000453CEA /* UserGame.swift in Sources */,
 				026823A1271622A20028C1E1 /* LibrearyService.swift in Sources */,
 				0268239D271596730028C1E1 /* UserService.swift in Sources */,
 				02682394271444A10028C1E1 /* GameService.swift in Sources */,
@@ -451,6 +466,7 @@
 				02682396271445940028C1E1 /* Date+formatter.swift in Sources */,
 				0268239F2715A9D30028C1E1 /* ResponseMessage.swift in Sources */,
 				02EC9C5B26F253CE00536893 /* Global.swift in Sources */,
+				02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,
 				02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */,

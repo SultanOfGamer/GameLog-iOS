@@ -11,6 +11,11 @@ import Cosmos
 final class GameViewController: UIViewController {
 
     private enum Style {
+        enum BarButton {
+            static let plusImage = UIImage(systemName: "plus.circle.fill")!
+            static let minusImage = UIImage(systemName: "minus.circle.fill")!
+        }
+
         enum StarRatingView {
             static let emptyColor: UIColor = .systemGray3
             static let margin: Double = 5
@@ -29,7 +34,6 @@ final class GameViewController: UIViewController {
 
         enum ReviewLabel {
             static let title: String = "리뷰"
-            static let placeholder: String = "눌러서 작성하기"
         }
     }
 
@@ -39,6 +43,10 @@ final class GameViewController: UIViewController {
 
     private let gameDetailView = GameDetailView()
     private let loadingIndicator = UIActivityIndicatorView(style: .large, color: Global.Style.mainColor)
+    private lazy var statusButtonItem = UIBarButtonItem(image: nil,
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(touchedUserStatus))
 
     private let gameScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -90,16 +98,17 @@ final class GameViewController: UIViewController {
         return label
     }()
 
-    private let reviewTitleLabel: UILabel = {
-        let label = UILabel(textStyle: .title1)
-        label.text = Style.ReviewLabel.title
-        return label
+    private let reviewTitleButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = Global.Style.mainColor
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
+        button.titleLabel?.text = Style.ReviewLabel.title
+        return button
     }()
 
     private let reviewBodyLabel: UILabel = {
         let label = UILabel(textStyle: .body)
         label.numberOfLines = 0
-        label.text = Style.ReviewLabel.placeholder
         return label
     }()
 
@@ -108,9 +117,12 @@ final class GameViewController: UIViewController {
     init(gameID: Int, name: String? = nil, cover: UIImage? = nil) {
         super.init(nibName: nil, bundle: nil)
         configureAttributes()
-        gameViewModel.bind { [weak self] game in
-            self?.bindingClosure(game)
-        }
+
+        gameViewModel.bindGame(closure: bindingGame)
+        gameViewModel.bindRating(closure: bindingRating)
+        gameViewModel.bindMemo(closure: bindingMemo)
+        gameViewModel.bindStatus(closure: bindingStatus)
+
         gameViewModel.fetchGame(by: gameID)
         gameDetailView.setBasicData(name: name, cover: cover)
     }
@@ -149,6 +161,7 @@ final class GameViewController: UIViewController {
 
     private func configureAttributes() {
         view.backgroundColor = .systemBackground
+        navigationItem.setRightBarButton(statusButtonItem, animated: true)
     }
 
     private func configureGameDetailView() {
@@ -200,11 +213,29 @@ final class GameViewController: UIViewController {
 
         gameStackView.addArrangedSubview(summaryTitleLabel)
         gameStackView.addArrangedSubview(summaryBodyLabel)
-        gameStackView.addArrangedSubview(reviewTitleLabel)
+        gameStackView.addArrangedSubview(reviewTitleButton)
         gameStackView.addArrangedSubview(reviewBodyLabel)
     }
 
-    private func bindingClosure(_ game: Game) {
+    // MARK: - Action
+
+    @objc func touchedUserStatus() {
+        if let userStatus = gameViewModel.userGameStatus {
+
+        } else {
+            let alertController = UserGame.Status.alertController { [weak self] userStatus in
+                self?.gameViewModel.addUserGame(status: userStatus)
+            }
+            present(alertController, animated: true)
+        }
+    }
+}
+
+// MARK: - Binding
+
+extension GameViewController {
+
+    private func bindingGame(_ game: Game) {
         NetworkRepository.fetchImage(from: game.screenshot, completion: { [weak self] image in
             DispatchQueue.main.async {
                 self?.gameDetailView.screenshotImageView.image = image
@@ -225,11 +256,24 @@ final class GameViewController: UIViewController {
             self.gameDetailView.titleLabel.text = game.name
             self.gameDetailView.releaseDateLabel.text = game.releaseDate.string
             self.gameDetailView.aggregatedLabel.text = "★\(game.aggregated.rating) (\(game.aggregated.count))"
+        }
+    }
 
-            if let userGame = game.userGame {
-                self.starRatingView.rating = userGame.rating ?? 0
-                self.reviewBodyLabel.text = userGame.memo
-            }
+    private func bindingRating(_ rating: Double?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.starRatingView.rating = (rating ?? 0)
+        }
+    }
+
+    private func bindingMemo(_ memo: String?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.reviewBodyLabel.text = memo
+        }
+    }
+
+    private func bindingStatus(_ status: UserGame.Status?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.statusButtonItem.image = (status == nil) ? Style.BarButton.plusImage : Style.BarButton.minusImage
         }
     }
 }
