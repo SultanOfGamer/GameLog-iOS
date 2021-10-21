@@ -100,9 +100,9 @@ final class GameViewController: UIViewController {
 
     private let reviewTitleButton: UIButton = {
         let button = UIButton()
-        button.tintColor = Global.Style.mainColor
+        button.setTitle(Style.ReviewLabel.title, for: .normal)
+        button.setTitleColor(Global.Style.mainColor, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
-        button.titleLabel?.text = Style.ReviewLabel.title
         return button
     }()
 
