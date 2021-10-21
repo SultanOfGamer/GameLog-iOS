@@ -60,6 +60,11 @@ final class WishlistViewController: GLMainViewController {
         libraryViewModel.loadWishlist(page: 1)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        libraryViewModel.loadWishlist(page: 1)
+    }
+
     // MARK: - Configure
 
     private func collectionViewLayout() -> UICollectionViewLayout {

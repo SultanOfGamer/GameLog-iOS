@@ -57,6 +57,10 @@ final class LibraryViewController: GLMainViewController {
 
         view.addSubview(loadingIndicator)
         loadingIndicator.startLoading(to: libraryCollectionView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         libraryViewModel.loadLibrary(page: 1)
     }
 
