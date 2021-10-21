@@ -218,8 +218,13 @@ final class GameViewController: UIViewController {
     // MARK: - Action
 
     @objc func touchedUserStatus() {
+        statusButtonItem.isEnabled = false
+
         if gameViewModel.userGame?.status != nil {
-            gameViewModel.removeUserGame { message in
+            gameViewModel.removeUserGame { [weak self] message in
+                DispatchQueue.main.async {
+                    self?.statusButtonItem.isEnabled = true
+                }
                 print(message)
             }
         } else {
@@ -227,6 +232,7 @@ final class GameViewController: UIViewController {
                 self?.gameViewModel.addUserGame(status: userStatus)
             }
             present(alertController, animated: true)
+            statusButtonItem.isEnabled = true
         }
     }
 }
