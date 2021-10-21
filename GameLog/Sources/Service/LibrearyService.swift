@@ -8,7 +8,7 @@
 struct LibraryService {
 
     typealias LoadResult = Result<Library, NetworkRepository.Error>
-    typealias UpdateResult = Result<UpdatedLibrary, NetworkRepository.Error>
+    typealias UpdateResult = Result<UserGame, NetworkRepository.Error>
 
     private let libraryPath: String = "game/library"
     private let wishlistPath: String = "game/wishlist"
@@ -40,22 +40,44 @@ struct LibraryService {
         var path: String
         var body: [String: String] = ["gameId": gameID.description]
 
+        body.updateValue(userGameStatus.rawValue, forKey: "userGameStatus")
         if userGameStatus == .wish {
             path = wishlistPath
-            body.updateValue(userGameStatus.rawValue, forKey: "userGameStatus")
         } else {
             path = libraryPath
             if let userGameRating = userGameRating {
                 body.updateValue(userGameRating.description, forKey: "userGameRating")
+                body.updateValue(UserGame.Status.done.rawValue, forKey: "userGameStatus")
             }
             if let userGameMemo = userGameMemo {
                 body.updateValue(userGameMemo, forKey: "userGameMemo")
+                body.updateValue(UserGame.Status.done.rawValue, forKey: "userGameStatus")
             }
-            body.updateValue(userGameStatus.rawValue, forKey: "userGameStatus")
         }
 
-        networkRepository.post(path: path, body: body) { (result: UpdateResult) in
-            completion(result)
+        networkRepository.post(path: path, body: body) { (result: Result<UpdatedLibrary, NetworkRepository.Error>) in
+            switch result {
+            case let .success(updated):
+                completion(.success(updated.userGame))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func remove(id: Int,
+                isWishlist: Bool = false,
+                completion: @escaping (Result<String, NetworkRepository.Error>) -> Void) {
+        let path = isWishlist ? wishlistPath : libraryPath
+        let body: [String: String] = ["id": id.description]
+
+        networkRepository.delete(path: path, body: body) { result in
+            switch result {
+            case let .success(responsed):
+                completion(.success(responsed.message))
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
 }

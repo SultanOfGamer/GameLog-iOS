@@ -118,10 +118,8 @@ final class GameViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         configureAttributes()
 
-        gameViewModel.bindGame(closure: bindingGame)
-        gameViewModel.bindRating(closure: bindingRating)
-        gameViewModel.bindMemo(closure: bindingMemo)
-        gameViewModel.bindStatus(closure: bindingStatus)
+        gameViewModel.bindGame(by: bindingGame)
+        gameViewModel.bindUserGame(by: bindingUserGame)
 
         gameViewModel.fetchGame(by: gameID)
         gameDetailView.setBasicData(name: name, cover: cover)
@@ -220,8 +218,10 @@ final class GameViewController: UIViewController {
     // MARK: - Action
 
     @objc func touchedUserStatus() {
-        if let userStatus = gameViewModel.userGameStatus {
-
+        if gameViewModel.userGame?.status != nil {
+            gameViewModel.removeUserGame { message in
+                print(message)
+            }
         } else {
             let alertController = UserGame.Status.alertController { [weak self] userStatus in
                 self?.gameViewModel.addUserGame(status: userStatus)
@@ -259,21 +259,17 @@ extension GameViewController {
         }
     }
 
-    private func bindingRating(_ rating: Double?) {
+    private func bindingUserGame(_ userGame: UserGame?) {
         DispatchQueue.main.async { [weak self] in
-            self?.starRatingView.rating = (rating ?? 0)
-        }
-    }
-
-    private func bindingMemo(_ memo: String?) {
-        DispatchQueue.main.async { [weak self] in
-            self?.reviewBodyLabel.text = memo
-        }
-    }
-
-    private func bindingStatus(_ status: UserGame.Status?) {
-        DispatchQueue.main.async { [weak self] in
-            self?.statusButtonItem.image = (status == nil) ? Style.BarButton.plusImage : Style.BarButton.minusImage
+            self?.starRatingView.rating = (userGame?.rating ?? 0)
+            self?.reviewBodyLabel.text = userGame?.memo
+            if userGame == nil {
+                self?.statusButtonItem.image = Style.BarButton.plusImage
+                self?.statusButtonItem.tintColor = .systemGreen
+            } else {
+                self?.statusButtonItem.image = Style.BarButton.minusImage
+                self?.statusButtonItem.tintColor = .systemRed
+            }
         }
     }
 }

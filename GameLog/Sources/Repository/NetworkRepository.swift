@@ -80,12 +80,10 @@ struct NetworkRepository {
                         completion(.failure(.dataNotFound))
                         return
                     }
-
                     guard let decodedData = try? decoder.decode(ResponseType.self, from: responsedData) else {
                         completion(.failure(.dataNotDecodable))
                         return
                     }
-
                     if let fields = response.allHeaderFields as? [String: String] {
                         let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response.url!)
                         cookies.forEach { UserDefaults.standard.set( $0.value, forKey: $0.name) }
@@ -93,6 +91,46 @@ struct NetworkRepository {
 
                     completion(.success(decodedData))
                 case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+
+    func delete(path: String,
+                body: [String: String]? = nil,
+                completion: @escaping (Result<ResponseMessage, Self.Error>) -> Void) {
+        guard let url = URL(base: baseURL, path: path) else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+
+        if let body = body,
+           let bodyData = String(body).data(using: .utf8) {
+            request.httpBody = bodyData
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue(bodyData.count.description, forHTTPHeaderField: "Content-Length")
+        }
+
+        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
+            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
+        }
+
+        session.dataTask(with: request) { data, response, error in
+            checkSessionResult(data, response, error) { taskResult in
+                switch taskResult {
+                case let .success((_, data)):
+                    guard let responsedData = data else {
+                        completion(.failure(.dataNotFound))
+                        return
+                    }
+                    guard let decodedData = try? decoder.decode(ResponseMessage.self, from: responsedData) else {
+                        completion(.failure(.dataNotDecodable))
+                        return
+                    }
+
+                    completion(.success(decodedData))
+                case let .failure(error):
                     completion(.failure(error))
                 }
             }

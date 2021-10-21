@@ -10,9 +10,7 @@ import UIKit
 final class GameViewModel {
 
     private var gameUpdated: ((Game) -> Void)?
-    private var ratingUpdated: ((Double?) -> Void)?
-    private var memoUpdated: ((String?) -> Void)?
-    private var statusUpdated: ((UserGame.Status?) -> Void)?
+    private var userGameUpdated: ((UserGame?) -> Void)?
 
     private let gameService = GameService()
     private let libraryService = LibraryService()
@@ -24,21 +22,9 @@ final class GameViewModel {
         }
     }
 
-    private(set) var userGameRating: Double? {
+    private(set) var userGame: UserGame? {
         didSet {
-            ratingUpdated?(userGameRating)
-        }
-    }
-
-    private(set) var userGameMemo: String? {
-        didSet {
-            memoUpdated?(userGameMemo)
-        }
-    }
-
-    private(set) var userGameStatus: UserGame.Status? {
-        didSet {
-            statusUpdated?(userGameStatus)
+            userGameUpdated?(userGame)
         }
     }
 
@@ -47,43 +33,47 @@ final class GameViewModel {
             switch result {
             case let .success(game):
                 self?.game = game
-                self?.userGameRating = game.userGame?.rating
-                self?.userGameMemo = game.userGame?.memo
-                self?.userGameStatus = game.userGame?.status
+                self?.userGame = game.userGame
             case let .failure(error):
                 print(error)
             }
         }
     }
 
-    func addUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status) {
+    func addUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status = .done) {
         guard let gameID = game?.id else { return }
         libraryService.store(gameID: gameID,
                              userGameRating: rating,
                              userGameMemo: memo,
                              userGameStatus: status) { [weak self] result in
             switch result {
-            case let .success(library):
-                self?.userGameStatus = library.userGameStatus
+            case let .success(userGame):
+                self?.userGame = userGame
             case let .failure(error):
                 print(error)
             }
         }
     }
 
-    func bindGame(closure: @escaping (Game) -> Void) {
+    func removeUserGame(completion: @escaping (String) -> Void) {
+        guard let id = userGame?.id else { return }
+        let isWishlist = (userGame?.status == .wish)
+        libraryService.remove(id: id, isWishlist: isWishlist) { [weak self] result in
+            switch result {
+            case let .success(message):
+                self?.userGame = nil
+                completion(message)
+            case let .failure(error):
+                completion(error.localizedDescription)
+            }
+        }
+    }
+
+    func bindGame(by closure: @escaping (Game) -> Void) {
         gameUpdated = closure
     }
 
-    func bindRating(closure: @escaping (Double?) -> Void) {
-        ratingUpdated = closure
-    }
-
-    func bindMemo(closure: @escaping (String?) -> Void) {
-        memoUpdated = closure
-    }
-
-    func bindStatus(closure: @escaping (UserGame.Status?) -> Void) {
-        statusUpdated = closure
+    func bindUserGame(by closure: @escaping (UserGame?) -> Void) {
+        userGameUpdated = closure
     }
 }
