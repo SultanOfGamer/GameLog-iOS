@@ -72,6 +72,7 @@ final class GameViewController: UIViewController {
 
     private let starRatingView: CosmosView = {
         let cosmosView = CosmosView()
+        cosmosView.isHidden = true
         cosmosView.rating = 0
         cosmosView.settings.emptyBorderColor = Style.StarRatingView.emptyColor
         cosmosView.settings.emptyColor = Style.StarRatingView.emptyColor
@@ -120,6 +121,7 @@ final class GameViewController: UIViewController {
 
         gameViewModel.bindGame(by: bindingGame)
         gameViewModel.bindUserGame(by: bindingUserGame)
+        starRatingView.didFinishTouchingCosmos = touchedStarRatingView(_:)
 
         gameViewModel.fetchGame(by: gameID)
         gameDetailView.setBasicData(name: name, cover: cover)
@@ -217,7 +219,7 @@ final class GameViewController: UIViewController {
 
     // MARK: - Action
 
-    @objc func touchedUserStatus() {
+    @objc private func touchedUserStatus() {
         statusButtonItem.isEnabled = false
 
         if gameViewModel.userGame?.status != nil {
@@ -233,6 +235,16 @@ final class GameViewController: UIViewController {
             }
             present(alertController, animated: true)
             statusButtonItem.isEnabled = true
+        }
+    }
+
+    private func touchedStarRatingView(_ rating: Double) {
+        if gameViewModel.userGame != nil {
+            if rating == 0 {
+                gameViewModel.removeUserGame()
+            }
+        } else if rating > 0 {
+            gameViewModel.addUserGame(rating: rating, status: .done)
         }
     }
 }
@@ -267,6 +279,7 @@ extension GameViewController {
 
     private func bindingUserGame(_ userGame: UserGame?) {
         DispatchQueue.main.async { [weak self] in
+            self?.starRatingView.isHidden = false
             self?.starRatingView.rating = (userGame?.rating ?? 0)
             self?.reviewBodyLabel.text = userGame?.memo
             if userGame == nil {

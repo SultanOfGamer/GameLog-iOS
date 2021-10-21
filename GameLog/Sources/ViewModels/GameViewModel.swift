@@ -55,16 +55,16 @@ final class GameViewModel {
         }
     }
 
-    func removeUserGame(completion: @escaping (String) -> Void) {
+    func removeUserGame(completion: ((String) -> Void)? = nil) {
         guard let id = userGame?.id else { return }
         let isWishlist = (userGame?.status == .wish)
         libraryService.remove(id: id, isWishlist: isWishlist) { [weak self] result in
             switch result {
             case let .success(message):
                 self?.userGame = nil
-                completion(message)
+                completion?(message)
             case let .failure(error):
-                completion(error.localizedDescription)
+                completion?(error.localizedDescription)
             }
         }
     }
