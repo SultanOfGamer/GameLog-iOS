@@ -54,7 +54,7 @@ struct LibraryService {
             body.updateValue(userGameStatus.rawValue, forKey: "userGameStatus")
         }
 
-        networkRepository.post(path: path, bodies: body) { (result: UpdateResult) in
+        networkRepository.post(path: path, body: body) { (result: UpdateResult) in
             completion(result)
         }
     }

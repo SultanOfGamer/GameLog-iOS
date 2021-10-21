@@ -58,10 +58,10 @@ struct NetworkRepository {
     }
 
     func post<ResponseType: Decodable>(path: String,
-                                       bodies: [String: String],
+                                       body: [String: String],
                                        completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
         guard let url = URL(base: baseURL, path: path),
-              let bodyData = String(bodies).data(using: .utf8) else { return }
+              let bodyData = String(body).data(using: .utf8) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = bodyData
