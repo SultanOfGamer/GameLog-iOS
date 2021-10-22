@@ -40,7 +40,7 @@ final class GameViewModel {
         }
     }
 
-    func addUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status = .done) {
+    func addUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status) {
         guard let gameID = game?.id else { return }
         libraryService.store(gameID: gameID,
                              userGameRating: rating,
@@ -55,12 +55,14 @@ final class GameViewModel {
         }
     }
 
-    func updateUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status = .done) {
-        guard let gameID = game?.id else { return }
-        libraryService.store(gameID: gameID,
-                             userGameRating: rating,
-                             userGameMemo: memo,
-                             userGameStatus: status) { [weak self] result in
+    func updateUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status) {
+        guard let gameID = game?.id,
+              let userGameID = userGame?.id else { return }
+        libraryService.update(gameID: gameID,
+                              userGameID: userGameID,
+                              userGameRating: rating,
+                              userGameMemo: memo,
+                              userGameStatus: status) { [weak self] result in
             switch result {
             case let .success(userGame):
                 self?.userGame = userGame
