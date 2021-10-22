@@ -9,6 +9,7 @@ struct LibraryService {
 
     typealias LoadResult = Result<Library, NetworkRepository.Error>
     typealias UpdateResult = Result<UserGame, NetworkRepository.Error>
+    typealias UpdatedLibraryResult = Result<UpdatedLibrary, NetworkRepository.Error>
 
     private let libraryPath: String = "game/library"
     private let wishlistPath: String = "game/wishlist"
@@ -55,9 +56,38 @@ struct LibraryService {
             }
         }
 
-        networkRepository.post(path: path,
-                               bodyType: .urlencoded(body: body)) { (result: Result<UpdatedLibrary,
-                                                                                    NetworkRepository.Error>) in
+        networkRepository.post(path: path, bodyType: .urlencoded(body: body)) { (result: UpdatedLibraryResult) in
+            switch result {
+            case let .success(updated):
+                completion(.success(updated.userGame))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func update(gameID: Int,
+                userGameID: Int,
+                userGameRating: Double? = nil,
+                userGameMemo: String? = nil,
+                userGameStatus: UserGame.Status,
+                completion: @escaping (UpdateResult) -> Void) {
+        var body: [String: String] = [
+            "gameId": gameID.description,
+            "id": userGameID.description,
+            "userGameStatus": userGameStatus.rawValue
+        ]
+
+        if let userGameRating = userGameRating {
+            body.updateValue(userGameRating.description, forKey: "userGameRating")
+            body.updateValue(UserGame.Status.done.rawValue, forKey: "userGameStatus")
+        }
+        if let userGameMemo = userGameMemo {
+            body.updateValue(userGameMemo, forKey: "userGameMemo")
+            body.updateValue(UserGame.Status.done.rawValue, forKey: "userGameStatus")
+        }
+
+        networkRepository.put(path: libraryPath, bodyType: .urlencoded(body: body)) { (result: UpdatedLibraryResult) in
             switch result {
             case let .success(updated):
                 completion(.success(updated.userGame))

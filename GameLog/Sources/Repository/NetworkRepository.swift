@@ -116,7 +116,7 @@ struct NetworkRepository {
                     completion(.failure(error))
                 }
             }
-        }
+        }.resume()
     }
 
     func delete(path: String,
