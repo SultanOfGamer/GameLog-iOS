@@ -239,9 +239,19 @@ final class GameViewController: UIViewController {
     }
 
     private func touchedStarRatingView(_ rating: Double) {
-        if gameViewModel.userGame != nil {
-            if rating == 0 {
-                gameViewModel.removeUserGame()
+        if let userGame = gameViewModel.userGame {
+            switch userGame.status {
+            case .wish:
+                if rating > 0 {
+                    gameViewModel.removeUserGame()
+                    gameViewModel.addUserGame(rating: rating, status: .done)
+                }
+            default:
+                if rating == 0 {
+                    gameViewModel.removeUserGame()
+                } else {
+                    gameViewModel.updateUserGame()
+                }
             }
         } else if rating > 0 {
             gameViewModel.addUserGame(rating: rating, status: .done)

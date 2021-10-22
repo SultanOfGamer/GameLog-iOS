@@ -55,7 +55,9 @@ struct LibraryService {
             }
         }
 
-        networkRepository.post(path: path, body: body) { (result: Result<UpdatedLibrary, NetworkRepository.Error>) in
+        networkRepository.post(path: path,
+                               bodyType: .urlencoded(body: body)) { (result: Result<UpdatedLibrary,
+                                                                                    NetworkRepository.Error>) in
             switch result {
             case let .success(updated):
                 completion(.success(updated.userGame))
@@ -71,7 +73,7 @@ struct LibraryService {
         let path = isWishlist ? wishlistPath : libraryPath
         let body: [String: String] = ["id": id.description]
 
-        networkRepository.delete(path: path, body: body) { result in
+        networkRepository.delete(path: path, bodyType: .urlencoded(body: body)) { result in
             switch result {
             case let .success(responsed):
                 completion(.success(responsed.message))

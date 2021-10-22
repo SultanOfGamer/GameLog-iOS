@@ -55,6 +55,21 @@ final class GameViewModel {
         }
     }
 
+    func updateUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status = .done) {
+        guard let gameID = game?.id else { return }
+        libraryService.store(gameID: gameID,
+                             userGameRating: rating,
+                             userGameMemo: memo,
+                             userGameStatus: status) { [weak self] result in
+            switch result {
+            case let .success(userGame):
+                self?.userGame = userGame
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
     func removeUserGame(completion: ((String) -> Void)? = nil) {
         guard let id = userGame?.id else { return }
         let isWishlist = (userGame?.status == .wish)

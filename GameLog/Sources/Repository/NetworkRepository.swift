@@ -30,12 +30,10 @@ struct NetworkRepository {
                                       query: [String: String]? = nil,
                                       completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
         guard let url = URL(base: baseURL, path: path, query: query) else { return }
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-
-        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
-            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
-        }
+        addUserSession(to: &request)
 
         session.dataTask(with: request) { data, response, error in
             checkSessionResult(data, response, error) { taskResult in
@@ -58,19 +56,13 @@ struct NetworkRepository {
     }
 
     func post<ResponseType: Decodable>(path: String,
-                                       body: [String: String],
+                                       bodyType: BodyType,
                                        completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
         guard let url = URL(base: baseURL, path: path),
-              let bodyData = String(body).data(using: .utf8) else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = bodyData
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue(bodyData.count.description, forHTTPHeaderField: "Content-Length")
+              var request = bodyType.urlRequest(url: url) else { return }
 
-        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
-            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
-        }
+        request.httpMethod = "POST"
+        addUserSession(to: &request)
 
         session.dataTask(with: request) { data, response, error in
             checkSessionResult(data, response, error) { taskResult in
@@ -97,24 +89,51 @@ struct NetworkRepository {
         }.resume()
     }
 
+    func put<ResponseType: Decodable>(path: String,
+                                      bodyType: BodyType,
+                                      completion: @escaping (Result<ResponseType, Self.Error>) -> Void) {
+        guard let url = URL(base: baseURL, path: path),
+              var request = bodyType.urlRequest(url: url) else { return }
+
+        request.httpMethod = "PUT"
+        addUserSession(to: &request)
+
+        session.dataTask(with: request) { data, response, error in
+            checkSessionResult(data, response, error) { taskResult in
+                switch taskResult {
+                case let .success((_, data)):
+                    guard let responsedData = data else {
+                        completion(.failure(.dataNotFound))
+                        return
+                    }
+                    guard let decodedData = try? decoder.decode(ResponseType.self, from: responsedData) else {
+                        completion(.failure(.dataNotDecodable))
+                        return
+                    }
+
+                    completion(.success(decodedData))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
     func delete(path: String,
-                body: [String: String]? = nil,
+                bodyType: BodyType? = nil,
                 completion: @escaping (Result<ResponseMessage, Self.Error>) -> Void) {
         guard let url = URL(base: baseURL, path: path) else { return }
 
-        var request = URLRequest(url: url)
+        var request: URLRequest
+
+        if let bodyType = bodyType,
+           let bodyRequest = bodyType.urlRequest(url: url) {
+            request = bodyRequest
+        } else {
+            request = URLRequest(url: url)
+        }
         request.httpMethod = "DELETE"
-
-        if let body = body,
-           let bodyData = String(body).data(using: .utf8) {
-            request.httpBody = bodyData
-            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue(bodyData.count.description, forHTTPHeaderField: "Content-Length")
-        }
-
-        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
-            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
-        }
+        addUserSession(to: &request)
 
         session.dataTask(with: request) { data, response, error in
             checkSessionResult(data, response, error) { taskResult in
@@ -135,6 +154,12 @@ struct NetworkRepository {
                 }
             }
         }.resume()
+    }
+
+    private func addUserSession(to request: inout URLRequest) {
+        if let loginCookieValue = UserDefaults.standard.value(forKey: "connect.sid") as? String {
+            request.addValue("connect.sid=\(loginCookieValue)", forHTTPHeaderField: "Cookie")
+        }
     }
 
     private func checkSessionResult(_ data: Data?, _ response: URLResponse?, _ error: Swift.Error?,
@@ -164,6 +189,28 @@ extension NetworkRepository {
         case dataNotDecodable
         case requestFailed(Swift.Error)
         case responseNotOK(Int)
+    }
+}
+
+// MARK: - Body Type
+
+extension NetworkRepository {
+
+    enum BodyType {
+        case urlencoded(body: [String: String])
+
+        func urlRequest(url: URL) -> URLRequest? {
+            switch self {
+            case let .urlencoded(body):
+                guard let bodyData = String(body).data(using: .utf8) else { return nil }
+
+                var request = URLRequest(url: url)
+                request.httpBody = bodyData
+                request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue(bodyData.count.description, forHTTPHeaderField: "Content-Length")
+                return request
+            }
+        }
     }
 }
 

@@ -23,7 +23,8 @@ struct UserService {
 
     func login(email: String, password: String, completion: @escaping (ServiceResult) -> Void) {
         networkRepository.post(path: loginPath,
-                               body: ["email": email, "password": password]) { (result: ServiceResult) in
+                               bodyType: .urlencoded(body: ["email": email,
+                                                            "password": password])) { (result: ServiceResult) in
             switch result {
             case let .success(responsed):
                 completion(.success(responsed))
