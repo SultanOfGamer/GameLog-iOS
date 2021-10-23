@@ -249,15 +249,27 @@ extension GameViewController {
 
     private func bindingUserGame(_ userGame: UserGame?) {
         DispatchQueue.main.async { [weak self] in
-            self?.starRatingView.isHidden = false
-            self?.starRatingView.rating = (userGame?.rating ?? 0)
-            self?.reviewBodyLabel.text = userGame?.memo
-            if userGame == nil {
-                self?.statusButtonItem.image = Style.BarButton.plusImage
-                self?.statusButtonItem.tintColor = .systemGreen
+            guard let self = self else { return }
+
+            let rating = userGame?.rating ?? 0
+            self.starRatingView.isHidden = false
+            self.starRatingView.rating = rating
+            self.reviewBodyLabel.text = userGame?.memo
+
+            if rating > 0 {
+                self.reviewTitleButton.isHidden = false
+                self.reviewBodyLabel.isHidden = false
             } else {
-                self?.statusButtonItem.image = Style.BarButton.minusImage
-                self?.statusButtonItem.tintColor = .systemRed
+                self.reviewTitleButton.isHidden = true
+                self.reviewBodyLabel.isHidden = true
+            }
+
+            if userGame == nil {
+                self.statusButtonItem.image = Style.BarButton.plusImage
+                self.statusButtonItem.tintColor = .systemGreen
+            } else {
+                self.statusButtonItem.image = Style.BarButton.minusImage
+                self.statusButtonItem.tintColor = .systemRed
             }
         }
     }

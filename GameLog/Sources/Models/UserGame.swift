@@ -93,6 +93,8 @@ extension UserGame {
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
             allCases.forEach { status in
+                guard status != .done else { return }
+
                 let action = UIAlertAction(title: status.name, style: .default) { _ in
                     complection(status)
                 }

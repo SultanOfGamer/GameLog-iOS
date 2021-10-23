@@ -118,7 +118,10 @@ extension ReviewViewController {
     }
 
     @objc private func updateReview() {
-        guard reviewTextView.text != (gameViewModel.userGame?.memo ?? "") else { return }
+        guard reviewTextView.text != (gameViewModel.userGame?.memo ?? ""),
+              let rating = gameViewModel.userGame?.rating,
+              rating > 0 else { return }
+
         let memo: String? = reviewTextView.text.isEmpty ? nil : reviewTextView.text
 
         if gameViewModel.userGame?.status == nil {
