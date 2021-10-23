@@ -43,6 +43,8 @@
 		02BC8A27271FAB5900453CEA /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A26271FAB5900453CEA /* SearchCell.swift */; };
 		02BC8A2927211BD000453CEA /* UserGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2827211BD000453CEA /* UserGame.swift */; };
 		02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */; };
+		02BC8A2E2724489200453CEA /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2D2724489200453CEA /* ReviewViewController.swift */; };
+		02BC8A30272494A300453CEA /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2F272494A300453CEA /* UIViewController+alert.swift */; };
 		02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */; };
 		02EC9C5B26F253CE00536893 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5A26F253CE00536893 /* Global.swift */; };
 		02EC9C5E26F25A0300536893 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5D26F25A0300536893 /* Game.swift */; };
@@ -102,6 +104,8 @@
 		02BC8A26271FAB5900453CEA /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		02BC8A2827211BD000453CEA /* UserGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGame.swift; sourceTree = "<group>"; };
 		02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedLibrary.swift; sourceTree = "<group>"; };
+		02BC8A2D2724489200453CEA /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		02BC8A2F272494A300453CEA /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
 		02EC9C5A26F253CE00536893 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		02EC9C5D26F25A0300536893 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */,
 				02122101270BE62500EE5066 /* UILabel+extensions.swift */,
 				02122103270BEB4D00EE5066 /* UIView+shadow.swift */,
+				02BC8A2F272494A300453CEA /* UIViewController+alert.swift */,
 				02BC8A1E271DD09B00453CEA /* URL+extension.swift */,
 				02BC8A20271DD20900453CEA /* String+extension.swift */,
 			);
@@ -221,8 +226,9 @@
 				0290E3B72706A19400085C72 /* GameViewController.swift */,
 				0226A50E26D3C7B400622AF5 /* HomeViewController.swift */,
 				0241D83726E5C723000A9E20 /* LibraryViewController.swift */,
-				0241D83926E5C74D000A9E20 /* WishlistViewController.swift */,
+				02BC8A2D2724489200453CEA /* ReviewViewController.swift */,
 				0241D83B26E5C768000A9E20 /* SearchViewController.swift */,
+				0241D83926E5C74D000A9E20 /* WishlistViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -467,10 +473,12 @@
 				0268239F2715A9D30028C1E1 /* ResponseMessage.swift in Sources */,
 				02EC9C5B26F253CE00536893 /* Global.swift in Sources */,
 				02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */,
+				02BC8A2E2724489200453CEA /* ReviewViewController.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,
 				02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */,
 				0241D83A26E5C74D000A9E20 /* WishlistViewController.swift in Sources */,
+				02BC8A30272494A300453CEA /* UIViewController+alert.swift in Sources */,
 				0241D83826E5C723000A9E20 /* LibraryViewController.swift in Sources */,
 				02BC8A23271F130F00453CEA /* GameType.swift in Sources */,
 				02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */,

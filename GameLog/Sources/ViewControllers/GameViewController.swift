@@ -99,11 +99,12 @@ final class GameViewController: UIViewController {
         return label
     }()
 
-    private let reviewTitleButton: UIButton = {
+    private lazy var reviewTitleButton: UIButton = {
         let button = UIButton()
         button.setTitle(Style.ReviewLabel.title, for: .normal)
         button.setTitleColor(Global.Style.mainColor, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
+        button.addTarget(self, action: #selector(touchedReviewButton), for: .touchUpInside)
         return button
     }()
 
@@ -216,39 +217,6 @@ final class GameViewController: UIViewController {
         gameStackView.addArrangedSubview(reviewTitleButton)
         gameStackView.addArrangedSubview(reviewBodyLabel)
     }
-
-    // MARK: - Action
-
-    @objc private func touchedUserStatus() {
-        statusButtonItem.isEnabled = false
-
-        if gameViewModel.userGame?.status != nil {
-            gameViewModel.removeUserGame { [weak self] message in
-                DispatchQueue.main.async {
-                    self?.statusButtonItem.isEnabled = true
-                }
-                print(message)
-            }
-        } else {
-            let alertController = UserGame.Status.alertController { [weak self] userStatus in
-                self?.gameViewModel.addUserGame(status: userStatus)
-            }
-            present(alertController, animated: true)
-            statusButtonItem.isEnabled = true
-        }
-    }
-
-    private func touchedStarRatingView(_ rating: Double) {
-        if let userGame = gameViewModel.userGame {
-            if rating > 0 {
-                gameViewModel.updateUserGame(rating: rating, status: .done)
-            } else if userGame.status != .wish {
-                gameViewModel.removeUserGame()
-            }
-        } else if rating > 0 {
-            gameViewModel.addUserGame(rating: rating, status: .done)
-        }
-    }
 }
 
 // MARK: - Binding
@@ -292,5 +260,47 @@ extension GameViewController {
                 self?.statusButtonItem.tintColor = .systemRed
             }
         }
+    }
+}
+
+// MARK: - Action
+
+extension GameViewController {
+
+    private func touchedStarRatingView(_ rating: Double) {
+        if let userGame = gameViewModel.userGame {
+            if rating > 0 {
+                gameViewModel.updateUserGame(rating: rating, status: .done)
+            } else if userGame.status != .wish {
+                gameViewModel.removeUserGame()
+            }
+        } else if rating > 0 {
+            gameViewModel.addUserGame(rating: rating, status: .done)
+        }
+    }
+
+    @objc private func touchedUserStatus() {
+        statusButtonItem.isEnabled = false
+
+        if gameViewModel.userGame?.status != nil {
+            gameViewModel.removeUserGame { [weak self] message in
+                DispatchQueue.main.async {
+                    self?.statusButtonItem.isEnabled = true
+                }
+                print(message)
+            }
+        } else {
+            let alertController = UserGame.Status.alertController { [weak self] userStatus in
+                self?.gameViewModel.addUserGame(status: userStatus)
+            }
+            present(alertController, animated: true)
+            statusButtonItem.isEnabled = true
+        }
+    }
+
+    @objc private func touchedReviewButton() {
+        let reviewViewController = ReviewViewController(gameViewModel: gameViewModel)
+        let containerViewController = UINavigationController(rootViewController: reviewViewController)
+        present(containerViewController, animated: true)
     }
 }

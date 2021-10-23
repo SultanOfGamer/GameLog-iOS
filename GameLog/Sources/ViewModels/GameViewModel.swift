@@ -40,7 +40,10 @@ final class GameViewModel {
         }
     }
 
-    func addUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status) {
+    func addUserGame(rating: Double? = nil,
+                     memo: String? = nil,
+                     status: UserGame.Status,
+                     completion: ((NetworkRepository.Error?) -> Void)? = nil) {
         guard let gameID = game?.id else { return }
         libraryService.store(gameID: gameID,
                              userGameRating: rating,
@@ -49,13 +52,17 @@ final class GameViewModel {
             switch result {
             case let .success(userGame):
                 self?.userGame = userGame
+                completion?(nil)
             case let .failure(error):
-                print(error)
+                completion?(error)
             }
         }
     }
 
-    func updateUserGame(rating: Double? = nil, memo: String? = nil, status: UserGame.Status) {
+    func updateUserGame(rating: Double? = nil,
+                        memo: String? = nil,
+                        status: UserGame.Status,
+                        completion: ((NetworkRepository.Error?) -> Void)? = nil) {
         guard let gameID = game?.id,
               let userGameID = userGame?.id else { return }
         libraryService.update(gameID: gameID,
@@ -66,8 +73,9 @@ final class GameViewModel {
             switch result {
             case let .success(userGame):
                 self?.userGame = userGame
+                completion?(nil)
             case let .failure(error):
-                print(error)
+                completion?(error)
             }
         }
     }
