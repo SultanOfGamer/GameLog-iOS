@@ -19,6 +19,10 @@ class LibraryCell: UICollectionViewCell {
                 dataTask = NetworkRepository.fetchImage(from: game.cover.url) { [weak self] image in
                     DispatchQueue.main.async {
                         self?.coverImageView.image = image
+
+                        if game.userGameStatus != .wish {
+                            self?.statusLabel.text = game.userGameStatus?.rawValue.uppercased()
+                        }
                     }
                 }
                 dataTask?.resume()
@@ -35,11 +39,24 @@ class LibraryCell: UICollectionViewCell {
         return imageView
     }()
 
+    let statusLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = Global.Style.mainColor
+        label.font = .preferredFont(forTextStyle: .body, weight: .bold)
+        label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     // MARK: - Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCoverImageView()
+        configureStatusLabel()
     }
 
     required init?(coder: NSCoder) {
@@ -64,6 +81,15 @@ class LibraryCell: UICollectionViewCell {
             coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             coverImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             coverImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+    }
+
+    private func configureStatusLabel() {
+        contentView.addSubview(statusLabel)
+        NSLayoutConstraint.activate([
+            statusLabel.bottomAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: -5),
+            statusLabel.centerXAnchor.constraint(equalTo: coverImageView.centerXAnchor),
+            statusLabel.widthAnchor.constraint(equalTo: coverImageView.widthAnchor, multiplier: 0.8)
         ])
     }
 }

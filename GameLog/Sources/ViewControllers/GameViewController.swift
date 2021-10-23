@@ -89,7 +89,7 @@ final class GameViewController: UIViewController {
 
     private let summaryTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title1, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .title2, weight: .bold)
         label.text = Style.SummaryLabel.title
         return label
     }()
@@ -105,7 +105,7 @@ final class GameViewController: UIViewController {
         let button = UIButton()
         button.setTitle(Style.ReviewLabel.title, for: .normal)
         button.setTitleColor(Global.Style.mainColor, for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title1, weight: .bold)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title2, weight: .bold)
         button.addTarget(self, action: #selector(touchedReviewButton), for: .touchUpInside)
         return button
     }()
@@ -250,6 +250,7 @@ extension GameViewController {
         NetworkRepository.fetchImage(from: game.cover, completion: { [weak self] image in
             DispatchQueue.main.async {
                 self?.gameDetailView.coverImageView.image = image
+                self?.gameDetailView.statusLabel.text = game.userGame?.status.rawValue.uppercased()
             }
         })
 
@@ -267,6 +268,8 @@ extension GameViewController {
     private func bindingUserGame(_ userGame: UserGame?) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+
+            self.gameDetailView.statusLabel.text = userGame?.status.rawValue.uppercased()
 
             let rating = userGame?.rating ?? 0
             self.starRatingView.isHidden = false

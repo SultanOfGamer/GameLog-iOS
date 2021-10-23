@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
 
-    static func preferredFont(forTextStyle: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
-        return .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: weight)
+    static func preferredFont(forTextStyle style: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
+        return .systemFont(ofSize: UIFont.preferredFont(forTextStyle: style).pointSize, weight: weight)
     }
 }

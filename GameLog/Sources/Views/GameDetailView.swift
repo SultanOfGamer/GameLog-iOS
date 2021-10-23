@@ -34,6 +34,18 @@ final class GameDetailView: UIView {
     let screenshotImageView = UIImageView()
     let coverImageView = UIImageView()
 
+    let statusLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = Global.Style.mainColor
+        label.font = .preferredFont(forTextStyle: .footnote, weight: .bold)
+        label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
@@ -63,6 +75,7 @@ final class GameDetailView: UIView {
         super.init(frame: .zero)
         configureScreenshotImageView()
         configureCoverImageView()
+        configureStatusLabel()
         configureLabelStackView()
     }
 
@@ -103,6 +116,15 @@ final class GameDetailView: UIView {
                                                   multiplier: Style.CoverImageView.widthRatio),
             coverImageView.heightAnchor.constraint(lessThanOrEqualTo: coverImageView.widthAnchor,
                                                    multiplier: Style.CoverImageView.heightRatio)
+        ])
+    }
+
+    private func configureStatusLabel() {
+        addSubview(statusLabel)
+        NSLayoutConstraint.activate([
+            statusLabel.bottomAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: -8),
+            statusLabel.centerXAnchor.constraint(equalTo: coverImageView.centerXAnchor),
+            statusLabel.widthAnchor.constraint(equalTo: coverImageView.widthAnchor, multiplier: 0.8)
         ])
     }
 
