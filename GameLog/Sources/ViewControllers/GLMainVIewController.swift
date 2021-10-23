@@ -21,9 +21,9 @@ class GLMainViewController: UIViewController {
         return ("", "")
     }
 
-    private let userButton: UIButton = {
+    private lazy var userButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(showUserViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSettingViewController), for: .touchUpInside)
         button.layer.cornerRadius = Style.UserButton.size / 2
         button.layer.masksToBounds = true
         button.setImage(UIImage(systemName: Style.UserButton.placeholderName), for: .normal)
@@ -90,5 +90,9 @@ class GLMainViewController: UIViewController {
 
     // MARK: - Action
 
-    @objc private func showUserViewController() { }
+    @objc private func showSettingViewController() {
+        let settingViewController = SettingViewController()
+        let containerViewController = UINavigationController(rootViewController: settingViewController)
+        present(containerViewController, animated: true)
+    }
 }
