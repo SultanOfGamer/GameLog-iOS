@@ -24,7 +24,7 @@ final class GameViewController: UIViewController {
         }
 
         enum GameStackView {
-            static let spacing: CGFloat = 10
+            static let spacing: CGFloat = 20
             static let horizontalInset: CGFloat = 16
         }
 
@@ -33,7 +33,7 @@ final class GameViewController: UIViewController {
         }
 
         enum ReviewLabel {
-            static let title: String = "리뷰"
+            static let title: String = "나의 리뷰"
         }
     }
 
@@ -88,13 +88,15 @@ final class GameViewController: UIViewController {
     }()
 
     private let summaryTitleLabel: UILabel = {
-        let label = UILabel(textStyle: .title1)
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .title1, weight: .bold)
         label.text = Style.SummaryLabel.title
         return label
     }()
 
     private let summaryBodyLabel: UILabel = {
-        let label = UILabel(textStyle: .body)
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
         return label
     }()
@@ -103,15 +105,32 @@ final class GameViewController: UIViewController {
         let button = UIButton()
         button.setTitle(Style.ReviewLabel.title, for: .normal)
         button.setTitleColor(Global.Style.mainColor, for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title1, weight: .bold)
         button.addTarget(self, action: #selector(touchedReviewButton), for: .touchUpInside)
         return button
     }()
 
     private let reviewBodyLabel: UILabel = {
-        let label = UILabel(textStyle: .body)
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var summaryStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [summaryTitleLabel, summaryBodyLabel])
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
+    }()
+
+    private lazy var reviewStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [reviewTitleButton, reviewBodyLabel])
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        return stackView
     }()
 
     // MARK: - Initializer
@@ -212,10 +231,8 @@ final class GameViewController: UIViewController {
             gameStackView.widthAnchor.constraint(lessThanOrEqualTo: gameScrollView.widthAnchor)
         ])
 
-        gameStackView.addArrangedSubview(summaryTitleLabel)
-        gameStackView.addArrangedSubview(summaryBodyLabel)
-        gameStackView.addArrangedSubview(reviewTitleButton)
-        gameStackView.addArrangedSubview(reviewBodyLabel)
+        gameStackView.addArrangedSubview(reviewStackView)
+        gameStackView.addArrangedSubview(summaryStackView)
     }
 }
 
@@ -257,11 +274,9 @@ extension GameViewController {
             self.reviewBodyLabel.text = userGame?.memo
 
             if rating > 0 {
-                self.reviewTitleButton.isHidden = false
-                self.reviewBodyLabel.isHidden = false
+                self.reviewStackView.isHidden = false
             } else {
-                self.reviewTitleButton.isHidden = true
-                self.reviewBodyLabel.isHidden = true
+                self.reviewStackView.isHidden = true
             }
 
             if userGame == nil {

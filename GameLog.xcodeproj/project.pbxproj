@@ -46,6 +46,7 @@
 		02BC8A2E2724489200453CEA /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2D2724489200453CEA /* ReviewViewController.swift */; };
 		02BC8A30272494A300453CEA /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A2F272494A300453CEA /* UIViewController+alert.swift */; };
 		02BC8A3227249C2000453CEA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A3127249C2000453CEA /* SettingViewController.swift */; };
+		02BC8A342724A83800453CEA /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A332724A83800453CEA /* UIFont+extension.swift */; };
 		02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */; };
 		02EC9C5B26F253CE00536893 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5A26F253CE00536893 /* Global.swift */; };
 		02EC9C5E26F25A0300536893 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC9C5D26F25A0300536893 /* Game.swift */; };
@@ -108,6 +109,7 @@
 		02BC8A2D2724489200453CEA /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		02BC8A2F272494A300453CEA /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		02BC8A3127249C2000453CEA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		02BC8A332724A83800453CEA /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		02D811A226EEE4D100FFC3FC /* GLMainVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMainVIewController.swift; sourceTree = "<group>"; };
 		02EC9C5A26F253CE00536893 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		02EC9C5D26F25A0300536893 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				02682395271445940028C1E1 /* Date+formatter.swift */,
 				02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */,
+				02BC8A332724A83800453CEA /* UIFont+extension.swift */,
 				02122101270BE62500EE5066 /* UILabel+extensions.swift */,
 				02122103270BEB4D00EE5066 /* UIView+shadow.swift */,
 				02BC8A2F272494A300453CEA /* UIViewController+alert.swift */,
@@ -489,6 +492,7 @@
 				02EC9C6526F3AE5000536893 /* Section.swift in Sources */,
 				02BC8A21271DD20900453CEA /* String+extension.swift in Sources */,
 				02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */,
+				02BC8A342724A83800453CEA /* UIFont+extension.swift in Sources */,
 				02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */,
 				0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */,
 				026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */,

@@ -41,10 +41,15 @@ final class GameDetailView: UIView {
         return label
     }()
 
-    let releaseDateLabel = UILabel(textStyle: .caption1)
+    let releaseDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .caption1)
+        return label
+    }()
 
     let aggregatedLabel: UILabel = {
-        let label = UILabel(textStyle: .caption1)
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = Global.Style.mainColor
         return label
     }()
