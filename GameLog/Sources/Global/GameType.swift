@@ -60,10 +60,81 @@ enum GameType: String {
     case mystery = "Mystery"
     case romance = "Romance"
 
+    // MARK: - Computed Property
+
+    var category: String? {
+        switch self {
+        case .pointAndClick, .fighting, .shooter, .music, .platform, .puzzle, .racing, .rts, .rpg, .simulator,
+                .sport, .strategy, .tbs, .tactical, .hackAndSlash, .quizTrivia, .pinball, .adventure, .indie, .arcade,
+                .visualNovel, .cardAndBoardGame, .moba:
+            return "genres"
+        case .action, .fantasy, .scienceFiction, .horror, .thriller, .survival, .historical, .stealth, .comedy,
+                .business, .drama, .nonFiction, .sandbox, .educational, .kids, .openWorld, .warfare, .party, .fourX,
+                .erotic, .mystery, .romance:
+            return "themes"
+        case .popular, .recommand:
+            return nil
+        }
+    }
+
+    var id: Int? {
+        switch self {
+        case .pointAndClick: return 2
+        case .fighting: return 4
+        case .shooter: return 5
+        case .music: return 7
+        case .platform: return 8
+        case .puzzle: return 9
+        case .racing: return 10
+        case .rts: return 11
+        case .rpg: return 12
+        case .simulator: return 13
+        case .sport: return 14
+        case .strategy: return 15
+        case .tbs: return 16
+        case .tactical: return 24
+        case .hackAndSlash: return 25
+        case .quizTrivia: return 26
+        case .pinball: return 30
+        case .adventure: return 31
+        case .indie: return 32
+        case .arcade: return 33
+        case .visualNovel: return 34
+        case .cardAndBoardGame: return 35
+        case .moba: return 36
+
+        case .action: return 1
+        case .fantasy: return 17
+        case .scienceFiction: return 18
+        case .horror: return 19
+        case .thriller: return 20
+        case .survival: return 21
+        case .historical: return 22
+        case .stealth: return 23
+        case .comedy: return 27
+        case .business: return 28
+        case .drama: return 31
+        case .nonFiction: return 32
+        case .sandbox: return 33
+        case .educational: return 34
+        case .kids: return 35
+        case .openWorld: return 38
+        case .warfare: return 39
+        case .party: return 40
+        case .fourX: return 41
+        case .erotic: return 42
+        case .mystery: return 43
+        case .romance: return 44
+
+        default: return nil
+        }
+    }
+
     var name: String {
         switch self {
         case .popular: return "인기 게임"
         case .recommand: return "추천 게임"
+
         case .action: return "액션"
         case .adventure: return "어드벤처"
         case .arcade: return "아케이드"
