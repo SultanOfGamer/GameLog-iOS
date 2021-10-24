@@ -146,13 +146,13 @@
 			isa = PBXGroup;
 			children = (
 				02682395271445940028C1E1 /* Date+formatter.swift */,
+				02BC8A20271DD20900453CEA /* String+extension.swift */,
 				02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */,
 				02BC8A332724A83800453CEA /* UIFont+extension.swift */,
 				02122101270BE62500EE5066 /* UILabel+extensions.swift */,
 				02122103270BEB4D00EE5066 /* UIView+shadow.swift */,
 				02BC8A2F272494A300453CEA /* UIViewController+alert.swift */,
 				02BC8A1E271DD09B00453CEA /* URL+extension.swift */,
-				02BC8A20271DD20900453CEA /* String+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,9 +235,9 @@
 				0290E3B72706A19400085C72 /* GameViewController.swift */,
 				0226A50E26D3C7B400622AF5 /* HomeViewController.swift */,
 				0241D83726E5C723000A9E20 /* LibraryViewController.swift */,
-				02BC8A3127249C2000453CEA /* SettingViewController.swift */,
 				02BC8A2D2724489200453CEA /* ReviewViewController.swift */,
 				0241D83B26E5C768000A9E20 /* SearchViewController.swift */,
+				02BC8A3127249C2000453CEA /* SettingViewController.swift */,
 				0241D83926E5C74D000A9E20 /* WishlistViewController.swift */,
 			);
 			path = ViewControllers;
@@ -279,6 +279,47 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		029630AD2725493F00564030 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		029630AE2725495200564030 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				028856DC270A241F00A52029 /* GameDetailView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		029630AF2725495E00564030 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */,
+				026823A82716884C0028C1E1 /* LibraryCell.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		029630B02725496600564030 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				02BC8A26271FAB5900453CEA /* SearchCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		029630B12725498A00564030 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				02EC9C6226F3484200536893 /* SectionHeaderView.swift */,
+				02EC9C6026F3450D00536893 /* GameCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		02BC8A2A27211C8300453CEA /* DTO */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,12 +356,11 @@
 		02EC9C5F26F344CE00536893 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				028856DC270A241F00A52029 /* GameDetailView.swift */,
-				02EC9C6026F3450D00536893 /* GameCell.swift */,
-				026823A82716884C0028C1E1 /* LibraryCell.swift */,
-				02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */,
-				02BC8A26271FAB5900453CEA /* SearchCell.swift */,
-				02EC9C6226F3484200536893 /* SectionHeaderView.swift */,
+				029630AE2725495200564030 /* Game */,
+				029630B12725498A00564030 /* Home */,
+				029630AF2725495E00564030 /* Library */,
+				029630B02725496600564030 /* Search */,
+				029630AD2725493F00564030 /* Setting */,
 			);
 			path = Views;
 			sourceTree = "<group>";
