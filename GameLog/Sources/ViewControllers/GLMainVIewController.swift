@@ -21,12 +21,25 @@ class GLMainViewController: UIViewController {
         return ("", "")
     }
 
+    private var profile: Profile?
+    private var profileImage: UIImage? {
+        didSet {
+            if let profileImage = profileImage {
+                userButton.layer.borderWidth = 2
+                userButton.setImage(profileImage, for: .normal)
+            } else {
+                userButton.layer.borderWidth = 0
+                userButton.setImage(UIImage(systemName: Style.UserButton.placeholderName), for: .normal)
+            }
+        }
+    }
+
     private lazy var userButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(showSettingViewController), for: .touchUpInside)
+        button.layer.borderColor = Global.Style.mainColor.cgColor
         button.layer.cornerRadius = Style.UserButton.size / 2
         button.layer.masksToBounds = true
-        button.setImage(UIImage(systemName: Style.UserButton.placeholderName), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: Style.UserButton.size), forImageIn: .normal)
         button.tintColor = Global.Style.mainColor
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +58,11 @@ class GLMainViewController: UIViewController {
     }
 
     // MARK: - View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchProfile()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,10 +106,32 @@ class GLMainViewController: UIViewController {
         }
     }
 
+    private func fetchProfile() {
+        profileImage = nil
+        UserService.shared.profile { [weak self] result in
+            guard let self = self,
+                  let profile = try? result.get() else { return }
+            self.profile = profile
+            if let profileImagePath = profile.profileImagePath {
+                UserService.shared.profileImage(path: profileImagePath) { image in
+                    DispatchQueue.main.async {
+                        self.profileImage = image
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.profileImage = nil
+                }
+            }
+        }
+    }
+
     // MARK: - Action
 
     @objc private func showSettingViewController() {
-        let settingViewController = SettingViewController()
+        guard let profile = profile else { return }
+
+        let settingViewController = SettingViewController(profile: profile, profileImage: profileImage)
         let containerViewController = UINavigationController(rootViewController: settingViewController)
         present(containerViewController, animated: true)
     }

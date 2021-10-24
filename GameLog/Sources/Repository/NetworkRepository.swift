@@ -13,7 +13,7 @@ struct NetworkRepository {
 
     static let shared = NetworkRepository()
 
-    private let baseURL: String = "http://ec2-18-219-79-225.us-east-2.compute.amazonaws.com:3000"
+    let baseURL: String = "http://ec2-18-219-79-225.us-east-2.compute.amazonaws.com:3000"
     private let session: URLSession
     private let okStatusCodes: ClosedRange<Int> = (200...299)
 

@@ -5,11 +5,12 @@
 //  Created by duckbok on 2021/10/12.
 //
 
-import Foundation
+import UIKit
 
 struct UserService {
 
-    typealias ServiceResult = Result<ResponseMessage, NetworkRepository.Error>
+    typealias MessageResult = Result<ResponseMessage, NetworkRepository.Error>
+    typealias ProfileResult = Result<Profile, NetworkRepository.Error>
 
     static let shared = UserService()
 
@@ -29,10 +30,19 @@ struct UserService {
         self.networkRepository = networkRepository
     }
 
-    func login(email: String, password: String, completion: @escaping (ServiceResult) -> Void) {
+    func profile(completion: @escaping (ProfileResult) -> Void) {
+        networkRepository.get(path: profilePath, completion: completion)
+    }
+
+    func profileImage(path: String, completion: @escaping (UIImage) -> Void) {
+        let url = networkRepository.baseURL + path
+        NetworkRepository.fetchImage(from: url, completion: completion)
+    }
+
+    func login(email: String, password: String, completion: @escaping (MessageResult) -> Void) {
         networkRepository.post(path: loginPath,
                                bodyType: .urlencoded(body: ["email": email,
-                                                            "password": password])) { (result: ServiceResult) in
+                                                            "password": password])) { (result: MessageResult) in
             switch result {
             case let .success(responsed):
                 completion(.success(responsed))
