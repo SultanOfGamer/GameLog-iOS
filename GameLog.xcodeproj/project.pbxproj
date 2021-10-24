@@ -33,6 +33,7 @@
 		0290E3B82706A19400085C72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290E3B72706A19400085C72 /* GameViewController.swift */; };
 		0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 0290E3BA2706E76B00085C72 /* Cosmos */; };
 		029630A927252DD800564030 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029630A827252DD800564030 /* Category.swift */; };
+		029630AC2725302100564030 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029630AB2725302100564030 /* Profile.swift */; };
 		02BC8A1527184A4C00453CEA /* LibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */; };
 		02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */; };
 		02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A18271D0C3D00453CEA /* SearchService.swift */; };
@@ -97,6 +98,7 @@
 		028856DC270A241F00A52029 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 		0290E3B72706A19400085C72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		029630A827252DD800564030 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		029630AB2725302100564030 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHeaderView.swift; sourceTree = "<group>"; };
 		02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+loading.swift"; sourceTree = "<group>"; };
 		02BC8A18271D0C3D00453CEA /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				029630A827252DD800564030 /* Category.swift */,
 				02EC9C5D26F25A0300536893 /* Game.swift */,
 				026823A2271623700028C1E1 /* Library.swift */,
+				029630AB2725302100564030 /* Profile.swift */,
 				02BC8A1A271D0FFC00453CEA /* Search.swift */,
 				02EC9C6426F3AE5000536893 /* Section.swift */,
 				02BC8A2827211BD000453CEA /* UserGame.swift */,
@@ -483,6 +486,7 @@
 				0268239F2715A9D30028C1E1 /* ResponseMessage.swift in Sources */,
 				02EC9C5B26F253CE00536893 /* Global.swift in Sources */,
 				02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */,
+				029630AC2725302100564030 /* Profile.swift in Sources */,
 				02BC8A2E2724489200453CEA /* ReviewViewController.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,

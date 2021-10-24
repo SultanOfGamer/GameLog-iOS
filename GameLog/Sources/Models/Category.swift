@@ -5,7 +5,7 @@
 //  Created by duckbok on 2021/10/24.
 //
 
-struct Category: Codable {
+struct Category: Codable, CustomStringConvertible {
 
     let category: String
     let id: Int
@@ -20,7 +20,7 @@ struct Category: Codable {
         self.name = gameType.rawValue
     }
 
-    var gameType: GameType? {
-        return .init(rawValue: name)
+    var description: String {
+        return GameType(rawValue: name)?.name ?? name
     }
 }

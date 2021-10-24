@@ -14,6 +14,14 @@ struct UserService {
     static let shared = UserService()
 
     private let loginPath: String = "auth/login"
+    private let logoutPath: String = "auth/logout"
+    private let signupPath: String = "auth/signup"
+    private let validationPath: String = "auth/validation"
+
+    private let profilePath: String = "profile"
+    private let preferCategoryPath: String = "profile/category"
+    private let profileImagePath: String = "profile/image"
+    private let withdrawalPath: String = "profile"
 
     private let networkRepository: NetworkRepository
 
