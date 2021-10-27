@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,9 +31,9 @@
 		026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026823AA271691D70028C1E1 /* LibraryViewModel.swift */; };
 		028856DD270A241F00A52029 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028856DC270A241F00A52029 /* GameDetailView.swift */; };
 		0290E3B82706A19400085C72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290E3B72706A19400085C72 /* GameViewController.swift */; };
-		0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 0290E3BA2706E76B00085C72 /* Cosmos */; };
 		029630A927252DD800564030 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029630A827252DD800564030 /* Category.swift */; };
 		029630AC2725302100564030 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029630AB2725302100564030 /* Profile.swift */; };
+		029630B42725627F00564030 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029630B32725627F00564030 /* CosmosDistrib.swift */; };
 		02BC8A1527184A4C00453CEA /* LibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */; };
 		02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */; };
 		02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8A18271D0C3D00453CEA /* SearchService.swift */; };
@@ -99,6 +99,7 @@
 		0290E3B72706A19400085C72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		029630A827252DD800564030 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		029630AB2725302100564030 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		029630B32725627F00564030 /* CosmosDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		02BC8A1427184A4C00453CEA /* LibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHeaderView.swift; sourceTree = "<group>"; };
 		02BC8A1627189F8700453CEA /* UIActivityIndicatorView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+loading.swift"; sourceTree = "<group>"; };
 		02BC8A18271D0C3D00453CEA /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0290E3BB2706E76B00085C72 /* Cosmos in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +332,7 @@
 		02EC9C5926F253B100536893 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				029630B32725627F00564030 /* CosmosDistrib.swift */,
 				02EC9C5A26F253CE00536893 /* Global.swift */,
 				02BC8A22271F130F00453CEA /* GameType.swift */,
 			);
@@ -394,7 +395,6 @@
 			);
 			name = GameLog;
 			packageProductDependencies = (
-				0290E3BA2706E76B00085C72 /* Cosmos */,
 			);
 			productName = GameLog;
 			productReference = 0226A50726D3C7B400622AF5 /* GameLog.app */;
@@ -446,7 +446,6 @@
 			);
 			mainGroup = 0226A4FE26D3C7B400622AF5;
 			packageReferences = (
-				0290E3B92706E76B00085C72 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 0226A50826D3C7B400622AF5 /* Products */;
 			projectDirPath = "";
@@ -540,6 +539,7 @@
 				02BC8A21271DD20900453CEA /* String+extension.swift in Sources */,
 				02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */,
 				02BC8A342724A83800453CEA /* UIFont+extension.swift in Sources */,
+				029630B42725627F00564030 /* CosmosDistrib.swift in Sources */,
 				02D811A326EEE4D100FFC3FC /* GLMainVIewController.swift in Sources */,
 				0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */,
 				026823AB271691D70028C1E1 /* LibraryViewModel.swift in Sources */,
@@ -813,25 +813,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0290E3B92706E76B00085C72 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/Cosmos";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 23.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0290E3BA2706E76B00085C72 /* Cosmos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0290E3B92706E76B00085C72 /* XCRemoteSwiftPackageReference "Cosmos" */;
-			productName = Cosmos;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0226A4FF26D3C7B400622AF5 /* Project object */;
 }
