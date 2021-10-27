@@ -133,7 +133,7 @@ class GLMainViewController: UIViewController {
     @objc private func showSettingViewController() {
         guard let profile = profile else { return }
 
-        let settingViewController = SettingViewController(profile: profile, profileImage: profileImage)
+        let settingViewController = SettingViewController(profile: profile, profileImage: userButton.currentImage)
         let containerViewController = UINavigationController(rootViewController: settingViewController)
         present(containerViewController, animated: true)
     }

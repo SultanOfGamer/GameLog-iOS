@@ -19,8 +19,8 @@ struct Game {
     let platforms: [String]
     let themes: [String]
     let storyline: String?
-    let summary: String
-    let cover: String
+    let summary: String?
+    let cover: String?
     let screenshot: String
     let userGame: UserGame?
 
@@ -34,8 +34,8 @@ struct Game {
          platforms: [String],
          themes: [String],
          storyline: String? = nil,
-         summary: String,
-         cover: String,
+         summary: String? = nil,
+         cover: String? = nil,
          screenshot: String,
          userGame: UserGame? = nil) {
         self.id = id
@@ -77,14 +77,20 @@ extension Game: Decodable {
         let companies = try gameDetail.decode([InvolvedCompany].self, forKey: .involvedCompanies)
         involvedCompanies = companies.map { $0.company.name }
 
-        releaseDate = Date(timeIntervalSince1970: try gameDetail.decode(TimeInterval.self, forKey: .releaseDate))
+        if let releaseTime = try? gameDetail.decode(TimeInterval.self, forKey: .releaseDate) {
+            releaseDate = Date(timeIntervalSince1970: releaseTime)
+        } else {
+            let releaseTime = try gameDetail.decode(TimeInterval.self, forKey: .secondaryReleaseDate)
+            releaseDate = Date(timeIntervalSince1970: releaseTime)
+        }
+
         gameModes = try gameDetail.decode([GameMode].self, forKey: .gameModes).map { $0.name }
         genres = try gameDetail.decode([Genre].self, forKey: .genres).map { $0.name }
         platforms = try gameDetail.decode([Platform].self, forKey: .platforms).map { $0.name }
         themes = try gameDetail.decode([Theme].self, forKey: .themes).map { $0.name }
         storyline = try? gameDetail.decode(String.self, forKey: .storyline)
-        summary = try gameDetail.decode(String.self, forKey: .summary)
-        cover = try gameDetail.decode([Cover].self, forKey: .cover)[0].url
+        summary = try? gameDetail.decode(String.self, forKey: .summary)
+        cover = try gameDetail.decode([Cover].self, forKey: .cover).first?.url
         screenshot = try gameDetail.decode([Screenshot].self, forKey: .screenshots).randomElement()!.url
     }
 
@@ -98,6 +104,7 @@ extension Game: Decodable {
         case aggregatedCount = "aggregated_rating_count"
         case involvedCompanies = "involved_companies"
         case releaseDate = "first_release_date"
+        case secondaryReleaseDate = "created_at"
         case gameModes = "game_modes"
         case genres, platforms, themes, storyline, summary, cover, screenshots
     }

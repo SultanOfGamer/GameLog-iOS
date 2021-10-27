@@ -17,7 +17,8 @@ final class SearchCell: UICollectionViewCell {
         didSet {
             if let game = game {
                 titleLabel.text = game.name
-                dataTask = NetworkRepository.fetchImage(from: game.cover.url) { [weak self] image in
+                guard let cover = game.cover else { return }
+                dataTask = NetworkRepository.fetchImage(from: cover.url) { [weak self] image in
                     DispatchQueue.main.async {
                         self?.coverImageView.image = image
                     }
