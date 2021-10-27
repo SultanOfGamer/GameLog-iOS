@@ -58,7 +58,10 @@ final class HomeViewController: GLMainViewController {
 
         view.addSubview(loadingIndicator)
         loadingIndicator.startLoading(to: homeCollectionView)
-        homeViewModel.loadSections()
+
+        UserService.testLogin {
+            self.homeViewModel.loadSections()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

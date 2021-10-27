@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Cosmos
 
 final class GameViewController: UIViewController {
 
@@ -247,12 +246,14 @@ extension GameViewController {
             }
         })
 
-        NetworkRepository.fetchImage(from: game.cover, completion: { [weak self] image in
-            DispatchQueue.main.async {
-                self?.gameDetailView.coverImageView.image = image
-                self?.gameDetailView.statusLabel.text = game.userGame?.status.rawValue.uppercased()
-            }
-        })
+        if let gameCover = game.cover {
+            NetworkRepository.fetchImage(from: gameCover, completion: { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.gameDetailView.coverImageView.image = image
+                    self?.gameDetailView.statusLabel.text = game.userGame?.status.rawValue.uppercased()
+                }
+            })
+        }
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

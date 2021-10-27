@@ -18,18 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = GLTabBarController()
         window.makeKeyAndVisible()
         self.window = window
-        testLogin()
         return true
-    }
-
-    private func testLogin() {
-        UserService.shared.login(email: "test@gmail.com", password: "123456") { result in
-            switch result {
-            case let .success(responsed):
-                print(responsed.message)
-            case let .failure(error):
-                print(error)
-            }
-        }
     }
 }

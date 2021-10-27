@@ -51,4 +51,17 @@ struct UserService {
             }
         }
     }
+
+    static func testLogin(completion: @escaping () -> Void) {
+        guard UserDefaults.standard.value(forKey: "connect.sid") == nil else {
+            completion()
+            return
+        }
+
+        UserService.shared.login(email: "test@gmail.com", password: "123456") { _ in
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
 }

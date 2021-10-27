@@ -61,7 +61,9 @@ class GLMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchProfile()
+        UserService.testLogin {
+            self.fetchProfile()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
