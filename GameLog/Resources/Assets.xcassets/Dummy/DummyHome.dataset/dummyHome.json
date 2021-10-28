@@ -1,0 +1,872 @@
+[
+    {
+      "type": "popular",
+      "game": [
+        {
+          "id": 7342,
+          "name": "INSIDE",
+          "cover": [
+            {
+              "id": 113194,
+              "game": 7342,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2fca.jpg",
+              "_id": "6151c816638d93f755de5f3e"
+            }
+          ]
+        },
+        {
+          "id": 9498,
+          "name": "Deus Ex: Mankind Divided",
+          "cover": [
+            {
+              "id": 100505,
+              "game": 9498,
+              "height": 1596,
+              "width": 1197,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co25jt.jpg",
+              "_id": "6151ca93638d93f755eab66e"
+            }
+          ]
+        },
+        {
+          "id": 1020,
+          "name": "Grand Theft Auto V",
+          "cover": [
+            {
+              "id": 120937,
+              "game": 1020,
+              "height": 1580,
+              "width": 1185,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2lbd.jpg",
+              "_id": "6151c80a638d93f755de183c"
+            }
+          ]
+        },
+        {
+          "id": 10919,
+          "name": "XCOM 2",
+          "cover": [
+            {
+              "id": 76303,
+              "game": 10919,
+              "height": 852,
+              "width": 639,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1mvj.jpg",
+              "_id": "6151c9a6638d93f755e62e87"
+            }
+          ]
+        },
+        {
+          "id": 25657,
+          "name": "Destiny 2",
+          "cover": [
+            {
+              "id": 76713,
+              "game": 25657,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1n6x.jpg",
+              "_id": "6151cad1638d93f755ebe77f"
+            }
+          ]
+        },
+        {
+          "id": 7346,
+          "name": "The Legend of Zelda: Breath of the Wild",
+          "cover": [
+            {
+              "id": 172453,
+              "game": 7346,
+              "height": 1240,
+              "width": 930,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co3p2d.jpg",
+              "_id": "6151c80a638d93f755de16c0"
+            }
+          ]
+        },
+        {
+          "id": 19562,
+          "name": "Resident Evil 7 biohazard",
+          "cover": [
+            {
+              "id": 87285,
+              "game": 19562,
+              "height": 987,
+              "width": 740,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1vcl.jpg",
+              "_id": "6151c8b5638d93f755e17905"
+            }
+          ]
+        },
+        {
+          "id": 11208,
+          "name": "NieR: Automata",
+          "cover": [
+            {
+              "id": 114200,
+              "game": 11208,
+              "height": 1269,
+              "width": 951,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2g48.jpg",
+              "_id": "6151c88b638d93f755e0aa23"
+            }
+          ]
+        },
+        {
+          "id": 8173,
+          "name": "Overwatch",
+          "cover": [
+            {
+              "id": 82091,
+              "game": 8173,
+              "height": 1000,
+              "width": 750,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1rcb.jpg",
+              "_id": "6151c895638d93f755e0dc2a"
+            }
+          ]
+        },
+        {
+          "id": 7351,
+          "name": "DOOM",
+          "cover": [
+            {
+              "id": 76903,
+              "game": 7351,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1nc7.jpg",
+              "_id": "6151c913638d93f755e34cf5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Fighting",
+      "game": [
+        {
+          "id": 36911,
+          "name": "Dragon Ball FighterZ",
+          "cover": [
+            {
+              "id": 77129,
+              "game": 36911,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1nih.jpg",
+              "_id": "6151c902638d93f755e2f713"
+            }
+          ]
+        },
+        {
+          "id": 19470,
+          "name": "Injustice 2",
+          "cover": [
+            {
+              "id": 90670,
+              "game": 19470,
+              "height": 1400,
+              "width": 1050,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1xym.jpg",
+              "_id": "6151c93e638d93f755e426bd"
+            }
+          ]
+        },
+        {
+          "id": 7292,
+          "name": "Mortal Kombat X",
+          "cover": [
+            {
+              "id": 90728,
+              "game": 7292,
+              "height": 1706,
+              "width": 1280,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1y08.jpg",
+              "_id": "6151c9fe638d93f755e7de9c"
+            }
+          ]
+        },
+        {
+          "id": 7498,
+          "name": "Tekken 7",
+          "cover": [
+            {
+              "id": 88287,
+              "game": 7498,
+              "height": 1324,
+              "width": 993,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1w4f.jpg",
+              "_id": "6151c9d8638d93f755e72711"
+            }
+          ]
+        },
+        {
+          "id": 90101,
+          "name": "Super Smash Bros. Ultimate",
+          "cover": [
+            {
+              "id": 96089,
+              "game": 90101,
+              "height": 2000,
+              "width": 1500,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2255.jpg",
+              "_id": "6151c92b638d93f755e3c702"
+            }
+          ]
+        },
+        {
+          "id": 112916,
+          "name": "Mortal Kombat 11",
+          "cover": [
+            {
+              "id": 94121,
+              "game": 112916,
+              "height": 1494,
+              "width": 1120,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co20mh.jpg",
+              "_id": "615323468704db0a9611ec85"
+            }
+          ]
+        },
+        {
+          "id": 76885,
+          "name": "SoulCalibur VI",
+          "cover": [
+            {
+              "id": 89659,
+              "game": 76885,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1x6j.jpg",
+              "_id": "6151ca3b638d93f755e91111"
+            }
+          ]
+        },
+        {
+          "id": 1065,
+          "name": "Street Fighter X Tekken",
+          "cover": [
+            {
+              "id": 88290,
+              "game": 1065,
+              "height": 1334,
+              "width": 1000,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1w4i.jpg",
+              "_id": "6151cbcc638d93f755f0e49b"
+            }
+          ]
+        },
+        {
+          "id": 9621,
+          "name": "Super Smash Bros. for Nintendo 3DS",
+          "cover": [
+            {
+              "id": 89264,
+              "game": 9621,
+              "height": 1867,
+              "width": 1400,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1wvk.jpg",
+              "_id": "6151c933638d93f755e3ec73"
+            }
+          ]
+        },
+        {
+          "id": 107262,
+          "name": "Streets of Rage 4",
+          "cover": [
+            {
+              "id": 111162,
+              "game": 107262,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2dru.jpg",
+              "_id": "6151cab6638d93f755eb62b0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Shooter",
+      "game": [
+        {
+          "id": 9498,
+          "name": "Deus Ex: Mankind Divided",
+          "cover": [
+            {
+              "id": 100505,
+              "game": 9498,
+              "height": 1596,
+              "width": 1197,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co25jt.jpg",
+              "_id": "6151ca93638d93f755eab66e"
+            }
+          ]
+        },
+        {
+          "id": 1020,
+          "name": "Grand Theft Auto V",
+          "cover": [
+            {
+              "id": 120937,
+              "game": 1020,
+              "height": 1580,
+              "width": 1185,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2lbd.jpg",
+              "_id": "6151c80a638d93f755de183c"
+            }
+          ]
+        },
+        {
+          "id": 25657,
+          "name": "Destiny 2",
+          "cover": [
+            {
+              "id": 76713,
+              "game": 25657,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1n6x.jpg",
+              "_id": "6151cad1638d93f755ebe77f"
+            }
+          ]
+        },
+        {
+          "id": 19562,
+          "name": "Resident Evil 7 biohazard",
+          "cover": [
+            {
+              "id": 87285,
+              "game": 19562,
+              "height": 987,
+              "width": 740,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1vcl.jpg",
+              "_id": "6151c8b5638d93f755e17905"
+            }
+          ]
+        },
+        {
+          "id": 8173,
+          "name": "Overwatch",
+          "cover": [
+            {
+              "id": 82091,
+              "game": 8173,
+              "height": 1000,
+              "width": 750,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1rcb.jpg",
+              "_id": "6151c895638d93f755e0dc2a"
+            }
+          ]
+        },
+        {
+          "id": 7351,
+          "name": "DOOM",
+          "cover": [
+            {
+              "id": 76903,
+              "game": 7351,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1nc7.jpg",
+              "_id": "6151c913638d93f755e34cf5"
+            }
+          ]
+        },
+        {
+          "id": 17447,
+          "name": "Titanfall 2",
+          "cover": [
+            {
+              "id": 18564,
+              "game": 17447,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/fhbeilnghyhhmjqhinqa.jpg",
+              "_id": "6151c89e638d93f755e10940"
+            }
+          ]
+        },
+        {
+          "id": 11156,
+          "name": "Horizon Zero Dawn",
+          "cover": [
+            {
+              "id": 133030,
+              "game": 11156,
+              "height": 1380,
+              "width": 1035,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2una.jpg",
+              "_id": "6151c8a4638d93f755e11fcc"
+            }
+          ]
+        },
+        {
+          "id": 11186,
+          "name": "Gears of War 4",
+          "cover": [
+            {
+              "id": 137457,
+              "game": 11186,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2y29.jpg",
+              "_id": "6151ca80638d93f755ea5841"
+            }
+          ]
+        },
+        {
+          "id": 25076,
+          "name": "Red Dead Redemption 2",
+          "cover": [
+            {
+              "id": 80403,
+              "game": 25076,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1q1f.jpg",
+              "_id": "6151c80a638d93f755de199d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Puzzle",
+      "game": [
+        {
+          "id": 7342,
+          "name": "INSIDE",
+          "cover": [
+            {
+              "id": 113194,
+              "game": 7342,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2fca.jpg",
+              "_id": "6151c816638d93f755de5f3e"
+            }
+          ]
+        },
+        {
+          "id": 7352,
+          "name": "ABZÛ",
+          "cover": [
+            {
+              "id": 104722,
+              "game": 7352,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co28sy.jpg",
+              "_id": "6151cb90638d93f755efb475"
+            }
+          ]
+        },
+        {
+          "id": 7337,
+          "name": "Captain Toad: Treasure Tracker",
+          "cover": [
+            {
+              "id": 94751,
+              "game": 7337,
+              "height": 2000,
+              "width": 1500,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co213z.jpg",
+              "_id": "6151caf9638d93f755ecb72a"
+            }
+          ]
+        },
+        {
+          "id": 11233,
+          "name": "What Remains of Edith Finch",
+          "cover": [
+            {
+              "id": 82063,
+              "game": 11233,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1rbj.jpg",
+              "_id": "6151c914638d93f755e35244"
+            }
+          ]
+        },
+        {
+          "id": 11549,
+          "name": "Zero Escape: Zero Time Dilemma",
+          "cover": [
+            {
+              "id": 101108,
+              "game": 11549,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co260k.jpg",
+              "_id": "6153293c8704db0a962b9900"
+            }
+          ]
+        },
+        {
+          "id": 117,
+          "name": "The Last Guardian",
+          "cover": [
+            {
+              "id": 102434,
+              "game": 117,
+              "height": 1599,
+              "width": 1199,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co271e.jpg",
+              "_id": "6151cbdb638d93f755f12d71"
+            }
+          ]
+        },
+        {
+          "id": 28414,
+          "name": "Mario + Rabbids Kingdom Battle",
+          "cover": [
+            {
+              "id": 96160,
+              "game": 28414,
+              "height": 1440,
+              "width": 1080,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2274.jpg",
+              "_id": "6151ca68638d93f755e9eb4c"
+            }
+          ]
+        },
+        {
+          "id": 121760,
+          "name": "Little Nightmares II",
+          "cover": [
+            {
+              "id": 79321,
+              "game": 121760,
+              "height": 934,
+              "width": 700,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1p7d.jpg",
+              "_id": "6151cae9638d93f755ec64fc"
+            }
+          ]
+        },
+        {
+          "id": 11170,
+          "name": "Unravel",
+          "cover": [
+            {
+              "id": 109797,
+              "game": 11170,
+              "height": 1080,
+              "width": 810,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2cpx.jpg",
+              "_id": "6151cb66638d93f755eed862"
+            }
+          ]
+        },
+        {
+          "id": 7205,
+          "name": "SUPERHOT",
+          "cover": [
+            {
+              "id": 101274,
+              "game": 7205,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2656.jpg",
+              "_id": "6151c9df638d93f755e746ec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Platform",
+      "game": [
+        {
+          "id": 7342,
+          "name": "INSIDE",
+          "cover": [
+            {
+              "id": 113194,
+              "game": 7342,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2fca.jpg",
+              "_id": "6151c816638d93f755de5f3e"
+            }
+          ]
+        },
+        {
+          "id": 7337,
+          "name": "Captain Toad: Treasure Tracker",
+          "cover": [
+            {
+              "id": 94751,
+              "game": 7337,
+              "height": 2000,
+              "width": 1500,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co213z.jpg",
+              "_id": "6151caf9638d93f755ecb72a"
+            }
+          ]
+        },
+        {
+          "id": 1970,
+          "name": "Assassin's Creed IV: Black Flag",
+          "cover": [
+            {
+              "id": 114765,
+              "game": 1970,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2gjx.jpg",
+              "_id": "6151c9ec638d93f755e781aa"
+            }
+          ]
+        },
+        {
+          "id": 117,
+          "name": "The Last Guardian",
+          "cover": [
+            {
+              "id": 102434,
+              "game": 117,
+              "height": 1599,
+              "width": 1199,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co271e.jpg",
+              "_id": "6151cbdb638d93f755f12d71"
+            }
+          ]
+        },
+        {
+          "id": 9061,
+          "name": "Cuphead",
+          "cover": [
+            {
+              "id": 82113,
+              "game": 9061,
+              "height": 1427,
+              "width": 1070,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1rcx.jpg",
+              "_id": "6151c91a638d93f755e37208"
+            }
+          ]
+        },
+        {
+          "id": 12528,
+          "name": "Gravity Rush 2",
+          "cover": [
+            {
+              "id": 127362,
+              "game": 12528,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2q9u.jpg",
+              "_id": "6151cb5d638d93f755eea854"
+            }
+          ]
+        },
+        {
+          "id": 7444,
+          "name": "Shovel Knight",
+          "cover": [
+            {
+              "id": 79398,
+              "game": 7444,
+              "height": 1570,
+              "width": 1178,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1p9i.jpg",
+              "_id": "6151c89d638d93f755e10390"
+            }
+          ]
+        },
+        {
+          "id": 135254,
+          "name": "Crash Bandicoot 4: It's About Time",
+          "cover": [
+            {
+              "id": 116248,
+              "game": 135254,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2hp4.jpg",
+              "_id": "6151c968638d93f755e4fb03"
+            }
+          ]
+        },
+        {
+          "id": 11065,
+          "name": "Ratchet & Clank",
+          "cover": [
+            {
+              "id": 97220,
+              "game": 11065,
+              "height": 1415,
+              "width": 1061,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co230k.jpg",
+              "_id": "6151ca13638d93f755e84875"
+            }
+          ]
+        },
+        {
+          "id": 26761,
+          "name": "Splatoon 2",
+          "cover": [
+            {
+              "id": 101069,
+              "game": 26761,
+              "height": 1413,
+              "width": 1060,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co25zh.jpg",
+              "_id": "6151cacb638d93f755ebc7a6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Music",
+      "game": [
+        {
+          "id": 9741,
+          "name": "Guitar Hero Live",
+          "cover": [
+            {
+              "id": 89042,
+              "game": 9741,
+              "height": 960,
+              "width": 720,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1wpe.jpg",
+              "_id": "6151cba6638d93f755f02358"
+            }
+          ]
+        },
+        {
+          "id": 103221,
+          "name": "Tetris Effect",
+          "cover": [
+            {
+              "id": 119806,
+              "game": 103221,
+              "height": 1333,
+              "width": 1000,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2kfy.jpg",
+              "_id": "6151c8cd638d93f755e1f610"
+            }
+          ]
+        },
+        {
+          "id": 10960,
+          "name": "Thumper",
+          "cover": [
+            {
+              "id": 92174,
+              "game": 10960,
+              "height": 1600,
+              "width": 1200,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1z4e.jpg",
+              "_id": "6151ca4b638d93f755e962a3"
+            }
+          ]
+        },
+        {
+          "id": 19746,
+          "name": "Rez Infinite",
+          "cover": [
+            {
+              "id": 99391,
+              "game": 19746,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co24ov.jpg",
+              "_id": "6151c82d638d93f755ded56b"
+            }
+          ]
+        },
+        {
+          "id": 3088,
+          "name": "Rocksmith 2014",
+          "cover": [
+            {
+              "id": 80990,
+              "game": 3088,
+              "height": 512,
+              "width": 366,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1qhq.jpg",
+              "_id": "6151c919638d93f755e36cc1"
+            }
+          ]
+        },
+        {
+          "id": 2680,
+          "name": "DJ Hero 2",
+          "cover": [
+            {
+              "id": 111557,
+              "game": 2680,
+              "height": 1280,
+              "width": 960,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2e2t.jpg",
+              "_id": "6151c93a638d93f755e4118a"
+            }
+          ]
+        },
+        {
+          "id": 7886,
+          "name": "Crypt of the NecroDancer",
+          "cover": [
+            {
+              "id": 98040,
+              "game": 7886,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co23nc.jpg",
+              "_id": "6151c8da638d93f755e2351f"
+            }
+          ]
+        },
+        {
+          "id": 5592,
+          "name": "Runner2: Future Legend of Rhythm Alien",
+          "cover": [
+            {
+              "id": 117664,
+              "game": 5592,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2isg.jpg",
+              "_id": "6151c8f8638d93f755e2c76e"
+            }
+          ]
+        },
+        {
+          "id": 9694,
+          "name": "Danganronpa 2: Goodbye Despair",
+          "cover": [
+            {
+              "id": 115579,
+              "game": 9694,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2h6j.jpg",
+              "_id": "6151c9c4638d93f755e6c158"
+            }
+          ]
+        },
+        {
+          "id": 12078,
+          "name": "Hatsune Miku: Project Diva X",
+          "cover": [
+            {
+              "id": 127412,
+              "game": 12078,
+              "height": 800,
+              "width": 600,
+              "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2qb8.jpg",
+              "_id": "6151caa1638d93f755eafb4c"
+            }
+          ]
+        }
+      ]
+    }
+]
