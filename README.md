@@ -1,8 +1,9 @@
 # GameLog
 
-*게임 추천/기록 서비스 on iOS [2021. 08. 23. ~ ]*
+*게임 추천/기록 서비스 on iOS* | [소개 영상](https://youtu.be/uFUUKgeB_eU)
 
 ![](/README/Cover.png)
+
 
 ## 개요
 
