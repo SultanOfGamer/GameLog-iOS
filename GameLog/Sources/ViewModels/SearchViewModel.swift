@@ -20,7 +20,8 @@ final class SearchViewModel {
     }
 
     func fetchGames(by name: String?) {
-        guard let name = name else {
+        guard let name = name,
+              !name.isEmpty else {
             search = nil
             return
         }

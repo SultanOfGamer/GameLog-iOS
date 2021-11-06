@@ -10,9 +10,9 @@ import Foundation
 struct Search: Hashable {
 
     let id = UUID()
-    let games: [Search.Game]
+    let games: [Section.Game]
 
-    init(games: [Search.Game] = []) {
+    init(games: [Section.Game] = []) {
         self.games = games
     }
 
@@ -31,45 +31,20 @@ extension Search: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        var decodedGames: [Search.Game]
-        decodedGames = try container.decode([Search.Game].self, forKey: .gameName)
+        let data = try container.nestedContainer(keyedBy: DataKeys.self, forKey: .data)
+        var decodedGames: [Section.Game]
+        decodedGames = try data.decode([Section.Game].self, forKey: .gameName)
         if decodedGames.isEmpty {
-            decodedGames = try container.decode([Search.Game].self, forKey: .alterName)
+            decodedGames = try data.decode([Section.Game].self, forKey: .alterName)
         }
         games = decodedGames
     }
 
     private enum CodingKeys: String, CodingKey {
-        case gameName, alterName
+        case data
     }
-}
 
-// MARK: - Search.Game
-
-extension Search {
-
-    struct Game: Decodable, Hashable {
-        let id: Int
-        let name: String
-        let cover: Cover?
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            id = try container.decode(Int.self, forKey: .id)
-            name = try container.decode(String.self, forKey: .name)
-            cover = try container.decode([Cover].self, forKey: .cover).first
-        }
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
-
-        static func == (lhs: Search.Game, rhs: Search.Game) -> Bool {
-            return lhs.id == rhs.id
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case id, name, cover
-        }
+    private enum DataKeys: String, CodingKey {
+        case gameName, alterName
     }
 }

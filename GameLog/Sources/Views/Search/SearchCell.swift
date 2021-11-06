@@ -13,7 +13,7 @@ final class SearchCell: UICollectionViewCell {
 
     var dataTask: URLSessionDataTask?
 
-    var game: Search.Game? {
+    var game: Section.Game? {
         didSet {
             if let game = game {
                 titleLabel.text = game.name
