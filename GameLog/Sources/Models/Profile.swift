@@ -20,17 +20,22 @@ extension Profile: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        email = try container.decode(String.self, forKey: .email)
-        nickname = try container.decode(String.self, forKey: .nickname)
+        let data = try container.nestedContainer(keyedBy: DataKeys.self, forKey: .data)
+        email = try data.decode(String.self, forKey: .email)
+        nickname = try data.decode(String.self, forKey: .nickname)
 
-        let profileImage = try? container.nestedContainer(keyedBy: ProfileImageKeys.self, forKey: .profileImagePath)
+        let profileImage = try? data.nestedContainer(keyedBy: ProfileImageKeys.self, forKey: .profileImagePath)
         profileImagePath = try profileImage?.decode(String.self, forKey: .url)
 
-        preferCategories = try container.decode([Category].self, forKey: .preferCategories)
-        id = try container.decode(Int.self, forKey: .id)
+        preferCategories = try data.decode([Category].self, forKey: .preferCategories)
+        id = try data.decode(Int.self, forKey: .id)
     }
 
     private enum CodingKeys: String, CodingKey {
+        case data
+    }
+
+    private enum DataKeys: String, CodingKey {
         case email, nickname
         case profileImagePath = "profileImage"
         case preferCategories = "preferCategory"
