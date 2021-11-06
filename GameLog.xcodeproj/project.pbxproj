@@ -10,6 +10,7 @@
 		02122102270BE62500EE5066 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122101270BE62500EE5066 /* UILabel+extensions.swift */; };
 		02122104270BEB4D00EE5066 /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122103270BEB4D00EE5066 /* UIView+shadow.swift */; };
 		02122107270C1B0300EE5066 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122106270C1B0300EE5066 /* NetworkRepository.swift */; };
+		02212A6E27369D04006F36CB /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02212A6D27369D04006F36CB /* Recommendation.swift */; };
 		0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50A26D3C7B400622AF5 /* AppDelegate.swift */; };
 		0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50E26D3C7B400622AF5 /* HomeViewController.swift */; };
 		0226A51426D3C7B500622AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0226A51326D3C7B500622AF5 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		02122101270BE62500EE5066 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		02122103270BEB4D00EE5066 /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
 		02122106270C1B0300EE5066 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
+		02212A6D27369D04006F36CB /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
 		0226A50726D3C7B400622AF5 /* GameLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0226A50A26D3C7B400622AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0226A50E26D3C7B400622AF5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		02BC8A2A27211C8300453CEA /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				02212A6D27369D04006F36CB /* Recommendation.swift */,
 				0268239E2715A9D30028C1E1 /* ResponseMessage.swift */,
 				02BC8A2B27211D2400453CEA /* UpdatedLibrary.swift */,
 			);
@@ -533,6 +536,7 @@
 				0241D83A26E5C74D000A9E20 /* WishlistViewController.swift in Sources */,
 				02BC8A30272494A300453CEA /* UIViewController+alert.swift in Sources */,
 				0241D83826E5C723000A9E20 /* LibraryViewController.swift in Sources */,
+				02212A6E27369D04006F36CB /* Recommendation.swift in Sources */,
 				02BC8A23271F130F00453CEA /* GameType.swift in Sources */,
 				02BC8A1727189F8700453CEA /* UIActivityIndicatorView+loading.swift in Sources */,
 				02EC9C6526F3AE5000536893 /* Section.swift in Sources */,

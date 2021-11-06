@@ -64,13 +64,13 @@ extension Section {
         let uuid = UUID()
         let id: Int
         let name: String
-        let cover: Cover
+        let cover: Cover?
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
             name = try container.decode(String.self, forKey: .name)
-            cover = try container.decode([Cover].self, forKey: .cover)[0]
+            cover = try container.decode([Cover].self, forKey: .cover).first
         }
 
         private enum CodingKeys: String, CodingKey {

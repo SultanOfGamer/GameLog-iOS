@@ -7,7 +7,7 @@
 
 struct HomeService {
 
-    typealias ServiceResult = Result<[Section], NetworkRepository.Error>
+    typealias ServiceResult = Result<Recommendation, NetworkRepository.Error>
 
     private let networkRepository: NetworkRepository
 

@@ -22,8 +22,8 @@ final class HomeViewModel {
     func loadSections() {
         homeService.load { [weak self] result in
             switch result {
-            case let .success(sections):
-                self?.sections = sections
+            case let .success(recommendation):
+                self?.sections = recommendation.sections
             case let .failure(error):
                 print(error)
             }

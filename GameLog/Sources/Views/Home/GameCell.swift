@@ -15,8 +15,8 @@ final class GameCell: UICollectionViewCell {
 
     var game: Section.Game? {
         didSet {
-            if let game = game {
-                dataTask = NetworkRepository.fetchImage(from: game.cover.url) { [weak self] image in
+            if let cover = game?.cover {
+                dataTask = NetworkRepository.fetchImage(from: cover.url) { [weak self] image in
                     DispatchQueue.main.async {
                         self?.coverImageView.image = image
                     }
