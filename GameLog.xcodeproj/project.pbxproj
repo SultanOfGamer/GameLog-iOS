@@ -11,6 +11,8 @@
 		02122104270BEB4D00EE5066 /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122103270BEB4D00EE5066 /* UIView+shadow.swift */; };
 		02122107270C1B0300EE5066 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02122106270C1B0300EE5066 /* NetworkRepository.swift */; };
 		02212A6E27369D04006F36CB /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02212A6D27369D04006F36CB /* Recommendation.swift */; };
+		02212A702736FCD2006F36CB /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02212A6F2736FCD2006F36CB /* SettingCell.swift */; };
+		02212A72273701CF006F36CB /* SettingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02212A71273701CF006F36CB /* SettingContent.swift */; };
 		0226A50B26D3C7B400622AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50A26D3C7B400622AF5 /* AppDelegate.swift */; };
 		0226A50F26D3C7B400622AF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226A50E26D3C7B400622AF5 /* HomeViewController.swift */; };
 		0226A51426D3C7B500622AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0226A51326D3C7B500622AF5 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		02122103270BEB4D00EE5066 /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
 		02122106270C1B0300EE5066 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		02212A6D27369D04006F36CB /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		02212A6F2736FCD2006F36CB /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		02212A71273701CF006F36CB /* SettingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContent.swift; sourceTree = "<group>"; };
 		0226A50726D3C7B400622AF5 /* GameLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0226A50A26D3C7B400622AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0226A50E26D3C7B400622AF5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 		029630AD2725493F00564030 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				02212A6F2736FCD2006F36CB /* SettingCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				029630B32725627F00564030 /* CosmosDistrib.swift */,
 				02EC9C5A26F253CE00536893 /* Global.swift */,
 				02BC8A22271F130F00453CEA /* GameType.swift */,
+				02212A71273701CF006F36CB /* SettingContent.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -530,7 +536,9 @@
 				02BC8A2C27211D2400453CEA /* UpdatedLibrary.swift in Sources */,
 				029630AC2725302100564030 /* Profile.swift in Sources */,
 				02BC8A2E2724489200453CEA /* ReviewViewController.swift in Sources */,
+				02212A72273701CF006F36CB /* SettingContent.swift in Sources */,
 				02EC9C6726F43F0A00536893 /* HomeViewModel.swift in Sources */,
+				02212A702736FCD2006F36CB /* SettingCell.swift in Sources */,
 				02EC9C6126F3450D00536893 /* GameCell.swift in Sources */,
 				02BC8A19271D0C3D00453CEA /* SearchService.swift in Sources */,
 				0241D83A26E5C74D000A9E20 /* WishlistViewController.swift in Sources */,
