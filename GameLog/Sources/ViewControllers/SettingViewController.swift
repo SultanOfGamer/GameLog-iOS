@@ -9,10 +9,6 @@ import UIKit
 
 final class SettingViewController: UIViewController {
 
-    private enum Style {
-        static let imageSize: CGFloat = 50
-    }
-
     private var settingContents: [SettingContent.Section]
 
     private let profile: Profile
@@ -94,25 +90,13 @@ extension SettingViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard indexPath.section < settingContents.count,
+        guard (indexPath.section < settingContents.count),
               let settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier,
                                                               for: indexPath) as? SettingCell else {
                   return SettingCell()
               }
 
-        let settingContent = settingContents[indexPath.section].rows[indexPath.row]
-        var content = settingCell.defaultContentConfiguration()
-        if indexPath.section == 0 {
-            content.image = settingContent.image
-            content.imageProperties.maximumSize = CGSize(width: Style.imageSize, height: Style.imageSize)
-            content.imageProperties.cornerRadius = Style.imageSize/2
-            content.textProperties.font = .preferredFont(forTextStyle: .headline)
-            content.secondaryTextProperties.font = .preferredFont(forTextStyle: .subheadline)
-        }
-        content.text = settingContent.text
-        content.secondaryText = settingContent.secondaryText
-        settingCell.contentConfiguration = content
-        settingCell.accessoryType = settingContent.accessoryType
+        settingCell.setContent(rowContent: settingContents[indexPath.section].rows[indexPath.row])
         return settingCell
     }
 }
