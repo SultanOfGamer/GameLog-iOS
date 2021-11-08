@@ -31,4 +31,11 @@ final class SettingCell: UITableViewCell {
         contentConfiguration = content
         accessoryType = rowContent.accessoryType
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        accessoryType = .none
+        contentConfiguration = nil
+    }
 }
