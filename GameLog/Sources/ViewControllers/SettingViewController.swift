@@ -96,6 +96,7 @@ extension SettingViewController: UITableViewDataSource {
                   return SettingCell()
               }
 
+        settingCell.selectionStyle = (indexPath.section == 0) ? .none : .default
         settingCell.setContent(rowContent: settingContents[indexPath.section].rows[indexPath.row])
         return settingCell
     }
