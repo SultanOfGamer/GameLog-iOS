@@ -53,7 +53,7 @@ struct UserService {
     }
 
     static func testLogin(completion: @escaping () -> Void) {
-        guard UserDefaults.standard.value(forKey: "connect.sid") == nil else {
+        guard UserDefaults.standard.value(forKey: "connect.sid") != nil else {
             completion()
             return
         }
