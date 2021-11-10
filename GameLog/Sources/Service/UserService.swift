@@ -16,7 +16,7 @@ struct UserService {
 
     private let loginPath: String = "auth/login"
     private let logoutPath: String = "auth/logout"
-    private let signupPath: String = "auth/signup"
+    private let signUpPath: String = "auth/signup"
     private let validationPath: String = "auth/validation"
 
     private let profilePath: String = "profile"
@@ -50,6 +50,23 @@ struct UserService {
                 completion(.failure(error))
             }
         }
+    }
+
+    func signup(email: String,
+                nickname: String,
+                password: String,
+                passwordConfirm: String,
+                completion: @escaping (MessageResult) -> Void) {
+        guard password == passwordConfirm else {
+            return completion(.failure(.wrongPasswordConfirm))
+        }
+
+        networkRepository.post(path: signUpPath,
+                               bodyType: .urlencoded(body: ["email": email,
+                                                            "nickname": nickname,
+                                                            "password": password,
+                                                            "passwordConfirm": passwordConfirm]),
+                               completion: completion)
     }
 
     static func testLogin(completion: @escaping () -> Void) {

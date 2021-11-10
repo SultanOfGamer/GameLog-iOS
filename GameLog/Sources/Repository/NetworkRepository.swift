@@ -189,6 +189,7 @@ extension NetworkRepository {
         case dataNotDecodable
         case requestFailed(Swift.Error)
         case responseNotOK(Int)
+        case wrongPasswordConfirm
     }
 }
 
