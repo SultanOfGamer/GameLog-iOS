@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/20.
 //
 
-import Foundation
-
 final class SearchViewModel {
 
     var dataSource: Global.SearchDataSource?
@@ -36,7 +34,7 @@ final class SearchViewModel {
         }
     }
 
-    func applySnapshot(search: Search?, animatingDifferences: Bool = true) {
+    private func applySnapshot(search: Search?, animatingDifferences: Bool = true) {
         var snapshot = Global.SearchSnapshot()
         if let search = search {
             snapshot.appendSections([search])

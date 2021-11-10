@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/13.
 //
 
-import UIKit
-
 final class LibraryViewModel {
 
     var dataSource: Global.LibraryDataSource?
@@ -58,7 +56,7 @@ final class LibraryViewModel {
         }
     }
 
-    func applySnapshot(library: Library, animatingDifferences: Bool = true) {
+    private func applySnapshot(library: Library, animatingDifferences: Bool = true) {
         var snapshot = Global.LibrarySnapshot()
         snapshot.appendSections([library])
         snapshot.appendItems(library.data, toSection: library)

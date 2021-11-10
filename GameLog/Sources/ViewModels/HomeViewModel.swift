@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/09/17.
 //
 
-import UIKit
-
 final class HomeViewModel {
 
     var dataSource: Global.GameDataSource?
@@ -30,7 +28,7 @@ final class HomeViewModel {
         }
     }
 
-    func applySnapshot(sections: [Section], animatingDifferences: Bool = true) {
+    private func applySnapshot(sections: [Section], animatingDifferences: Bool = true) {
         var snapshot = Global.GameSnapshot()
         snapshot.appendSections(sections)
         sections.forEach { section in

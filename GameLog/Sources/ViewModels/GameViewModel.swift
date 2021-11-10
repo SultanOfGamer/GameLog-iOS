@@ -5,8 +5,6 @@
 //  Created by duckbok on 2021/10/11.
 //
 
-import UIKit
-
 final class GameViewModel {
 
     private var gameUpdated: ((Game) -> Void)?
